@@ -1,0 +1,46 @@
+* LMR51430 behavioural peak-current-mode buck - BRC-M400 Rev C logic rail
+* Datasheet values: fsw 500 kHz, Rds(on) HS 120 mOhm / LS 70 mOhm, Vref 0.600 V, tSS 4 ms
+Vin vin 0 24
+Cin vin 0 10u
+Vclk clk 0 PULSE(0 1 0 2n 2n 40n 2u)
+Vramp ramp 0 PULSE(0 0.1 0 1.99u 2n 1n 2u)
+Vref ref 0 PWL(0 0 4m 0.6)
+* error amplifier: PI (Kp = 9 -> ~37 kHz crossover with 35 uF, zero 3 kHz) + anti-windup
+Be e 0 V = v(ref)-v(fb)
+Bint 0 xi I = 0.1697*v(e) * ((v(e) > 0) ? ((v(xi) < 1.2) ? 1 : 0) : ((v(xi) > -0.1) ? 1 : 0))
+Cint xi 0 1u
+Rint xi 0 1e12
+Bvc vcr 0 V = max(0, min(1.05, 9*v(e) + v(xi)))
+Rvc vcr vc 1k
+Cvc vc 0 1.6n
+H1 isns 0 Vimeas 0.2
+Bset s 0 V = v(clk) > 0.5 ? 1 : 0
+Brst r 0 V = (v(isns) + v(ramp) > v(vc)) ? 1 : 0
+Bq q 0 V = v(s) > 0.5 ? 1 : (v(r) > 0.5 ? 0 : (v(qd) > 0.5 ? 1 : 0))
+Rqd q qd 10
+Cqd qd 0 10p
+Bqn qn 0 V = 1 - v(q)
+S1 vin lx q 0 SWHS
+S2 lx 0 qn 0 SWLS
+Dbody 0 lx DBODY
+.model SWHS SW(Ron=0.12 Roff=1e6 Vt=0.5 Vh=0.05)
+.model SWLS SW(Ron=0.07 Roff=1e6 Vt=0.5 Vh=0.05)
+.model DBODY D(IS=1e-9 RS=0.05 CJO=200p)
+* L2 Bourns SRN6045TA-150M 15 uH (DCR ~ 45 mOhm)
+Vimeas lx lx2 0
+L1 lx2 lr 15u
+RL lr vout 0.045
+* 2 x 22 uF X5R 10 V (effective ~35 uF at 3.3 V)
+Cc vout cc 35u
+Rcc cc 0 2m
+R5 vout fb 100k
+R6 fb 0 22.1k
+* load: MCU + SX1262 RX (30 mA) -> LoRa TX +22 dBm burst (160 mA) at 6 ms -> back at 8 ms
+Vprof prof 0 PWL(0 0.03 6m 0.03 6.002m 0.16 8m 0.16 8.002m 0.03 10m 0.03)
+Bload vout 0 I = v(prof)*min(1, max(0, v(vout)/2.5))
+.options interp
+.control
+tran 0.25u 10m 0 10n
+wrdata data/buck_full.txt v(vout) i(Vimeas) v(prof) i(Vin)
+.endc
+.end

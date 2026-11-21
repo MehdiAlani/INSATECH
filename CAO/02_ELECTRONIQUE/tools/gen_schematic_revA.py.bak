@@ -1,0 +1,717 @@
+"""
+BRC-M400 schematic generator.
+
+Builds a hierarchical KiCad schematic from the netlist below, embedding the
+REAL symbol definitions read from the installed KiCad libraries (so every pin
+name/number is the library's, never hand-typed).
+
+Run with KiCad's bundled Python:
+    "C:\\Program Files\\KiCad\\10.0\\bin\\python.exe" gen_schematic.py
+
+WARNING: regenerating OVERWRITES the .kicad_sch files. Use this to (re)build
+the netlist before manual layout work; once you start editing the schematic in
+the KiCad GUI, edit there instead.
+"""
+import copy
+import math
+import os
+import sys
+import uuid
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from sexp import load, find_symbols, head, dump  # noqa: E402
+
+PROJECT = "BRC-M400"
+OUTDIR = os.path.normpath(os.path.join(HERE, "..", PROJECT))
+
+
+def find_symdir():
+    for v in ("10.0", "9.0", "8.0"):
+        p = r"C:\Program Files\KiCad\%s\share\kicad\symbols" % v
+        if os.path.isdir(p):
+            return p
+    raise SystemExit("KiCad symbol directory not found")
+
+
+SYMDIR = find_symdir()
+GRID = 2.54
+STUB = 2.54
+
+# ---------------------------------------------------------------------------
+# Footprint shorthands
+# ---------------------------------------------------------------------------
+R0603 = "Resistor_SMD:R_0603_1608Metric"
+R2512 = "Resistor_SMD:R_2512_6332Metric"
+C0402 = "Capacitor_SMD:C_0402_1005Metric"
+C0603 = "Capacitor_SMD:C_0603_1608Metric"
+C0805 = "Capacitor_SMD:C_0805_2012Metric"
+C1210 = "Capacitor_SMD:C_1210_3225Metric"
+L0402 = "Inductor_SMD:L_0402_1005Metric"
+L0603 = "Inductor_SMD:L_0603_1608Metric"
+L0805 = "Inductor_SMD:L_0805_2012Metric"
+SOT23 = "Package_TO_SOT_SMD:SOT-23"
+SOT236 = "Package_TO_SOT_SMD:SOT-23-6"
+JST_GH4 = "Connector_JST:JST_GH_SM04B-GHS-TB_1x04-1MP_P1.25mm_Horizontal"
+JST_XH2 = "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
+TBD = "TBD-AN5457"
+
+
+class Part:
+    def __init__(self, ref, lib_id, value, fp, pins, mpn="", dnp=False):
+        self.ref, self.lib_id, self.value, self.fp = ref, lib_id, value, fp
+        self.pins = {str(k): v for k, v in pins.items()}
+        self.mpn, self.dnp = mpn, dnp
+
+
+def R(ref, val, a, b, fp=R0603, mpn=""):
+    return Part(ref, "Device:R", val, fp, {1: a, 2: b}, mpn)
+
+
+def C(ref, val, a, b, fp=C0603, mpn="", dnp=False):
+    return Part(ref, "Device:C", val, fp, {1: a, 2: b}, mpn, dnp)
+
+
+def L(ref, val, a, b, fp=L0402, mpn=""):
+    return Part(ref, "Device:L", val, fp, {1: a, 2: b}, mpn)
+
+
+def FLAG(ref, net):
+    return Part(ref, "power:PWR_FLAG", "PWR_FLAG", "", {1: net})
+
+
+# ---------------------------------------------------------------------------
+# NETLIST — single source of truth. Net None = no-connect.
+# ---------------------------------------------------------------------------
+SHEETS = []
+
+SHEETS.append(("power", "Alimentation & protection", [
+    "ENTREE 9-28 V (E-Port V2 XT30 12 V ou LiPo 3S/4S) -> PTC -> TVS -> anti-inversion P-FET",
+    "DEUX buck INDEPENDANTS depuis VIN (jamais en cascade) : l'appel servo ne peut pas faire chuter le 3V3",
+    "U1 LMR51430 : V_FB = 0,600 V -> Vout = 0,6 x (1 + 100k/11k) = 6,05 V",
+    "U2 AP63203 : version FIXE 3,3 V, FB relie directement a la sortie",
+], [
+    Part("J1", "Connector_Generic:Conn_01x02", "VIN 9-28V (XT30 pigtail)",
+         "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+         {1: "VIN_RAW", 2: "GND"}),
+    Part("F1", "Device:Polyfuse", "PTC 3A hold", "Fuse:Fuse_1812_4532Metric",
+         {1: "VIN_RAW", 2: "VIN_F"}),
+    Part("D1", "Diode:SMAJ30A", "SMAJ30A", "Diode_SMD:D_SMA", {1: "VIN_F", 2: "GND"}),
+    Part("Q1", "Transistor_FET:Q_PMOS_GDS", "AOD4185", "Package_TO_SOT_SMD:TO-252-2",
+         {1: "Q1_G", 2: "VIN_F", 3: "VIN"}, mpn="AOD4185"),
+    Part("D2", "Device:D_Zener", "BZT52C15", "Diode_SMD:D_SOD-123", {1: "VIN", 2: "Q1_G"}),
+    R("R1", "100k", "Q1_G", "GND"),
+    Part("C1", "Device:C_Polarized", "470uF 35V low-ESR", "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm",
+         {1: "VIN", 2: "GND"}),
+    # --- Buck A : servo rail 6.05 V / 3 A
+    Part("U1", "Regulator_Switching:LMR51430", "LMR51430", SOT236,
+         {1: "GND", 2: "SW_6V", 3: "VIN", 4: "FB_6V", 5: "EN_6V", 6: "CB_6V"}, mpn="LMR51430XDDCR"),
+    R("R39", "100k", "VIN", "EN_6V"),
+    C("C2", "10uF 50V X7R", "VIN", "GND", C1210),
+    C("C45", "100nF 50V", "VIN", "GND"),
+    C("C6", "100nF", "CB_6V", "SW_6V"),
+    L("L1", "6.8uH Isat 5A", "SW_6V", "+6V_SRV", "Inductor_SMD:L_Bourns_SRN6045TA", mpn="SRN6045TA-6R8M"),
+    R("R2", "100k 1%", "+6V_SRV", "FB_6V"),
+    R("R3", "11k 1%", "FB_6V", "GND"),
+    C("C4", "22uF 16V X5R", "+6V_SRV", "GND", C1210),
+    C("C5", "22uF 16V X5R", "+6V_SRV", "GND", C1210),
+    Part("C7", "Device:C_Polarized", "100uF 16V", "Capacitor_SMD:CP_Elec_6.3x7.7",
+         {1: "+6V_SRV", 2: "GND"}),
+    # --- Buck B : logic rail 3.3 V / 2 A (fixed)
+    Part("U2", "Regulator_Switching:AP63203WU", "AP63203WU-7", "Package_TO_SOT_SMD:TSOT-23-6",
+         {1: "+3V3", 2: "EN_3V3", 3: "VIN", 4: "GND", 5: "SW_3V3", 6: "BST_3V3"}, mpn="AP63203WU-7"),
+    R("R40", "100k", "VIN", "EN_3V3"),
+    C("C3", "10uF 50V X7R", "VIN", "GND", C1210),
+    C("C46", "100nF 50V", "VIN", "GND"),
+    C("C10", "100nF", "BST_3V3", "SW_3V3"),
+    L("L2", "4.7uH Isat 3A", "SW_3V3", "+3V3", "Inductor_SMD:L_Bourns-SRN4018", mpn="SRN4018-4R7M"),
+    C("C8", "22uF 16V X5R", "+3V3", "GND", C1210),
+    C("C9", "22uF 16V X5R", "+3V3", "GND", C1210),
+    # --- RF supply isolation
+    Part("FB1", "Device:FerriteBead", "600R@100MHz 2A", L0603, {1: "+3V3", 2: "+3V3_RF"},
+         mpn="BLM18PG600SN1D"),
+    C("C11", "10uF 10V", "+3V3_RF", "GND", C0805),
+    C("C12", "100nF", "+3V3_RF", "GND"),
+    # --- Supervisor (OPEN-DRAIN: shares NRST with SWD + IWDG safely)
+    Part("U3", "Power_Supervisor:TPS3808DBV", "TPS3808G33DBVR", SOT236,
+         {1: "NRST", 2: "GND", 3: "+3V3", 4: None, 5: "+3V3", 6: "+3V3"}, mpn="TPS3808G33DBVR"),
+    C("C47", "100nF", "+3V3", "GND"),
+    # --- VIN telemetry
+    R("R6", "100k 1%", "VIN", "VIN_SENSE"),
+    R("R7", "10k 1%", "VIN_SENSE", "GND"),
+    C("C48", "100nF", "VIN_SENSE", "GND"),
+    FLAG("#FLG01", "GND"), FLAG("#FLG02", "VIN"), FLAG("#FLG03", "+3V3"),
+    FLAG("#FLG04", "+3V3_RF"), FLAG("#FLG05", "+6V_SRV"), FLAG("#FLG06", "VIN_RAW"),
+]))
+
+SHEETS.append(("mcu_rf", "MCU STM32WLE5 + radio LoRa 868 MHz", [
+    "STM32WLE5CCU6 : Cortex-M4 + transceiver LoRa sub-GHz sur le meme die. +22 dBm (RFO_HP).",
+    "Bande g3 869,40-869,65 MHz : 500 mW ERP autorises (10 % duty) -> PA exploite a pleine puissance legalement.",
+    "!! Valeurs marquees TBD-AN5457 : reseau d'adaptation 868 MHz HP a relever dans ST AN5457 (ref. MB1719). NE PAS LIVRER EN L'ETAT.",
+    "L3 (SMPS) : SMPS activable par logiciel (PWR_CR5.SMPSEN) ; en mode LDO la carte fonctionne sans lui. Valeur a verifier DS13105.",
+    "Affectation ADC/timers a valider dans STM32CubeMX (fichier .ioc a livrer).",
+], [
+    Part("U5", "MCU_ST_STM32WL:STM32WLE5CCUx", "STM32WLE5CCU6",
+         "Package_DFN_QFN:QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm", {
+             1: "VIN_SENSE", 2: "I_SERVO", 3: None, 4: "PSDK_TX", 5: "PSDK_RX", 6: None,
+             7: "BEACON_EN", 8: "SIREN_EN", 9: None, 10: None, 11: "+3V3", 12: "RF_CTRL",
+             13: None, 14: "LED_R", 15: "LED_G", 16: "SERVO_PWM", 17: "SERVO_EN", 18: "NRST",
+             19: "BOOT0", 20: "RFI_P", 21: "RFI_N", 22: None, 23: "RFO_HP", 24: "VR_PA",
+             25: "+3V3_RF", 26: "HSE_IN", 27: "HSE_OUT", 28: "+3V3_RF", 29: "V1V55", 30: None,
+             31: "SW_PAYLOAD", 32: "SW_LOCK", 33: None, 34: None, 35: None, 36: "SWDIO",
+             37: "+3V3", 38: None, 39: "LSE_IN", 40: "LSE_OUT", 41: "+3V3", 42: "SWCLK",
+             43: "LED_B", 44: "+3V3", 45: "V1V55", 46: "+3V3", 47: "VLX", 48: "GND", 49: "GND",
+         }, mpn="STM32WLE5CCU6"),
+    C("C50", "100nF", "+3V3", "GND", C0402),
+    C("C51", "100nF", "+3V3", "GND", C0402),
+    C("C52", "4.7uF", "+3V3", "GND"),
+    C("C53", "1uF", "+3V3", "GND", C0402),
+    C("C54", "100nF", "+3V3", "GND", C0402),
+    C("C55", "100nF", "+3V3", "GND", C0402),
+    C("C56", "4.7uF", "+3V3", "GND"),
+    C("C57", "100nF", "+3V3_RF", "GND", C0402),
+    C("C58", "4.7uF", "+3V3_RF", "GND"),
+    C("C59", "100nF", "+3V3_RF", "GND", C0402),
+    L("L3", "15uH (verif. DS13105)", "VLX", "V1V55", L0805),
+    C("C60", "4.7uF", "V1V55", "GND"),
+    C("C61", "100nF", "V1V55", "GND", C0402),
+    C("C62", "100nF", "NRST", "GND", C0402),
+    R("R15", "10k", "BOOT0", "GND"),
+    Part("X1", "Device:Crystal_GND24", "32MHz 10ppm", "Crystal:Crystal_SMD_2016-4Pin_2.0x1.6mm",
+         {1: "HSE_IN", 2: "GND", 3: "HSE_OUT", 4: "GND"}, mpn="NX2016SA-32MHZ"),
+    Part("X2", "Device:Crystal", "32.768kHz", "Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm",
+         {1: "LSE_IN", 2: "LSE_OUT"}, mpn="ABS07-32.768KHZ"),
+    C("C13", "6.8pF C0G", "LSE_IN", "GND", C0402),
+    C("C14", "6.8pF C0G", "LSE_OUT", "GND", C0402),
+    Part("J7", "Connector:Conn_ARM_JTAG_SWD_10", "SWD Cortex-10",
+         "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical",
+         {1: "+3V3", 2: "SWDIO", 3: "GND", 4: "SWCLK", 5: "GND", 6: None, 7: None, 8: None,
+          9: "GND", 10: "NRST"}),
+    Part("D5", "Device:LED_RGBA", "LED RGB anode commune", "LED_SMD:LED_RGB_1210",
+         {1: "LED_RK", 2: "LED_GK", 3: "LED_BK", 4: "+3V3"}),
+    R("R20", "1k", "LED_RK", "LED_R"),
+    R("R21", "1k", "LED_GK", "LED_G"),
+    R("R22", "1k", "LED_BK", "LED_B"),
+    # --- RF TX path : PA feed + 5-element ladder + DC block
+    L("L10", TBD, "VR_PA", "RFO_HP"),
+    C("C20", TBD, "VR_PA", "GND", C0402),
+    C("C21", TBD, "RFO_HP", "GND", C0402),
+    L("L11", TBD, "RFO_HP", "RF_M1"),
+    C("C22", TBD, "RF_M1", "GND", C0402),
+    L("L12", TBD, "RF_M1", "RF_M2"),
+    C("C23", TBD, "RF_M2", "GND", C0402),
+    C("C24", TBD, "RF_M2", "RF_TX", C0402),
+    # --- T/R switch
+    Part("U6", "RF_Switch:BGS12WN6E6327", "BGS12WN6E6327",
+         "Package_LGA:Infineon_PG-TSNP-6-10_0.7x1.1mm_0.7x1.1mm_P0.4mm",
+         {1: "RF_RX", 2: "GND", 3: "RF_TX", 4: "+3V3_RF", 5: "RF_ANT", 6: "RF_CTRL"},
+         mpn="BGS12WN6E6327"),
+    C("C63", "100nF", "+3V3_RF", "GND", C0402),
+    # --- RF RX path (differential RFI_P / RFI_N)
+    C("C25", TBD, "RF_RX", "RFI_P", C0402),
+    L("L13", TBD, "RFI_P", "RFI_N"),
+    C("C26", TBD, "RFI_N", "GND", C0402),
+    C("C27", TBD, "RF_RX", "GND", C0402),
+    # --- Antenna port
+    C("C28", "47pF C0G", "RF_ANT", "RF_OUT", C0402),
+    C("C29", "DNP", "RF_OUT", "GND", C0402, dnp=True),
+    Part("J8", "Connector:Conn_Coaxial", "U.FL 868MHz", "Connector_Coaxial:U.FL_Hirose_U.FL-R-SMT-1_Vertical",
+         {1: "RF_OUT", 2: "GND"}),
+    FLAG("#FLG07", "V1V55"), FLAG("#FLG08", "VR_PA"), FLAG("#FLG09", "VLX"),
+]))
+
+SHEETS.append(("actuation", "Actionnement servo + mesure de courant", [
+    "Q2 coupe TOTALEMENT le rail servo au repos (conso veille ~0). R37 maintient le servo OFF pendant un reset MCU.",
+    "Shunt 25 mOhm + INA181A1 (G=20) : 2,5 A de calage -> 1,25 V ; pleine echelle 3,3 V = 6,6 A.",
+    "Usages : detection de calage, confirmation de largage (signature a vide), coupure sur defaut.",
+    "Routage Kelvin obligatoire sur R10 (pistes de mesure separees des pistes de puissance).",
+], [
+    Part("Q2", "Transistor_FET:AO3401A", "AO3401A", SOT23,
+         {1: "SRV_GATE", 2: "+6V_SRV", 3: "+6V_SW"}, mpn="AO3401A"),
+    R("R8", "100k", "+6V_SRV", "SRV_GATE"),
+    Part("Q3", "Transistor_BJT:MMBT3904", "MMBT3904", SOT23,
+         {1: "SRV_B", 2: "GND", 3: "SRV_GATE"}, mpn="MMBT3904"),
+    R("R9", "10k", "SERVO_EN", "SRV_B"),
+    R("R37", "100k", "SRV_B", "GND"),
+    R("R10", "25mR 1W 1%", "+6V_SW", "SERVO_V", R2512),
+    Part("U4", "Amplifier_Current:INA181", "INA181A1 (G=20)", SOT236,
+         {1: "ISENSE_RAW", 2: "GND", 3: "+6V_SW", 4: "SERVO_V", 5: "GND", 6: "+3V3"},
+         mpn="INA181A1IDBVR"),
+    C("C43", "100nF", "+3V3", "GND"),
+    R("R38", "1k", "ISENSE_RAW", "I_SERVO"),
+    C("C42", "10nF", "I_SERVO", "GND"),
+    C("C44", "22uF 16V X5R", "SERVO_V", "GND", C1210),
+    R("R36", "220R", "SERVO_PWM", "SERVO_SIG"),
+    Part("J3", "Connector_Generic:Conn_01x03", "SERVO (GND/V+/SIG)",
+         "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+         {1: "GND", 2: "SERVO_V", 3: "SERVO_SIG"}),
+]))
+
+SHEETS.append(("beacon", "Signalisation de detresse", [
+    "Commande cote bas par MOSFET logic-level ; R13/R14 garantissent balise ETEINTE pendant le reset MCU.",
+    "Allumage APRES confirmation du largage (micro-rupteur + signature courant), pas sur simple ordre.",
+    "!! Balise et sirene alimentees en VIN : choisir des modeles 9-28 V, ou alimenter la carte par la sortie 12 V du kit E-Port.",
+], [
+    Part("Q4", "Transistor_FET:AO3400A", "AO3400A", SOT23,
+         {1: "BCN_G", 2: "GND", 3: "BEACON_N"}, mpn="AO3400A"),
+    R("R11", "100R", "BEACON_EN", "BCN_G"),
+    R("R13", "100k", "BCN_G", "GND"),
+    Part("D3", "Device:D_Schottky", "SS34", "Diode_SMD:D_SMA", {1: "VIN", 2: "BEACON_N"}, mpn="SS34"),
+    Part("J4", "Connector_Generic:Conn_01x02", "BALISE LED 10W", JST_XH2, {1: "VIN", 2: "BEACON_N"}),
+    Part("Q5", "Transistor_FET:AO3400A", "AO3400A", SOT23,
+         {1: "SIR_G", 2: "GND", 3: "SIREN_N"}, mpn="AO3400A"),
+    R("R12", "100R", "SIREN_EN", "SIR_G"),
+    R("R14", "100k", "SIR_G", "GND"),
+    Part("D4", "Device:D_Schottky", "SS34", "Diode_SMD:D_SMA", {1: "VIN", 2: "SIREN_N"}, mpn="SS34"),
+    Part("J5", "Connector_Generic:Conn_01x02", "SIRENE PIEZO", JST_XH2, {1: "VIN", 2: "SIREN_N"}),
+]))
+
+SHEETS.append(("io", "Interfaces : DJI PSDK, capteurs, fixation", [
+    "J2 : UART TTL 3,3 V vers kit E-Port V2 (PSDK V3) = chemin de commande REDONDANT au LoRa. Pas de level-shifter.",
+    "Brochage J2 cote kit E-Port V2 a verifier dans la doc DJI PSDK avant de sertir le cable.",
+    "Entrees micro-rupteurs : pull-up 10k + filtre RC 1k/100nF (anti-rebond + protection ESD du cable).",
+    "H1-H4 : M3, trame 60 x 40 mm, reliees a GND.",
+], [
+    Part("J2", "Connector_Generic:Conn_01x04", "PSDK UART (E-Port V2)", JST_GH4,
+         {1: "GND", 2: "PSDK_TX_C", 3: "PSDK_RX_C", 4: None}),
+    R("R30", "100R", "PSDK_TX", "PSDK_TX_C"),
+    R("R31", "100R", "PSDK_RX_C", "PSDK_RX"),
+    Part("J6", "Connector_Generic:Conn_01x04", "SW verrou / presence", JST_GH4,
+         {1: "GND", 2: "SW_LOCK_C", 3: "SW_PAYLOAD_C", 4: "GND"}),
+    R("R32", "10k", "+3V3", "SW_LOCK_C"),
+    R("R33", "10k", "+3V3", "SW_PAYLOAD_C"),
+    R("R34", "1k", "SW_LOCK_C", "SW_LOCK"),
+    R("R35", "1k", "SW_PAYLOAD_C", "SW_PAYLOAD"),
+    C("C40", "100nF", "SW_LOCK", "GND"),
+    C("C41", "100nF", "SW_PAYLOAD", "GND"),
+    Part("H1", "Mechanical:MountingHole_Pad", "M3", "MountingHole:MountingHole_3.2mm_M3_Pad_Via", {1: "GND"}),
+    Part("H2", "Mechanical:MountingHole_Pad", "M3", "MountingHole:MountingHole_3.2mm_M3_Pad_Via", {1: "GND"}),
+    Part("H3", "Mechanical:MountingHole_Pad", "M3", "MountingHole:MountingHole_3.2mm_M3_Pad_Via", {1: "GND"}),
+    Part("H4", "Mechanical:MountingHole_Pad", "M3", "MountingHole:MountingHole_3.2mm_M3_Pad_Via", {1: "GND"}),
+]))
+
+# ---------------------------------------------------------------------------
+# Library access + flattening of derived ("extends") symbols
+# ---------------------------------------------------------------------------
+_libs = {}
+
+
+def lib(name):
+    if name not in _libs:
+        _libs[name] = find_symbols(load(os.path.join(SYMDIR, name + ".kicad_sym")))
+    return _libs[name]
+
+
+def _extends(node):
+    for ch in node:
+        if head(ch) == 'extends':
+            return ch[1][1]
+    return None
+
+
+def _resolve(libname, symname):
+    node = lib(libname)[symname]
+    base = _extends(node)
+    if base:
+        attrs, props, subs = _resolve(libname, base)
+        for s in subs:
+            old = s[1][1]
+            s[1] = ('STR', symname + old[len(base):])
+    else:
+        attrs, props, subs = [], {}, []
+    for ch in node[2:]:
+        h = head(ch)
+        if h == 'extends':
+            continue
+        if h == 'property':
+            props[ch[1][1]] = copy.deepcopy(ch)
+        elif h == 'symbol':
+            subs.append(copy.deepcopy(ch))
+        elif h is not None:
+            attrs = [a for a in attrs if head(a) != h] + [copy.deepcopy(ch)]
+    return attrs, props, subs
+
+
+# Library pin types that misrepresent the real part. TPS3808 RESET is open-drain
+# (datasheet); the generic symbol types it push-pull "output" -> false ERC error.
+PIN_TYPE_OVERRIDES = {("Power_Supervisor:TPS3808DBV", "1"): "open_collector"}
+
+
+def _override_pin_types(lib_id, nodes):
+    for node in nodes:
+        for ch in node:
+            if head(ch) == 'pin':
+                num = next((s[1][1] for s in ch if head(s) == 'number'), None)
+                t = PIN_TYPE_OVERRIDES.get((lib_id, num))
+                if t:
+                    ch[1] = ('SYM', t)
+            elif isinstance(ch, list):
+                _override_pin_types(lib_id, [ch])
+
+
+def flat_symbol(lib_id):
+    libname, symname = lib_id.split(':')
+    attrs, props, subs = _resolve(libname, symname)
+    _override_pin_types(lib_id, subs)
+    tail = [a for a in attrs if head(a) == 'embedded_fonts']
+    attrs = [a for a in attrs if head(a) != 'embedded_fonts']
+    return [('SYM', 'symbol'), ('STR', lib_id)] + attrs + list(props.values()) + subs + tail
+
+
+def symbol_pins(lib_id):
+    """[(number, x, y, angle)] in library coordinates (Y up)."""
+    node = flat_symbol(lib_id)
+    out = []
+
+    def walk(n):
+        for ch in n:
+            if isinstance(ch, list):
+                if head(ch) == 'pin':
+                    at = num = None
+                    for sub in ch:
+                        h = head(sub)
+                        if h == 'at':
+                            at = [float(t[1]) for t in sub[1:]]
+                        elif h == 'number':
+                            num = sub[1][1]
+                    out.append((num, at[0], at[1], at[2] if len(at) > 2 else 0.0))
+                else:
+                    walk(ch)
+    walk(node)
+    return out
+
+
+def symbol_props(lib_id):
+    """{name: (x, y, angle, hidden)} from the library definition."""
+    res = {}
+    for ch in flat_symbol(lib_id):
+        if head(ch) == 'property':
+            x = y = a = 0.0
+            hidden = False
+            for sub in ch[3:]:
+                if head(sub) == 'at':
+                    vals = [float(t[1]) for t in sub[1:]]
+                    x, y = vals[0], vals[1]
+                    a = vals[2] if len(vals) > 2 else 0.0
+                if head(sub) == 'effects':
+                    s = repr(sub)
+                    hidden = "'hide'" in s and "'yes'" in s or "('SYM', 'hide')]" in s
+            res[ch[1][1]] = (x, y, a, hidden)
+    return res
+
+
+def symbol_prop_value(lib_id, name):
+    for ch in flat_symbol(lib_id):
+        if head(ch) == 'property' and ch[1][1] == name:
+            return ch[2][1]
+    return ""
+
+
+# ---------------------------------------------------------------------------
+# Emit helpers
+# ---------------------------------------------------------------------------
+def uid():
+    return str(uuid.uuid4())
+
+
+def n(v):
+    s = "%.4f" % v
+    s = s.rstrip('0').rstrip('.')
+    return "0" if s in ("-0", "") else s
+
+
+def q(s):
+    return '"' + s.replace('\\', '\\\\').replace('"', '\\"') + '"'
+
+
+def snap(v):
+    return round(v / GRID) * GRID
+
+
+def outward(angle):
+    """Unit vector (schematic coords, Y down) pointing AWAY from the body."""
+    a = math.radians(angle + 180.0)
+    dx, dy = round(math.cos(a)), -round(math.sin(a))
+    return dx, dy
+
+
+def label_angle(dx, dy):
+    if dx > 0:
+        return 0
+    if dx < 0:
+        return 180
+    return 90 if dy < 0 else 270
+
+
+def text_len(s):
+    return 1.15 * len(s) + 3.0
+
+
+def effects(size=1.27, justify=None, hide=False):
+    j = " (justify %s)" % justify if justify else ""
+    h = " (hide yes)" if hide else ""
+    return "(effects (font (size %s %s))%s%s)" % (n(size), n(size), j, h)
+
+
+class Sheet:
+    def __init__(self, name, title, notes, parts, root_uuid, sheet_uuid, page):
+        self.name, self.title, self.notes, self.parts = name, title, notes, parts
+        self.root_uuid, self.sheet_uuid, self.page = root_uuid, sheet_uuid, page
+        self.uuid = uid()
+        self.items = []
+        self.lib_ids = set()
+        self.path = "/%s/%s" % (root_uuid, sheet_uuid)
+
+
+def build_sheet(sh, global_nets, counters):
+    # --- measure parts
+    metas = []
+    for p in sh.parts:
+        pins = symbol_pins(p.lib_id)
+        pinmap = {num: (x, -y, a) for num, x, y, a in pins}  # schematic-relative
+        missing = set(p.pins) - set(pinmap)
+        if missing:
+            raise SystemExit("%s: pins %s not in symbol %s" % (p.ref, missing, p.lib_id))
+        unused = set(pinmap) - set(p.pins)
+        if unused:
+            raise SystemExit("%s: symbol pins %s not assigned (use None for NC)" % (p.ref, unused))
+        xs, ys = [0.0], [0.0]
+        for num, (x, y, a) in pinmap.items():
+            xs.append(x)
+            ys.append(y)
+            net = p.pins[num]
+            if net is None:
+                continue
+            dx, dy = outward(a)
+            ext = STUB + (4.0 if net == "GND" else text_len(net))
+            xs.append(x + dx * ext)
+            ys.append(y + dy * ext)
+        # text margin for reference/value (small parts print them to the right)
+        minx, maxx = min(xs) - 3, max(xs) + 3
+        if len(pinmap) <= 4:
+            maxx += 1.2 * max(len(p.value), len(p.ref))
+        miny, maxy = min(ys) - 4, max(ys) + 4
+        metas.append((p, pinmap, minx, maxx, miny, maxy))
+
+    # --- choose paper and shelf-pack
+    for paper, (W, H) in (("A3", (420, 297)), ("A2", (594, 420)), ("A1", (841, 594))):
+        x0, y0 = 15.0, 25.0 + 6.0 * len(sh.notes)
+        x, y, rowh = x0, y0, 0.0
+        places = []
+        ok = True
+        for (p, pinmap, minx, maxx, miny, maxy) in metas:
+            w, h = maxx - minx, maxy - miny
+            if x + w > W - 15:
+                x, y, rowh = x0, y + rowh + 14, 0.0
+            places.append((snap(x - minx), snap(y - miny)))
+            x += w + 9
+            rowh = max(rowh, h)
+        if y + rowh > H - 40:
+            ok = False
+        if ok:
+            break
+    sh.paper = paper
+
+    out = []
+    # title + notes
+    out.append('(text %s (exclude_from_sim no) (at 15 14 0) %s (uuid %s))' % (
+        q(sh.title.upper()), effects(3.0, "left bottom"), q(uid())))
+    for i, line in enumerate(sh.notes):
+        out.append('(text %s (exclude_from_sim no) (at 15 %s 0) %s (uuid %s))' % (
+            q(line), n(21 + 6 * i), effects(1.8, "left bottom"), q(uid())))
+
+    for (meta, (ox, oy)) in zip(metas, places):
+        p, pinmap = meta[0], meta[1]
+        sh.lib_ids.add(p.lib_id)
+        lprops = symbol_props(p.lib_id)
+        is_flag = p.lib_id == "power:PWR_FLAG"
+        fields = [
+            ("Reference", p.ref, not is_flag and True),
+            ("Value", p.value, True),
+            ("Footprint", p.fp, False),
+            ("Datasheet", symbol_prop_value(p.lib_id, "Datasheet"), False),
+            ("Description", symbol_prop_value(p.lib_id, "Description"), False),
+        ]
+        if p.mpn:
+            fields.append(("MPN", p.mpn, False))
+        props_txt = []
+        for (name, val, visible) in fields:
+            lx, ly, la, _ = lprops.get(name, (0.0, 0.0, 0.0, True))
+            if name == "MPN":
+                lx, ly = 0.0, 0.0
+            if is_flag and name == "Reference":
+                visible = False
+            props_txt.append('(property %s %s (at %s %s %s) %s)' % (
+                q(name), q(val), n(ox + lx), n(oy - ly), n(la),
+                effects(1.27, None, not visible)))
+        pins_txt = ' '.join('(pin %s (uuid %s))' % (q(num), q(uid())) for num in pinmap)
+        out.append(
+            '(symbol (lib_id %s) (at %s %s 0) (unit 1) (exclude_from_sim no) (in_bom %s) '
+            '(on_board %s) (dnp %s) (uuid %s) %s %s (instances (project %s (path %s '
+            '(reference %s) (unit 1)))))' % (
+                q(p.lib_id), n(ox), n(oy),
+                "no" if is_flag or p.lib_id.startswith("Mechanical:") else "yes",
+                "no" if is_flag else "yes", "yes" if p.dnp else "no", q(uid()),
+                ' '.join(props_txt), pins_txt, q(PROJECT), q(sh.path), q(p.ref)))
+
+        # pins -> stubs + labels / power symbols / no-connects
+        for num, (px, py, a) in pinmap.items():
+            X, Y = ox + px, oy + py
+            net = p.pins[num]
+            if net is None:
+                out.append('(no_connect (at %s %s) (uuid %s))' % (n(X), n(Y), q(uid())))
+                continue
+            dx, dy = outward(a)
+            EX, EY = X + dx * STUB, Y + dy * STUB
+            out.append('(wire (pts (xy %s %s) (xy %s %s)) (stroke (width 0) (type default)) (uuid %s))' % (
+                n(X), n(Y), n(EX), n(EY), q(uid())))
+            if net == "GND":
+                counters['pwr'] += 1
+                ref = "#PWR%03d" % counters['pwr']
+                sh.lib_ids.add("power:GND")
+                out.append(
+                    '(symbol (lib_id "power:GND") (at %s %s 0) (unit 1) (exclude_from_sim no) '
+                    '(in_bom yes) (on_board yes) (dnp no) (uuid %s) '
+                    '(property "Reference" %s (at %s %s 0) %s) '
+                    '(property "Value" "GND" (at %s %s 0) %s) '
+                    '(property "Footprint" "" (at %s %s 0) %s) '
+                    '(property "Datasheet" "" (at %s %s 0) %s) '
+                    '(property "Description" "" (at %s %s 0) %s) '
+                    '(pin "1" (uuid %s)) (instances (project %s (path %s (reference %s) (unit 1)))))' % (
+                        n(EX), n(EY), q(uid()),
+                        q(ref), n(EX), n(EY + 6.35), effects(1.27, None, True),
+                        n(EX), n(EY + 3.81), effects(1.27),
+                        n(EX), n(EY), effects(1.27, None, True),
+                        n(EX), n(EY), effects(1.27, None, True),
+                        n(EX), n(EY), effects(1.27, None, True),
+                        q(uid()), q(PROJECT), q(sh.path), q(ref)))
+                continue
+            ang = label_angle(dx, dy)
+            just = "left" if ang in (0, 90) else "right"
+            if net in global_nets:
+                out.append(
+                    '(global_label %s (shape passive) (at %s %s %d) (fields_autoplaced yes) %s (uuid %s) '
+                    '(property "Intersheetrefs" "${INTERSHEET_REFS}" (at %s %s 0) %s))' % (
+                        q(net), n(EX), n(EY), ang, effects(1.27, just), q(uid()),
+                        n(EX), n(EY), effects(1.27, just, True)))
+            else:
+                out.append('(label %s (at %s %s %d) (fields_autoplaced yes) %s (uuid %s))' % (
+                    q(net), n(EX), n(EY), ang, effects(1.27, just + " bottom"), q(uid())))
+    sh.items = out
+
+
+def lib_symbols_block(lib_ids):
+    return '(lib_symbols\n' + '\n'.join(dump(flat_symbol(l), 1) for l in sorted(lib_ids)) + '\n)'
+
+
+def title_block(title, page_comment):
+    return ('(title_block (title %s) (date "2026-11-21") (rev "A") (company "AeroDay V14 - Challenge CAO") '
+            '(comment 1 "BRC-M400 - Buoy Release & Beacon Controller") (comment 2 %s))' % (q(title), q(page_comment)))
+
+
+def write_sheet(sh):
+    body = [
+        '(kicad_sch (version 20250610) (generator "eeschema") (generator_version "10.0")',
+        '(uuid %s)' % q(sh.sheet_file_uuid),
+        '(paper %s)' % q(sh.paper),
+        title_block(sh.title, "Feuille %s" % sh.page),
+        lib_symbols_block(sh.lib_ids),
+    ] + sh.items + ['(embedded_fonts no)', ')']
+    with open(os.path.join(OUTDIR, sh.name + ".kicad_sch"), "w", encoding="utf-8", newline="\n") as f:
+        f.write('\n'.join(body) + '\n')
+
+
+def write_root(root_uuid, sheets):
+    out = [
+        '(kicad_sch (version 20250610) (generator "eeschema") (generator_version "10.0")',
+        '(uuid %s)' % q(root_uuid),
+        '(paper "A3")',
+        title_block("BRC-M400 - Synoptique", "Feuille 1 - racine hierarchique"),
+        '(lib_symbols)',
+    ]
+    notes = [
+        "BRC-M400 - CARTE DE LARGAGE DE BOUEE ET BALISE DE DETRESSE - DJI MATRICE 400",
+        "",
+        "Alimentation : E-Port V2 (kit dev., XT30 12 V / 4 A) ou LiPo 3S/4S. Front-end 9-28 V.",
+        "Calcul : STM32WLE5CCU6 - Cortex-M4 48 MHz + LoRa sub-GHz integre, +22 dBm.",
+        "Commande : LoRa 869,525 MHz (sous-bande g3) + UART PSDK redondant via E-Port.",
+        "Puissance : buck 6,05 V / 3 A servo et buck 3,3 V / 2 A logique INDEPENDANTS.",
+        "Signalisation : 2 sorties MOSFET (balise LED 10 W + sirene) declenchees apres largage confirme.",
+        "Surete : verrou mecanique non-reversible -> toute perte d'energie / de liaison / reset laisse la charge VERROUILLEE.",
+    ]
+    for i, line in enumerate(notes):
+        out.append('(text %s (exclude_from_sim no) (at 20 %s 0) %s (uuid %s))' % (
+            q(line), n(25 + 7 * i), effects(3.0 if i == 0 else 2.0, "left bottom"), q(uid())))
+    x, y = 20.0, 100.0
+    for i, sh in enumerate(sheets):
+        w, h = 80.0, 30.0
+        cx = x + (i % 3) * (w + 30)
+        cy = y + (i // 3) * (h + 30)
+        out.append(
+            '(sheet (at %s %s) (size %s %s) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) '
+            '(stroke (width 0.1524) (type solid)) (fill (color 0 0 0 0.0000)) (uuid %s) '
+            '(property "Sheetname" %s (at %s %s 0) %s) '
+            '(property "Sheetfile" %s (at %s %s 0) %s) '
+            '(instances (project %s (path %s (page %s)))))' % (
+                n(cx), n(cy), n(w), n(h), q(sh.sheet_uuid),
+                q(sh.title), n(cx), n(cy - 0.8), effects(1.8, "left bottom"),
+                q(sh.name + ".kicad_sch"), n(cx), n(cy + h + 0.6), effects(1.27, "left top"),
+                q(PROJECT), q("/" + root_uuid), q(str(sh.page))))
+    out += ['(sheet_instances (path "/" (page "1")))', '(embedded_fonts no)', ')']
+    with open(os.path.join(OUTDIR, PROJECT + ".kicad_sch"), "w", encoding="utf-8", newline="\n") as f:
+        f.write('\n'.join(out) + '\n')
+
+
+def write_project():
+    path = os.path.join(OUTDIR, PROJECT + ".kicad_pro")
+    if os.path.exists(path):
+        return  # never clobber settings the user changed in KiCad
+    pro = '{\n  "meta": {\n    "filename": "%s.kicad_pro",\n    "version": 3\n  }\n}\n' % PROJECT
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(pro)
+
+
+def main():
+    os.makedirs(OUTDIR, exist_ok=True)
+    root_uuid = uid()
+    # nets that appear on more than one sheet -> global labels
+    where = {}
+    for name, _, _, parts in SHEETS:
+        for p in parts:
+            for net in p.pins.values():
+                if net:
+                    where.setdefault(net, set()).add(name)
+    global_nets = {k for k, v in where.items() if len(v) > 1}
+    # single-pin nets are suspicious (except NC / flags / holes)
+    count = {}
+    for _, _, _, parts in SHEETS:
+        for p in parts:
+            for net in p.pins.values():
+                if net:
+                    count[net] = count.get(net, 0) + 1
+    lonely = sorted(k for k, v in count.items() if v < 2)
+    if lonely:
+        print("WARNING single-connection nets:", lonely)
+
+    refs = [p.ref for _, _, _, parts in SHEETS for p in parts]
+    dup = {r for r in refs if refs.count(r) > 1}
+    if dup:
+        raise SystemExit("Duplicate references: %s" % sorted(dup))
+
+    counters = {'pwr': 0}
+    sheets = []
+    for i, (name, title, notes, parts) in enumerate(SHEETS):
+        sh = Sheet(name, title, notes, parts, root_uuid, uid(), i + 2)
+        sh.sheet_file_uuid = uid()
+        build_sheet(sh, global_nets, counters)
+        write_sheet(sh)
+        sheets.append(sh)
+        print("  %-10s %-4s %3d parts  -> %s.kicad_sch" % (name, sh.paper, len(parts), name))
+    write_root(root_uuid, sheets)
+    write_project()
+    print("Global nets (%d): %s" % (len(global_nets), ', '.join(sorted(global_nets))))
+    print("Written to", OUTDIR)
+
+
+if __name__ == "__main__":
+    main()

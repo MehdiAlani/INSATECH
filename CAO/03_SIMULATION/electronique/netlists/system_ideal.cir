@@ -1,0 +1,36 @@
+* BRC-M400 system power - averaged models
+* E-Port V2 VCC 24 V; input SHORTED to 0 V between 60 and 90 ms (fault test)
+Vsrc src 0 PWL(0 24 59.99m 24 60m 0 90m 0 90.01m 24 140m 24)
+Rsrc src a1 0.03
+Lsrc a1 a2 0.5u
+Rcab a2 vf 0.04
+Dprot vf vin DIDEAL
+* bulk + local ceramics
+C3 vin c3 470u
+Rc3 c3 0 0.06
+Cce vin 0 20u
+* --- load profiles (A)
+Vphold phold 0 PWL(0 0 30m 0 30.01m 1 50m 1 50.01m 0)
+Vpej pej 0 PWL(0 0 30m 0 30.01m 1 50m 1 50.01m 0)
+Vpled pled 0 PULSE(0 1 20m 10u 10u 0.5m 1m 30)
+Vpsir psir 0 PWL(0 0 25m 0 25.01m 1 55m 1 55.01m 0)
+Vplog plog 0 PWL(0 0.02 35m 0.02 35.01m 0.138 45m 0.138 45.01m 0.02)
+* --- logic buck (LMR51430, eta 85 %, UVLO 3.7 V) + gate-drive LDO (5 mA)
+B3 v3 0 V = v(vin) > 3.7 ? min(3.315, 0.92*v(vin)) : 0
+R3 v3 0 1k
+Bin3 vin 0 I = v(v3)*v(plog)/(0.85*max(v(vin), 1))
+Ildo vin 0 5m
+* --- actuators on V_ACT (= VIN through the ARM P-MOSFET): hold magnet 57 ohm, ejection solenoid 16 ohm
+Bhold vin 0 I = v(phold)*v(vin)/57
+Bej vin 0 I = v(pej)*v(vin)/16
+* --- LED array on VIN (24 V constant-voltage array: 20 V knee + 2 ohm), 1 kHz strobe
+Bled vin 0 I = v(pled)*max(0, (v(vin)-20)/2)
+* --- siren on VIN (48 ohm)
+Bsir vin 0 I = v(psir)*v(vin)/48
+.model DIDEAL D(IS=1e-6 N=0.05 RS=0.0028)
+.options interp
+.control
+tran 5u 140m 0 2u
+wrdata data/system_ideal.txt v(vin) v(v3) v(phold) v(pej) v(pled) v(psir) i(Vsrc)
+.endc
+.end

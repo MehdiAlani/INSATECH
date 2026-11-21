@@ -1,0 +1,19 @@
+* Servo current sense chain
+V6 p6 0 6.05
+R35 p6 sv 25m
+* servo current: average profile x internal motor PWM ripple at 300 Hz
+Vavg pavg 0 PWL(0 0 50m 0 50.1m 1.4 70m 1.4 70.1m 0.55 300m 0.55 300.1m 0.15 420m 0.15 420.1m 0 450m 0 450.1m 2.5 482m 2.5 482.1m 0 600m 0)
+Bsrv sv 0 I = v(pavg)*(1 + 0.7*(sin(2*3.14159265*300*time) > 0 ? 1 : -1))
+* INA181A1: gain 20, ~350 kHz bandwidth
+Bina ir 0 V = 20*(v(p6)-v(sv))
+Rbw ir ina 1k
+Cbw ina 0 0.45n
+* R36 / C81 anti-alias filter -> ADC
+R36 ina adc 1k
+C81 adc 0 10n
+.options interp
+.control
+tran 20u 600m 0 20u
+wrdata data/sense.txt v(adc) v(pavg)
+.endc
+.end

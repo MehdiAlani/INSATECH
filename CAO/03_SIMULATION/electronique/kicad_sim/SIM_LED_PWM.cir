@@ -1,0 +1,38 @@
+.title KiCad schematic
+.model __Q1 VDMOS NCHAN
++           vto=1.7
++           kp=180
++           lambda=0.01
++           rd=0.9m
++           rs=0.4m
++           rg=1
++           bv=66
++           rb=2m
++           is=20p
++           cjo=1.6n
++           cgdmin=40p
++           cgdmax=2n
++           a=0.3
++           cgs=4.2n
+.model __D1 D
++           is=50u
++           rs=0.02
++           n=1.1
++           cjo=400p
++           bv=40
+.model __D2 D
++           is=1p
++           n=0.3
+.tran 1n 105u
+V2 /DRV GND PULSE( 0 12 5u 5n 5n 25u 50u ) 
+R1 /DRV /GATE 4.7
+L1 /VIN /LA 1u
+R4 /LA /LB 2
+V1 /VIN GND DC 24 
+R3 /SRC GND 10m
+R2 /GATE GND 10k
+MQ1 /DRAIN /GATE /SRC __Q1
+D1 /DRAIN /VIN __D1
+D2 /LB /LC __D2
+V3 /LC /DRAIN DC 20 
+.end

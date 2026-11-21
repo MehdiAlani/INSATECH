@@ -1,0 +1,46 @@
+* Ejection solenoid 24 V / 16 ohm, stroke 10 mm, plunger+rod 30 g - BRC-M400 Rev C
+* coil flux linkage lam integrated on a 1 F node; I = lam / L(x); L(x) = 10 mH + Kl/(13 mm - x)
+Bemf 0 lam I = v(vact) - v(dn) - 16*v(ic)
+Clam lam 0 1
+Bic ic 0 V = v(lam) / (0.010 + 6e-4/(0.013 - v(x)))
+Bcoil vact dn I = v(ic)
+* magnetic force F = 1/2 I^2 dL/dx ; spring 300 N/m + 1 N preload ; viscous 1.5 N.s/m ; end stops
+Bforce f 0 V = 0.5*v(ic)*v(ic)*6e-4/((0.013 - v(x))*(0.013 - v(x)))
+Bstop st 0 V = 2e5*max(v(x)-0.010, 0) + 2e5*min(v(x), 0) + 30*v(u)*(v(x) > 0.010 ? 1 : (v(x) < 0 ? 1 : 0))
+Bacc 0 u I = (v(f) - 300*v(x) - 1.0 - 1.5*v(u) - v(st)) / 0.03
+Cu u 0 1
+Bpos 0 x I = v(u)
+Cx x 0 1
+* FIRE: full-on 60 ms pull-in pulse
+Vpwm pwm 0 PULSE(0 3.3 2m 5n 5n 60m 1)
+Vact vact 0 PWL(0 0 0.5m 24)
+Cact vact 0 100u
+Dfw dn k SS34
+Dtvs vact k TVS20
+M1 dn g src BSC028
+Rsh src 0 10m
+* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.85 V)
+Vdd vdd 0 PWL(0 0 0.5m 11.85)
+Cdd vdd 0 1u
+Bin inl 0 V = v(pwm) > 1.8 ? 1 : 0
+Rdl inl ind 1k
+Cdl ind 0 13p
+Bnd indn 0 V = 1 - v(ind)
+Sh vdd outh ind 0 SWH
+Sl outl 0 indn 0 SWL
+.model SWH SW(Ron=3.0 Roff=1e8 Vt=0.5 Vh=0.01)
+.model SWL SW(Ron=1.5 Roff=1e8 Vt=0.5 Vh=0.01)
+Rgh outh g 4.7
+Rgl outl g 1
+Rgpd g src 10k
+.model BSC028 VDMOS(Rd=0.9m Rs=0.4m Rg=1.0 Vto=1.7 Kp=180 lambda=0.01 Cgs=4.2n Cgdmax=2n Cgdmin=40p A=0.3 Cjo=1.6n M=0.5 Vj=0.8 Is=2e-11 N=1.05 Rb=2m BV=66 IBV=1m TT=20n ksubthres=0.1 mtriode=1.2)
+.model SS54 D(IS=5e-5 N=1.1 RS=0.02 CJO=400p BV=40)
+.model SS34 D(IS=3e-5 N=1.1 RS=0.04 CJO=250p BV=40)
+.model TVS20 D(IS=1e-12 N=1.5 RS=0.3 BV=23 IBV=1m)
+
+.options interp
+.control
+tran 10u 140m 0 2u uic
+wrdata data/eject_fast.txt v(ic) v(x) v(dn) v(f)
+.endc
+.end
