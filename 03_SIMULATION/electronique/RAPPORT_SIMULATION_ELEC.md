@@ -1,4 +1,4 @@
-# BRC-M400 Rev D — Rapport de simulation électronique
+# BRC-M400 Rev C — Rapport de simulation électronique
 **Équipe INSATECH — AeroDay V14, Challenge CAO**
 
 **Outil :** ngspice, le moteur de simulation intégré à KiCad 10, piloté par `sim_electronique.py`.
@@ -6,17 +6,17 @@
 
 | # | Simulation | Question posée | Réponse |
 |---|---|---|---|
-| 1 | Convertisseur 3,3 V | La logique reste-t-elle stable pendant une émission LoRa ? | **Oui** : −18,5 mV (0,56 %), 2,6 mV d'ondulation |
-| 2 | Intégrité d'alimentation | Un pic de consommation ou une coupure du pack fait-il redémarrer le MCU ? | **Non, grâce au LM74700** (sans diode idéale, le 3,3 V s'effondre en 35 µs) |
-| 3 | Rampe LED en PWM | Le MOSFET chauffe-t-il ? | **15 mW, Tj ≈ 26 °C**, pas de dissipateur |
-| 4 | Sirène | La diode de roue libre est-elle nécessaire ? | **Oui** : 66,2 V (avalanche) sans elle |
-| 5 | **Solénoïde d'éjection** | Le MCU peut-il **confirmer** que l'éjection a eu lieu ? | **Oui** : creux de courant en fin de course, détecté à 23,7 ms |
+| 1 | Convertisseur 3,3 V | La logique reste-t-elle stable pendant une émission LoRa ? | **Oui** : −19,6 mV (0,6 %), 3,3 mV d'ondulation |
+| 2 | Intégrité d'alimentation | Un pic de consommation ou une coupure de l'E-Port fait-il redémarrer le MCU ? | **Non, grâce au LM74700** (un P-MOSFET passif s'effondre en 85 µs) |
+| 3 | Rampe LED en PWM | Le MOSFET chauffe-t-il ? | **10 mW, Tj ≈ 25 °C**, pas de dissipateur |
+| 4 | Sirène | La diode de roue libre est-elle nécessaire ? | **Oui** : 66 V (avalanche) sans elle |
+| 5 | **Solénoïde d'éjection** | Le MCU peut-il **confirmer** que l'éjection a eu lieu ? | **Oui** : creux de courant en fin de course, détecté à 23,6 ms |
 | 6 | **Aimant de maintien** | En combien de temps la bouée est-elle libérée ? Le drain est-il protégé ? | **3,2 ms** ; drain ≤ 47,6 V, sous les 60 V du MOSFET |
 | 7 | Bilan de liaison LoRa | Quelle portée et quelle latence ? | **40 dB de marge à 15 km, 165 ms (SF9)** |
 
 ---
 
-## 1. Convertisseur 12,6 V → 3,3 V (LMR51430, rail logique)
+## 1. Convertisseur 24 V → 3,3 V (LMR51430, rail logique)
 
 **Modèle :**
 - Commutation réelle à 500 kHz.
@@ -31,48 +31,48 @@
 | Grandeur | Simulé | Attendu |
 |---|---|---|
 | Tension de sortie | **3,315 V** | 3,315 V (0,600 × 122,1 / 22,1) |
-| Ondulation de la sortie (en émission) | **2,6 mV crête à crête** | — |
+| Ondulation de la sortie (en émission) | **3,3 mV crête à crête** | — |
 | Ondulation du courant dans l'inductance | **0,39 A crête à crête** | 0,38 A, calculé |
-| Échelon 30 → 160 mA (émission LoRa) | **−18,5 mV (0,56 %)** : la tension reste dans ±1 % | — |
+| Échelon 30 → 160 mA (émission LoRa) | **−19,6 mV (0,6 %)** : la tension reste dans ±1 % | — |
 | Retour à 30 mA | +17,8 mV | — |
 
 *Le modèle fonctionne en PWM forcée. Le vrai LMR51430X passe en mode PFM à faible charge : rendement meilleur, ondulation un peu plus élevée.*
 
 ---
 
-## 2. Intégrité d'alimentation et interruption du pack
+## 2. Intégrité d'alimentation et court-circuit sur l'E-Port
 
 **Modèle :**
-- Pack 3S à 11,1 V avec son impédance interne et le réservoir C3 de 470 µF.
+- Port E-Port V2 de 24 V avec son impédance (30 mΩ + câble) et le réservoir C3 de 470 µF.
 - Convertisseurs en modèle moyen, avec seuil de sous-tension.
 
 **Charges :**
 - Aimant de maintien : 57 Ω.
 - Solénoïde d'éjection : 16 Ω.
-- Rampe LED : 3,42 A en flash à 1 kHz.
+- Rampe LED : 1,88 A en flash à 1 kHz.
 - Sirène : 48 Ω.
 - Logique : 30 mA, puis 160 mA pendant l'émission.
 
 **Scénario :**
 1. De 30 à 50 ms, **toutes les charges ensemble** (cas qui n'arrive pas en usage normal, voir plus bas).
-2. De 60 à 90 ms, **interruption de l'entrée** (rebond de connecteur ou coupure BMS).
+2. De 60 à 90 ms, **court-circuit de l'entrée E-Port**.
 
 ![Intégrité d'alimentation](figures/03_integrite_alimentation.png)
 
 | Résultat | Diode idéale LM74700 | P-MOSFET passif |
 |---|---|---|
-| Courant maximal tiré sur le pack, toutes charges ensemble | **5,20 A** (pack 3S 2200 mAh : < 3C) | identique |
-| VIN minimal | 11,00 V | identique |
-| **Rail 3,3 V pendant l'interruption de 30 ms** | **tient à 3,315 V** (VIN reste à 10,33 V) | **passe sous 3,0 V en 35 µs → reset du MCU** |
+| Courant maximal tiré sur l'E-Port, toutes charges ensemble | **4,25 A** (limite : 5 A) | identique |
+| VIN minimal | 23,67 V | identique |
+| **Rail 3,3 V pendant le court-circuit de 30 ms** | **tient à 3,315 V** (VIN reste à 23,5 V) | **passe sous 3,0 V en 85 µs → reset du MCU** |
 
 → **Séquencement imposé au firmware.** On libère d'abord la bouée (maintien + éjection ≈ 2 A). On n'allume la balise (LED + sirène ≈ 2,4 A) qu'après la confirmation du largage. Le courant réel reste ainsi **sous 2,5 A**.
 
 ---
 
-## 3. Rampe LED 12 V en PWM (UCC27511A + BSC028N06LS3, grille attaquée en 12 V)
+## 3. Rampe LED en PWM (UCC27511A + BSC028N06LS3, grille attaquée en 12 V)
 
 **Modèle :**
-- **Rampe LED 12 V :** seuil de 9 V, résistance de 0,8 Ω, câblage de 1 µH (45 W).
+- **Rampe LED 24 V :** seuil de 20 V, résistance de 2 Ω, câblage de 1 µH.
 - **MOSFET :** modèle VDMOS ajusté sur la fiche Infineon.
 - **Driver de grille :** UCC27511A alimenté en 11,85 V ; résistances de grille de 4,7 Ω à l'allumage et 1 Ω à l'extinction.
 
@@ -81,10 +81,10 @@
 
 | Grandeur | Valeur |
 |---|---|
-| Courant LED / RDS(on) | 3,42 A / **1,75 mΩ** |
+| Courant LED / RDS(on) | 1,88 A / **1,76 mΩ** |
 | Fronts de Vds | 6 ns à l'allumage · 16 ns à l'extinction |
-| Pertes dans le MOSFET à 20 kHz | **15 mW**, soit Tj ≈ 26 °C sans dissipateur |
-| Pic de Vds au blocage | **12,5 V avec la SS54 · 66,4 V sans elle (avalanche)** |
+| Pertes dans le MOSFET à 20 kHz | **10 mW**, soit Tj ≈ 25 °C sans dissipateur |
+| Pic de Vds au blocage | **24,4 V avec la SS54 · 66 V sans elle (avalanche)** |
 
 ---
 
@@ -92,14 +92,14 @@
 
 ![Sirène](figures/06_sirene_coupure_inductive.png)
 
-- **Sans diode de roue libre :** Vds monte à **66,2 V** et le MOSFET passe en avalanche, avec 2,50 mJ dissipés à chaque coupure.
+- **Sans diode de roue libre :** Vds monte à **66 V** et le MOSFET passe en avalanche, avec 0,62 mJ dissipés à chaque coupure.
 - **Avec la SS34 :** la tension reste limitée à **24,3 V**.
 
 ---
 
 ## 5. Solénoïde d'éjection — modèle électromécanique
 
-**Modèle :** solénoïde pousseur 12 V / 4 Ω (36 W), de course 10 mm, avec un ensemble plongeur + tige de 30 g. La bobine est reboblinée pour 12 V à puissance constante : R et L sont divisés par 4, donc la constante de temps L/R — et la chronologie mécanique — sont conservées.
+**Modèle :** solénoïde pousseur 24 V / 16 Ω, de course 10 mm, avec un ensemble plongeur + tige de 30 g.
 - **Bobine :** on intègre le flux λ, et le courant vaut I = λ / L(x), avec une inductance qui dépend de la position du plongeur : L(x) = 10 mH + 0,6 mH·m / (13 mm − x).
 - **Force magnétique :** F = ½ · I² · dL/dx.
 - **Mécanique :** ressort de rappel de 300 N/m avec 1 N de précharge, frottement visqueux et butées.
@@ -110,13 +110,13 @@
 
 | Grandeur | Valeur |
 |---|---|
-| Pic de courant avant le démarrage du plongeur | 2,71 A à 12,6 ms |
-| **Creux de courant pendant la course** (force contre-électromotrice) | 1,16 A |
+| Pic de courant avant le démarrage du plongeur | 1,36 A à 12,6 ms |
+| **Creux de courant pendant la course** (force contre-électromotrice) | 0,58 A |
 | Fin de course | 23,1 ms |
-| **Éjection confirmée par le MCU** (minimum du creux sur l'ADC) | **23,7 ms** |
-| Force : au départ / en fin de course | 1,3 N / 87 N |
-| Retour du plongeur après coupure | **18,9 ms avec diode + TVS**, contre 39,0 ms avec une diode seule |
-| Tension de drain au blocage | 36,8 V avec diode + TVS (sous les 60 V du MOSFET) · 12,4 V avec une diode seule |
+| **Éjection confirmée par le MCU** (minimum du creux sur l'ADC) | **23,6 ms** |
+| Force : au départ / en fin de course | 1,3 N / 88 N |
+| Retour du plongeur après coupure | **22 ms avec diode + TVS**, contre 40 ms avec une diode seule |
+| Tension de drain au blocage | 48,2 V avec diode + TVS (sous les 60 V du MOSFET) · 24,4 V avec une diode seule |
 
 **Pourquoi c'est important :** sans aucun capteur supplémentaire, **la signature du courant prouve que le plongeur a réellement bougé**. Un plongeur bloqué ne produit pas de creux, et le firmware signale alors un défaut au pilote au lieu d'allumer la balise.
 
@@ -124,16 +124,16 @@
 
 ## 6. Électroaimant de maintien à sécurité positive
 
-**Modèle :** bobine de 12 V / 14,4 Ω (10 W) et 37,9 mH — même puissance et même constante de temps que la version 24 V. La libération a lieu quand le courant atteint 70 % de sa valeur nominale, c'est-à-dire quand le champ de la bobine annule celui de l'aimant permanent.
+**Modèle :** bobine de 24 V / 57 Ω (10 W) et 150 mH. La libération a lieu quand le courant atteint 70 % de sa valeur nominale, c'est-à-dire quand le champ de la bobine annule celui de l'aimant permanent.
 
 ![Aimant de maintien](figures/08_aimant_maintien.png)
 
 | Grandeur | Valeur |
 |---|---|
-| Courant nominal | 0,83 A |
+| Courant nominal | 0,42 A |
 | **Libération** | **3,2 ms** après l'ordre FIRE |
-| Démagnétisation à 5 % (réverrouillage) | **1,0 ms avec diode + TVS**, contre 7,1 ms avec une diode seule (7 fois plus rapide) |
-| Tension de drain maximale | 35,8 V (sous les 60 V du MOSFET) |
+| Démagnétisation à 5 % (réverrouillage) | **1,7 ms avec diode + TVS**, contre 7,5 ms avec une diode seule (4,4 fois plus rapide) |
+| Tension de drain maximale | 47,6 V (sous les 60 V du MOSFET) |
 
 *Avec un aimant classique (bobine alimentée = maintien), c'est la vitesse de démagnétisation qui fixe le temps de lâcher. La protection diode + TVS divise alors ce délai par 4,4.*
 

@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\BareMetalLab\\Desktop\\Work\\0_Competitions\\AeroDay V14\\CAO\\02_ELECTRONIQUE\\BRC-M400\\BRC-M400.kicad_sch")
-		(date "2026-11-22T02:14:06")
+		(date "2026-11-21T23:34:09")
 		(tool "Eeschema 10.0.3")
 		(sheet
 			(number "1")
@@ -11,7 +11,7 @@
 			(title_block
 				(title "BRC-M400 - Vue d'ensemble")
 				(company "INSATECH - AeroDay V14 - Challenge CAO")
-				(rev "D")
+				(rev "C")
 				(date "2026-11-21")
 				(source "BRC-M400.kicad_sch")
 				(comment
@@ -20,7 +20,7 @@
 				)
 				(comment
 					(number "2")
-					(value "Page 1 / 7 - double-clic sur un bloc")
+					(value "Page 1 / 6 - double-clic sur un bloc")
 				)
 				(comment
 					(number "3")
@@ -57,9 +57,9 @@
 			(name "/01  ALIMENTATION - E-Port V2 & convertisseurs/")
 			(tstamps "/cc694376-2be1-5bc6-8b3d-19f9adf9401d/")
 			(title_block
-				(title "BRC-M400 - Alimentation batterie et convertisseurs")
+				(title "BRC-M400 - Alimentation E-Port V2 et convertisseurs")
 				(company "INSATECH - AeroDay V14 - Challenge CAO")
-				(rev "D")
+				(rev "C")
 				(date "2026-11-21")
 				(source "power.kicad_sch")
 				(comment
@@ -68,7 +68,7 @@
 				)
 				(comment
 					(number "2")
-					(value "Page 2 / 7")
+					(value "Page 2 / 6")
 				)
 				(comment
 					(number "3")
@@ -107,7 +107,7 @@
 			(title_block
 				(title "BRC-M400 - MCU STM32U585 + liaison DJI PSDK")
 				(company "INSATECH - AeroDay V14 - Challenge CAO")
-				(rev "D")
+				(rev "C")
 				(date "2026-11-21")
 				(source "mcu.kicad_sch")
 				(comment
@@ -116,7 +116,7 @@
 				)
 				(comment
 					(number "2")
-					(value "Page 3 / 7")
+					(value "Page 3 / 6")
 				)
 				(comment
 					(number "3")
@@ -155,7 +155,7 @@
 			(title_block
 				(title "BRC-M400 - Radio LoRa Semtech SX1262 - 868 MHz")
 				(company "INSATECH - AeroDay V14 - Challenge CAO")
-				(rev "D")
+				(rev "C")
 				(date "2026-11-21")
 				(source "radio.kicad_sch")
 				(comment
@@ -164,7 +164,7 @@
 				)
 				(comment
 					(number "2")
-					(value "Page 4 / 7")
+					(value "Page 4 / 6")
 				)
 				(comment
 					(number "3")
@@ -203,7 +203,7 @@
 			(title_block
 				(title "BRC-M400 - Actionneurs de largage et signalisation")
 				(company "INSATECH - AeroDay V14 - Challenge CAO")
-				(rev "D")
+				(rev "C")
 				(date "2026-11-21")
 				(source "loads.kicad_sch")
 				(comment
@@ -212,7 +212,7 @@
 				)
 				(comment
 					(number "2")
-					(value "Page 5 / 7")
+					(value "Page 5 / 6")
 				)
 				(comment
 					(number "3")
@@ -251,7 +251,7 @@
 			(title_block
 				(title "BRC-M400 - Capteurs et fixation")
 				(company "INSATECH - AeroDay V14 - Challenge CAO")
-				(rev "D")
+				(rev "C")
 				(date "2026-11-21")
 				(source "io.kicad_sch")
 				(comment
@@ -260,55 +260,7 @@
 				)
 				(comment
 					(number "2")
-					(value "Page 6 / 7")
-				)
-				(comment
-					(number "3")
-					(value "")
-				)
-				(comment
-					(number "4")
-					(value "")
-				)
-				(comment
-					(number "5")
-					(value "")
-				)
-				(comment
-					(number "6")
-					(value "")
-				)
-				(comment
-					(number "7")
-					(value "")
-				)
-				(comment
-					(number "8")
-					(value "")
-				)
-				(comment
-					(number "9")
-					(value "")
-				)
-			)
-		)
-		(sheet
-			(number "7")
-			(name "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-			(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			(title_block
-				(title "BRC-M400 - Batterie 3S, BMS et charge USB-C")
-				(company "INSATECH - AeroDay V14 - Challenge CAO")
-				(rev "D")
-				(date "2026-11-21")
-				(source "batterie.kicad_sch")
-				(comment
-					(number "1")
-					(value "BRC-M400 - Buoy Release & Beacon Controller")
-				)
-				(comment
-					(number "2")
-					(value "Page 7 / 7")
+					(value "Page 6 / 6")
 				)
 				(comment
 					(number "3")
@@ -452,7 +404,7 @@
 		)
 		(comp
 			(ref "C3")
-			(value "470uF 25V low-ESR")
+			(value "470uF 35V low-ESR")
 			(footprint "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm")
 			(description "Polarized capacitor")
 			(fields
@@ -506,7 +458,7 @@
 		)
 		(comp
 			(ref "C4")
-			(value "10uF 10V X7R")
+			(value "1uF 50V X7R")
 			(footprint "Capacitor_SMD:C_0805_2012Metric")
 			(description "Unpolarized capacitor")
 			(fields
@@ -560,12 +512,12 @@
 		)
 		(comp
 			(ref "C5")
-			(value "10pF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
+			(value "10nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
 			(description "Unpolarized capacitor")
 			(fields
 				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
 				(field
 					(name "Datasheet")
 				)
@@ -668,12 +620,12 @@
 		)
 		(comp
 			(ref "C7")
-			(value "4.7uF 25V X7R")
-			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(value "10uF 25V X7R")
+			(footprint "Capacitor_SMD:C_1210_3225Metric")
 			(description "Unpolarized capacitor")
 			(fields
 				(field
-					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+					(name "Footprint") "Capacitor_SMD:C_1210_3225Metric")
 				(field
 					(name "Datasheet")
 				)
@@ -722,7 +674,7 @@
 		)
 		(comp
 			(ref "C11")
-			(value "10uF 25V X7R")
+			(value "10uF 50V X7R")
 			(footprint "Capacitor_SMD:C_1210_3225Metric")
 			(description "Unpolarized capacitor")
 			(fields
@@ -1208,28 +1160,28 @@
 		)
 		(comp
 			(ref "D1")
-			(value "SMAJ16A")
+			(value "SMAJ26A")
 			(footprint "Diode_SMD:D_SMA")
 			(datasheet "https://www.littelfuse.com/media?resourcetype=datasheets&itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&filename=smaj-datasheet")
-			(description "400W unidirectional Transient Voltage Suppressor, 16.0Vr, SMA(DO-214AC)")
+			(description "400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)")
 			(fields
 				(field
-					(name "MPN") "SMAJ16A")
+					(name "MPN") "SMAJ26A")
 				(field
 					(name "Footprint") "Diode_SMD:D_SMA")
 				(field
 					(name "Datasheet") "https://www.littelfuse.com/media?resourcetype=datasheets&itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&filename=smaj-datasheet")
 				(field
-					(name "Description") "400W unidirectional Transient Voltage Suppressor, 16.0Vr, SMA(DO-214AC)")
+					(name "Description") "400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)")
 			)
 			(libsource
 				(lib "Diode")
-				(part "SMAJ16A")
-				(description "400W unidirectional Transient Voltage Suppressor, 16.0Vr, SMA(DO-214AC)")
+				(part "SMAJ26A")
+				(description "400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)")
 			)
 			(property
 				(name "MPN")
-				(value "SMAJ16A")
+				(value "SMAJ26A")
 			)
 			(property
 				(name "Sheetname")
@@ -1267,73 +1219,13 @@
 			)
 		)
 		(comp
-			(ref "D2")
-			(value "MBR0540")
-			(footprint "Diode_SMD:D_SOD-123")
-			(description "Schottky diode")
-			(fields
-				(field
-					(name "MPN") "MBR0540T1G")
-				(field
-					(name "Footprint") "Diode_SMD:D_SOD-123")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Schottky diode")
-			)
-			(libsource
-				(lib "Device")
-				(part "D_Schottky")
-				(description "Schottky diode")
-			)
-			(property
-				(name "MPN")
-				(value "MBR0540T1G")
-			)
-			(property
-				(name "Sheetname")
-				(value "01  ALIMENTATION - E-Port V2 & convertisseurs")
-			)
-			(property
-				(name "Sheetfile")
-				(value "power.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "diode Schottky")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "TO-???* *_Diode_* *SingleDiode* D_*")
-			)
-			(sheetpath
-				(names "/01  ALIMENTATION - E-Port V2 & convertisseurs/")
-				(tstamps "/cc694376-2be1-5bc6-8b3d-19f9adf9401d/")
-			)
-			(tstamps "590dac7e-4135-5c41-ad11-a0fd5860e32e")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
 			(ref "F1")
-			(value "10A 32V")
+			(value "5A 32V fast")
 			(footprint "Fuse:Fuse_1206_3216Metric")
 			(description "Fuse")
 			(fields
 				(field
-					(name "MPN") "0466010.NR")
+					(name "MPN") "0466005.NR")
 				(field
 					(name "Footprint") "Fuse:Fuse_1206_3216Metric")
 				(field
@@ -1349,7 +1241,7 @@
 			)
 			(property
 				(name "MPN")
-				(value "0466010.NR")
+				(value "0466005.NR")
 			)
 			(property
 				(name "Sheetname")
@@ -1447,29 +1339,29 @@
 			)
 		)
 		(comp
-			(ref "L1")
-			(value "10uH")
-			(footprint "Inductor_SMD:L_0805_2012Metric")
-			(description "Inductor")
+			(ref "J1")
+			(value "E-Port V2 VCC (XT30)")
+			(footprint "Connector_AMASS:AMASS_XT30PW-M_1x02_P2.50mm_Horizontal")
+			(description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
 			(fields
 				(field
-					(name "MPN") "LQH3NPN100MJ0")
+					(name "MPN") "XT30PW-M")
 				(field
-					(name "Footprint") "Inductor_SMD:L_0805_2012Metric")
+					(name "Footprint") "Connector_AMASS:AMASS_XT30PW-M_1x02_P2.50mm_Horizontal")
 				(field
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Inductor")
+					(name "Description") "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
 			)
 			(libsource
-				(lib "Device")
-				(part "L")
-				(description "Inductor")
+				(lib "Connector_Generic")
+				(part "Conn_01x02")
+				(description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
 			)
 			(property
 				(name "MPN")
-				(value "LQH3NPN100MJ0")
+				(value "XT30PW-M")
 			)
 			(property
 				(name "Sheetname")
@@ -1481,17 +1373,17 @@
 			)
 			(property
 				(name "ki_keywords")
-				(value "inductor choke coil reactor magnetic")
+				(value "connector")
 			)
 			(property
 				(name "ki_fp_filters")
-				(value "Choke_* *Coil* Inductor_* L_*")
+				(value "Connector*:*_1x??_*")
 			)
 			(sheetpath
 				(names "/01  ALIMENTATION - E-Port V2 & convertisseurs/")
 				(tstamps "/cc694376-2be1-5bc6-8b3d-19f9adf9401d/")
 			)
-			(tstamps "fa521fd5-786c-53db-bb43-210f4ca5d7a6")
+			(tstamps "7ecc0c3d-e695-543a-bbbc-80a1740d0989")
 			(units
 				(unit
 					(name "A")
@@ -1637,7 +1529,7 @@
 		)
 		(comp
 			(ref "R1")
-			(value "1M 1%")
+			(value "91k 1%")
 			(footprint "Resistor_SMD:R_0603_1608Metric")
 			(description "Resistor")
 			(fields
@@ -1691,7 +1583,7 @@
 		)
 		(comp
 			(ref "R2")
-			(value "113k 1%")
+			(value "10k 1%")
 			(footprint "Resistor_SMD:R_0603_1608Metric")
 			(description "Resistor")
 			(fields
@@ -1961,7 +1853,7 @@
 		)
 		(comp
 			(ref "R8")
-			(value "30k 1%")
+			(value "10k 1%")
 			(footprint "Resistor_SMD:R_0603_1608Metric")
 			(description "Resistor")
 			(fields
@@ -2087,28 +1979,28 @@
 		)
 		(comp
 			(ref "U2")
-			(value "TPS61040")
-			(footprint "Package_TO_SOT_SMD:SOT-23-5")
-			(datasheet "http://www.ti.com/lit/ds/symlink/tps61040.pdf")
-			(description "Synchronous Boost Regulator, Adjustable Output up to 28V, 400 mA Switch Current Limit, SOT-23-5")
+			(value "TPS7A4101")
+			(footprint "Package_SO:Texas_DGN0008B_VSSOP-8-1EP_3x3mm_P0.65mm_EP2x3mm_Mask1.88x1.98mm_ThermalVias")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tps7a4101.pdf")
+			(description "High voltage low-dropout linear regulator, 7V to 50 VIn, 1.175V to 48V output, 50mA, MSOP-8-EP")
 			(fields
 				(field
-					(name "MPN") "TPS61040DBVR")
+					(name "MPN") "TPS7A4101DGNR")
 				(field
-					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
+					(name "Footprint") "Package_SO:Texas_DGN0008B_VSSOP-8-1EP_3x3mm_P0.65mm_EP2x3mm_Mask1.88x1.98mm_ThermalVias")
 				(field
-					(name "Datasheet") "http://www.ti.com/lit/ds/symlink/tps61040.pdf")
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps7a4101.pdf")
 				(field
-					(name "Description") "Synchronous Boost Regulator, Adjustable Output up to 28V, 400 mA Switch Current Limit, SOT-23-5")
+					(name "Description") "High voltage low-dropout linear regulator, 7V to 50 VIn, 1.175V to 48V output, 50mA, MSOP-8-EP")
 			)
 			(libsource
-				(lib "Regulator_Switching")
-				(part "TPS61040DBV")
-				(description "Synchronous Boost Regulator, Adjustable Output up to 28V, 400 mA Switch Current Limit, SOT-23-5")
+				(lib "Regulator_Linear")
+				(part "TPS7A4101DGN")
+				(description "High voltage low-dropout linear regulator, 7V to 50 VIn, 1.175V to 48V output, 50mA, MSOP-8-EP")
 			)
 			(property
 				(name "MPN")
-				(value "TPS61040DBVR")
+				(value "TPS7A4101DGNR")
 			)
 			(property
 				(name "Sheetname")
@@ -2120,11 +2012,11 @@
 			)
 			(property
 				(name "ki_keywords")
-				(value "Step-Up Boost DC-DC Regulator Adjustable")
+				(value "LDO")
 			)
 			(property
 				(name "ki_fp_filters")
-				(value "SOT?23*")
+				(value "Texas*DGN0008B*1EP*3x3mm*P0.65mm*")
 			)
 			(sheetpath
 				(names "/01  ALIMENTATION - E-Port V2 & convertisseurs/")
@@ -2136,19 +2028,31 @@
 					(name "A")
 					(pins
 						(pin
+							(num "8")
+						)
+						(pin
 							(num "5")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "7")
+						)
+						(pin
+							(num "9")
 						)
 						(pin
 							(num "4")
 						)
 						(pin
-							(num "2")
+							(num "6")
 						)
 						(pin
 							(num "1")
 						)
 						(pin
-							(num "3")
+							(num "2")
 						)
 					)
 				)
@@ -2899,6 +2803,72 @@
 			)
 		)
 		(comp
+			(ref "J2")
+			(value "DJI PSDK UART")
+			(footprint "Connector_JST:JST_GH_SM04B-GHS-TB_1x04-1MP_P1.25mm_Horizontal")
+			(description "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)")
+			(fields
+				(field
+					(name "MPN") "SM04B-GHS-TB")
+				(field
+					(name "Footprint") "Connector_JST:JST_GH_SM04B-GHS-TB_1x04-1MP_P1.25mm_Horizontal")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)")
+			)
+			(libsource
+				(lib "Connector_Generic")
+				(part "Conn_01x04")
+				(description "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)")
+			)
+			(property
+				(name "MPN")
+				(value "SM04B-GHS-TB")
+			)
+			(property
+				(name "Sheetname")
+				(value "02  MICROCONTRÔLEUR - STM32U585 & liaison DJI PSDK")
+			)
+			(property
+				(name "Sheetfile")
+				(value "mcu.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "connector")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Connector*:*_1x??_*")
+			)
+			(sheetpath
+				(names "/02  MICROCONTRÔLEUR - STM32U585 & liaison DJI PSDK/")
+				(tstamps "/a79d9522-f9b5-5914-9bb8-dd2ef639e379/")
+			)
+			(tstamps "0ca2f45c-7581-5ddc-b859-4da338bb6f4a")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+						(pin
+							(num "3")
+						)
+						(pin
+							(num "4")
+						)
+					)
+				)
+			)
+		)
+		(comp
 			(ref "J7")
 			(value "SWD Cortex-10")
 			(footprint "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical")
@@ -3178,6 +3148,114 @@
 				(tstamps "/a79d9522-f9b5-5914-9bb8-dd2ef639e379/")
 			)
 			(tstamps "ece505d8-7b0f-5d00-b541-24fdf33ad145")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R14")
+			(value "100R")
+			(footprint "Resistor_SMD:R_0402_1005Metric")
+			(description "Resistor")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor")
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "Sheetname")
+				(value "02  MICROCONTRÔLEUR - STM32U585 & liaison DJI PSDK")
+			)
+			(property
+				(name "Sheetfile")
+				(value "mcu.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/02  MICROCONTRÔLEUR - STM32U585 & liaison DJI PSDK/")
+				(tstamps "/a79d9522-f9b5-5914-9bb8-dd2ef639e379/")
+			)
+			(tstamps "c171851d-e04f-582b-ac47-961c9ca90ca5")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "R15")
+			(value "100R")
+			(footprint "Resistor_SMD:R_0402_1005Metric")
+			(description "Resistor")
+			(fields
+				(field
+					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Resistor")
+			)
+			(libsource
+				(lib "Device")
+				(part "R")
+				(description "Resistor")
+			)
+			(property
+				(name "Sheetname")
+				(value "02  MICROCONTRÔLEUR - STM32U585 & liaison DJI PSDK")
+			)
+			(property
+				(name "Sheetfile")
+				(value "mcu.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "R res resistor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "R_*")
+			)
+			(sheetpath
+				(names "/02  MICROCONTRÔLEUR - STM32U585 & liaison DJI PSDK/")
+				(tstamps "/a79d9522-f9b5-5914-9bb8-dd2ef639e379/")
+			)
+			(tstamps "dd5417a8-a09d-5758-813c-bfe5da686382")
 			(units
 				(unit
 					(name "A")
@@ -4519,6 +4597,120 @@
 				(tstamps "/5b899c58-d811-58a7-8a37-80f6f8d15955/")
 			)
 			(tstamps "5e97835f-ffc1-5a7c-9e6a-aaa705a0a0f2")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C70")
+			(value "DNP")
+			(footprint "Capacitor_SMD:C_0402_1005Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "Sheetname")
+				(value "03  RADIO LoRa - Semtech SX1262 - 868 MHz")
+			)
+			(property
+				(name "Sheetfile")
+				(value "radio.kicad_sch")
+			)
+			(property
+				(name "dnp")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/03  RADIO LoRa - Semtech SX1262 - 868 MHz/")
+				(tstamps "/5b899c58-d811-58a7-8a37-80f6f8d15955/")
+			)
+			(tstamps "bf92357e-6144-5f93-aab5-803c1c1dbb98")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C71")
+			(value "DNP")
+			(footprint "Capacitor_SMD:C_0402_1005Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "Sheetname")
+				(value "03  RADIO LoRa - Semtech SX1262 - 868 MHz")
+			)
+			(property
+				(name "Sheetfile")
+				(value "radio.kicad_sch")
+			)
+			(property
+				(name "dnp")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/03  RADIO LoRa - Semtech SX1262 - 868 MHz/")
+				(tstamps "/5b899c58-d811-58a7-8a37-80f6f8d15955/")
+			)
+			(tstamps "b3485d86-3f26-5276-ba03-fc1d66b02d66")
 			(units
 				(unit
 					(name "A")
@@ -6464,7 +6656,7 @@
 		)
 		(comp
 			(ref "J31")
-			(value "LED ARRAY 12V (XT30)")
+			(value "LED ARRAY (XT30)")
 			(footprint "Connector_AMASS:AMASS_XT30PW-F_1x02_P2.50mm_Horizontal")
 			(description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
 			(fields
@@ -6524,7 +6716,7 @@
 		)
 		(comp
 			(ref "J32")
-			(value "SIRENE 12V (XT30)")
+			(value "SIRENE (XT30)")
 			(footprint "Connector_AMASS:AMASS_XT30PW-F_1x02_P2.50mm_Horizontal")
 			(description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
 			(fields
@@ -6584,7 +6776,7 @@
 		)
 		(comp
 			(ref "J33")
-			(value "MAINTIEN 12V (XT30)")
+			(value "MAINTIEN (XT30)")
 			(footprint "Connector_AMASS:AMASS_XT30PW-F_1x02_P2.50mm_Horizontal")
 			(description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
 			(fields
@@ -6644,7 +6836,7 @@
 		)
 		(comp
 			(ref "J34")
-			(value "EJECTION 12V (XT30)")
+			(value "EJECTION (XT30)")
 			(footprint "Connector_AMASS:AMASS_XT30PW-F_1x02_P2.50mm_Horizontal")
 			(description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
 			(fields
@@ -9612,3978 +9804,6 @@
 				)
 			)
 		)
-		(comp
-			(ref "C100")
-			(value "10uF 25V X7R")
-			(footprint "Capacitor_SMD:C_1210_3225Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_1210_3225Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "9f10753b-e310-5c2c-9376-7393161c5b9f")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C101")
-			(value "100nF")
-			(footprint "Capacitor_SMD:C_0603_1608Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "090391b5-cce5-587e-9318-a51be5d932ec")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C102")
-			(value "1uF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "d20fac2f-eb96-533f-a4f8-770b4f43f15e")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C103")
-			(value "1uF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "4ffb9ea3-653c-59a0-acc3-ad32152c036c")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C104")
-			(value "100nF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "e983a11b-6c3b-5838-9327-c2c33b23aa8b")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C105")
-			(value "100nF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "96eb8e4b-3ffd-5593-b654-0b80fa5a2c8e")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C106")
-			(value "10uF 25V X7R")
-			(footprint "Capacitor_SMD:C_1210_3225Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_1210_3225Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "6bca3ef3-1f8a-563f-b939-246822c4d4c8")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C107")
-			(value "1uF")
-			(footprint "Capacitor_SMD:C_0603_1608Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "15e7cfcf-74ed-581d-aeb3-59ba55d1c683")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C108")
-			(value "47nF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "bc04b267-cf08-5eb9-b431-9dced01a6396")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C109")
-			(value "22uF 25V X7R")
-			(footprint "Capacitor_SMD:C_1210_3225Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_1210_3225Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "d179833a-18f1-58e2-b412-258163ebc5d0")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C110")
-			(value "22uF 25V X7R")
-			(footprint "Capacitor_SMD:C_1210_3225Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_1210_3225Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "c4005c27-76bd-5293-a545-bdfa5c9cff45")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C111")
-			(value "100nF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "3be96505-0340-5f0e-8853-da6d2e2f8303")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C112")
-			(value "1uF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "a01378f6-c2c5-585a-b816-83fbbcca5bbd")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C113")
-			(value "100nF 50V")
-			(footprint "Capacitor_SMD:C_0603_1608Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "b791bd3c-d337-5bad-9208-2e65126ab364")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C114")
-			(value "100nF 50V")
-			(footprint "Capacitor_SMD:C_0603_1608Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "d7b30eda-f5e9-583a-b52b-57ebe799f1f5")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C115")
-			(value "100nF 50V")
-			(footprint "Capacitor_SMD:C_0603_1608Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "fd31c919-9a99-5985-8fbd-92df903b10a9")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C116")
-			(value "1uF 25V")
-			(footprint "Capacitor_SMD:C_0603_1608Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "2a90dcfb-b7db-589a-a185-cd9bb0daafdf")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C117")
-			(value "1uF 25V")
-			(footprint "Capacitor_SMD:C_0603_1608Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "0eb2b8ab-4ee2-598a-9d8e-615a4833dd35")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C118")
-			(value "1uF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "25461489-e8a9-5dd7-b861-8e4ebe72f499")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C119")
-			(value "1uF")
-			(footprint "Capacitor_SMD:C_0402_1005Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "1d66ecd3-2d45-5df7-8308-df7f7a99a613")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "C120")
-			(value "10uF 25V X7R")
-			(footprint "Capacitor_SMD:C_1210_3225Metric")
-			(description "Unpolarized capacitor")
-			(fields
-				(field
-					(name "Footprint") "Capacitor_SMD:C_1210_3225Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Unpolarized capacitor")
-			)
-			(libsource
-				(lib "Device")
-				(part "C")
-				(description "Unpolarized capacitor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "cap capacitor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "C_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "71cd360c-75cb-5aad-91ee-3b960522c59c")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "D42")
-			(value "vert CHARGE")
-			(footprint "LED_SMD:LED_0805_2012Metric")
-			(description "Light emitting diode")
-			(fields
-				(field
-					(name "Footprint") "LED_SMD:LED_0805_2012Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Light emitting diode")
-			)
-			(libsource
-				(lib "Device")
-				(part "LED")
-				(description "Light emitting diode")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "LED diode")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "LED* LED_SMD:* LED_THT:*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "46bef5ae-8319-5256-92f3-1aec92bd1160")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "D43")
-			(value "orange DEFAUT")
-			(footprint "LED_SMD:LED_0805_2012Metric")
-			(description "Light emitting diode")
-			(fields
-				(field
-					(name "Footprint") "LED_SMD:LED_0805_2012Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Light emitting diode")
-			)
-			(libsource
-				(lib "Device")
-				(part "LED")
-				(description "Light emitting diode")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "LED diode")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "LED* LED_SMD:* LED_THT:*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "65c3b5ff-fb22-559c-b753-f5347e3ff606")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "D44")
-			(value "bleu USB-C PD")
-			(footprint "LED_SMD:LED_0805_2012Metric")
-			(description "Light emitting diode")
-			(fields
-				(field
-					(name "Footprint") "LED_SMD:LED_0805_2012Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Light emitting diode")
-			)
-			(libsource
-				(lib "Device")
-				(part "LED")
-				(description "Light emitting diode")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "LED diode")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "LED* LED_SMD:* LED_THT:*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "15492a41-88e2-5325-9daa-9f1a7f3590b8")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "D45")
-			(value "rouge ALERTE BMS")
-			(footprint "LED_SMD:LED_0805_2012Metric")
-			(description "Light emitting diode")
-			(fields
-				(field
-					(name "Footprint") "LED_SMD:LED_0805_2012Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Light emitting diode")
-			)
-			(libsource
-				(lib "Device")
-				(part "LED")
-				(description "Light emitting diode")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "LED diode")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "LED* LED_SMD:* LED_THT:*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "fd94815f-5d3f-5e91-9429-b961ca4acd36")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "J40")
-			(value "USB-C charge")
-			(footprint "Connector_USB:USB_C_Receptacle_GCT_USB4085")
-			(datasheet "https://www.usb.org/sites/default/files/documents/usb_type-c.zip")
-			(description "USB Power-Only 24P Type-C Receptacle connector")
-			(fields
-				(field
-					(name "MPN") "USB4085-GF-A")
-				(field
-					(name "Footprint") "Connector_USB:USB_C_Receptacle_GCT_USB4085")
-				(field
-					(name "Datasheet") "https://www.usb.org/sites/default/files/documents/usb_type-c.zip")
-				(field
-					(name "Description") "USB Power-Only 24P Type-C Receptacle connector")
-			)
-			(libsource
-				(lib "Connector")
-				(part "USB_C_Receptacle_PowerOnly_24P")
-				(description "USB Power-Only 24P Type-C Receptacle connector")
-			)
-			(property
-				(name "MPN")
-				(value "USB4085-GF-A")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "usb universal serial bus type-C power-only charging-only 24P 24C")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "USB*C*Receptacle*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "22d36776-73c3-51c2-8f74-599eac8862a6")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "SH")
-						)
-						(pin
-							(num "A1")
-						)
-						(pin
-							(num "A12")
-						)
-						(pin
-							(num "B1")
-						)
-						(pin
-							(num "B12")
-						)
-						(pin
-							(num "A4")
-						)
-						(pin
-							(num "A9")
-						)
-						(pin
-							(num "B4")
-						)
-						(pin
-							(num "B9")
-						)
-						(pin
-							(num "A5")
-						)
-						(pin
-							(num "B5")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "J41")
-			(value "Equilibrage 3S (XH)")
-			(footprint "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical")
-			(description "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)")
-			(fields
-				(field
-					(name "MPN") "B4B-XH-A")
-				(field
-					(name "Footprint") "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)")
-			)
-			(libsource
-				(lib "Connector_Generic")
-				(part "Conn_01x04")
-				(description "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)")
-			)
-			(property
-				(name "MPN")
-				(value "B4B-XH-A")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "connector")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "Connector*:*_1x??_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "b0c85b3f-ac02-54f1-a0ae-cf743c2944c5")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "3")
-						)
-						(pin
-							(num "4")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "J42")
-			(value "PACK 3S (XT30)")
-			(footprint "Connector_AMASS:AMASS_XT30PW-M_1x02_P2.50mm_Horizontal")
-			(description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
-			(fields
-				(field
-					(name "MPN") "XT30PW-M")
-				(field
-					(name "Footprint") "Connector_AMASS:AMASS_XT30PW-M_1x02_P2.50mm_Horizontal")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
-			)
-			(libsource
-				(lib "Connector_Generic")
-				(part "Conn_01x02")
-				(description "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)")
-			)
-			(property
-				(name "MPN")
-				(value "XT30PW-M")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "connector")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "Connector*:*_1x??_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "d1c36a6f-39ac-5bb0-be93-ed4990c8d116")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "L40")
-			(value "10uH 4A")
-			(footprint "Inductor_SMD:L_Bourns_SRN6045TA")
-			(description "Inductor")
-			(fields
-				(field
-					(name "MPN") "SRN6045TA-100M")
-				(field
-					(name "Footprint") "Inductor_SMD:L_Bourns_SRN6045TA")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Inductor")
-			)
-			(libsource
-				(lib "Device")
-				(part "L")
-				(description "Inductor")
-			)
-			(property
-				(name "MPN")
-				(value "SRN6045TA-100M")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "inductor choke coil reactor magnetic")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "Choke_* *Coil* Inductor_* L_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "e0c8d1a4-29f9-5912-9a53-7716e037f5d6")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "Q40")
-			(value "BSC028N06LS3")
-			(footprint "Package_TO_SOT_SMD:TDSON-8-1")
-			(datasheet "http://www.infineon.com/dgdl/Infineon-BSC028N06LS3-DS-v02_02-en.pdf?fileId=db3a30431ddc9372011ebafa4c607f8c")
-			(description "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			(fields
-				(field
-					(name "MPN") "BSC028N06LS3GATMA1")
-				(field
-					(name "Footprint") "Package_TO_SOT_SMD:TDSON-8-1")
-				(field
-					(name "Datasheet") "http://www.infineon.com/dgdl/Infineon-BSC028N06LS3-DS-v02_02-en.pdf?fileId=db3a30431ddc9372011ebafa4c607f8c")
-				(field
-					(name "Description") "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			)
-			(libsource
-				(lib "Transistor_FET")
-				(part "BSC028N06LS3")
-				(description "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			)
-			(property
-				(name "MPN")
-				(value "BSC028N06LS3GATMA1")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "OptiMOS Power MOSFET N-MOS")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "TDSON*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "cc7a0077-f697-591b-bc8b-4773611e5b24")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "5")
-						)
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "3")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "Q41")
-			(value "BSC028N06LS3")
-			(footprint "Package_TO_SOT_SMD:TDSON-8-1")
-			(datasheet "http://www.infineon.com/dgdl/Infineon-BSC028N06LS3-DS-v02_02-en.pdf?fileId=db3a30431ddc9372011ebafa4c607f8c")
-			(description "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			(fields
-				(field
-					(name "MPN") "BSC028N06LS3GATMA1")
-				(field
-					(name "Footprint") "Package_TO_SOT_SMD:TDSON-8-1")
-				(field
-					(name "Datasheet") "http://www.infineon.com/dgdl/Infineon-BSC028N06LS3-DS-v02_02-en.pdf?fileId=db3a30431ddc9372011ebafa4c607f8c")
-				(field
-					(name "Description") "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			)
-			(libsource
-				(lib "Transistor_FET")
-				(part "BSC028N06LS3")
-				(description "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			)
-			(property
-				(name "MPN")
-				(value "BSC028N06LS3GATMA1")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "OptiMOS Power MOSFET N-MOS")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "TDSON*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "095a65cb-7a6f-5331-a128-c10211f58c6d")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "5")
-						)
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "3")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "Q42")
-			(value "BSC028N06LS3")
-			(footprint "Package_TO_SOT_SMD:TDSON-8-1")
-			(datasheet "http://www.infineon.com/dgdl/Infineon-BSC028N06LS3-DS-v02_02-en.pdf?fileId=db3a30431ddc9372011ebafa4c607f8c")
-			(description "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			(fields
-				(field
-					(name "MPN") "BSC028N06LS3GATMA1")
-				(field
-					(name "Footprint") "Package_TO_SOT_SMD:TDSON-8-1")
-				(field
-					(name "Datasheet") "http://www.infineon.com/dgdl/Infineon-BSC028N06LS3-DS-v02_02-en.pdf?fileId=db3a30431ddc9372011ebafa4c607f8c")
-				(field
-					(name "Description") "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			)
-			(libsource
-				(lib "Transistor_FET")
-				(part "BSC028N06LS3")
-				(description "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			)
-			(property
-				(name "MPN")
-				(value "BSC028N06LS3GATMA1")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "OptiMOS Power MOSFET N-MOS")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "TDSON*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "35be974a-9167-5735-b052-baf5e051a0d3")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "5")
-						)
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "3")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "Q43")
-			(value "BSC028N06LS3")
-			(footprint "Package_TO_SOT_SMD:TDSON-8-1")
-			(datasheet "http://www.infineon.com/dgdl/Infineon-BSC028N06LS3-DS-v02_02-en.pdf?fileId=db3a30431ddc9372011ebafa4c607f8c")
-			(description "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			(fields
-				(field
-					(name "MPN") "BSC028N06LS3GATMA1")
-				(field
-					(name "Footprint") "Package_TO_SOT_SMD:TDSON-8-1")
-				(field
-					(name "Datasheet") "http://www.infineon.com/dgdl/Infineon-BSC028N06LS3-DS-v02_02-en.pdf?fileId=db3a30431ddc9372011ebafa4c607f8c")
-				(field
-					(name "Description") "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			)
-			(libsource
-				(lib "Transistor_FET")
-				(part "BSC028N06LS3")
-				(description "100A Id, 60V Vds, OptiMOS N-Channel Power MOSFET, 2.8mOhm Ron, Qg (typ) 31.0nC, PG-TDSON-8")
-			)
-			(property
-				(name "MPN")
-				(value "BSC028N06LS3GATMA1")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "OptiMOS Power MOSFET N-MOS")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "TDSON*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "0b69d4ae-8461-5074-b392-9bc5c56d66cf")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "5")
-						)
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "3")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "Q44")
-			(value "BSS84")
-			(footprint "Package_TO_SOT_SMD:SOT-23")
-			(datasheet "http://assets.nexperia.com/documents/data-sheet/BSS84.pdf")
-			(description "-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23")
-			(fields
-				(field
-					(name "Footprint") "Package_TO_SOT_SMD:SOT-23")
-				(field
-					(name "Datasheet") "http://assets.nexperia.com/documents/data-sheet/BSS84.pdf")
-				(field
-					(name "Description") "-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23")
-			)
-			(libsource
-				(lib "Transistor_FET")
-				(part "BSS84")
-				(description "-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "P-Channel MOSFET")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "SOT?23*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "abd79c0e-fb76-52f0-9f22-b83af8e41c4a")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "3")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R100")
-			(value "10k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "0846d9a4-1ba0-57b2-9794-d4bf5e3c3745")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R101")
-			(value "1M")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "a228b003-507f-5fc9-8481-a6b79c2b5e01")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R102")
-			(value "100k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "ba6c4f56-0b51-58c4-9919-8064a37adb19")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R103")
-			(value "10m 1%")
-			(footprint "Resistor_SMD:R_2512_6332Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "MPN") "CSS2512")
-				(field
-					(name "Footprint") "Resistor_SMD:R_2512_6332Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "MPN")
-				(value "CSS2512")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "8e11e334-468a-5815-86e7-2afd649c05ac")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R104")
-			(value "10k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "6a34cddd-3032-55cf-92ae-46c657867b67")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R105")
-			(value "10m 1%")
-			(footprint "Resistor_SMD:R_2512_6332Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "MPN") "CSS2512")
-				(field
-					(name "Footprint") "Resistor_SMD:R_2512_6332Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "MPN")
-				(value "CSS2512")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "4ad477c1-6491-5c1c-8cd4-d2d57656dd84")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R106")
-			(value "100k 1%")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "c6dc256d-b530-558d-a73b-631d3b92e56b")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R107")
-			(value "20k 1%")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "200a6f0d-8838-53d6-82b7-725a3b1eb1ba")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R108")
-			(value "100k 1%")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "069bb280-4239-5a26-80dc-a66bce3c9f09")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R109")
-			(value "100k 1%")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "162b5f80-1994-563b-a77f-34fc54fb060c")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R110")
-			(value "100k 1%")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "901ac84b-ca63-5d12-81e5-ed98109d3026")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R111")
-			(value "33k 1%")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "d83a33b2-a624-5aea-a76a-520041c9a0c9")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R112")
-			(value "100k")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "c3a246c8-cd60-55b6-97e1-e61e54788763")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R113")
-			(value "10k 1%")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "37b1f840-f481-525f-b348-7cfe4df6e015")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R114")
-			(value "1k")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "ccd50363-89ed-50b4-9c25-f08ada6c39d2")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R115")
-			(value "1k")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "c4d57e51-7f4c-5ac5-92af-8168514bfce4")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R116")
-			(value "1k")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "d197d66b-82ab-51d4-a42c-092a57ddd2f3")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R117")
-			(value "100R")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "3e9ca476-1b14-5dfe-a697-a33560cefd3f")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R118")
-			(value "100R")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "6d9cc4c7-6fe4-5b88-8511-bd29b31ef056")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R119")
-			(value "5m 1% 2W")
-			(footprint "Resistor_SMD:R_2512_6332Metric")
-			(description "Shunt resistor with Kelvin connections")
-			(fields
-				(field
-					(name "MPN") "WSL2512R0050FEA")
-				(field
-					(name "Footprint") "Resistor_SMD:R_2512_6332Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Shunt resistor with Kelvin connections")
-			)
-			(libsource
-				(lib "Device")
-				(part "R_Shunt")
-				(description "Shunt resistor with Kelvin connections")
-			)
-			(property
-				(name "MPN")
-				(value "WSL2512R0050FEA")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res shunt resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*Shunt*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "9434e06a-1b8c-56e0-a28d-a2f41ec98072")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "3")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R120")
-			(value "1k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "5570505e-48e8-5a5f-8aa0-764733e6827d")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R121")
-			(value "1k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "b391a5af-b16c-5d1d-bd9d-536b5e201c08")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R122")
-			(value "1k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "efca5441-0b91-5363-9b9e-1a113779ea72")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R123")
-			(value "1k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "80961e92-e694-5088-b8ea-1914ab47f9e1")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R124")
-			(value "100k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "5616914d-65d0-5bc2-9b5d-530ad32856ab")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R125")
-			(value "100k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "6ada1761-2ef8-5b5c-a520-ba5f4ed16205")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R126")
-			(value "4.7k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "6b09f1fc-f02f-5b52-b6f1-dbb30791d3be")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R127")
-			(value "4.7k")
-			(footprint "Resistor_SMD:R_0402_1005Metric")
-			(description "Resistor")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0402_1005Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Resistor")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "ecd3d5c6-e632-56b8-ba0d-db19c6aa32d4")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "RT40")
-			(value "10k NTC B3380")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Temperature dependent resistor, negative temperature coefficient")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Temperature dependent resistor, negative temperature coefficient")
-			)
-			(libsource
-				(lib "Device")
-				(part "Thermistor_NTC")
-				(description "Temperature dependent resistor, negative temperature coefficient")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "thermistor NTC resistor sensor RTD")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_* RV_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "1a87c53c-5f34-5fb2-9d62-0bbdd4ec4be3")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "RT41")
-			(value "10k NTC B3380")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Temperature dependent resistor, negative temperature coefficient")
-			(fields
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Temperature dependent resistor, negative temperature coefficient")
-			)
-			(libsource
-				(lib "Device")
-				(part "Thermistor_NTC")
-				(description "Temperature dependent resistor, negative temperature coefficient")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "thermistor NTC resistor sensor RTD")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_* RV_*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "c258f5ea-f7c4-5572-9d1b-6653ddbbb185")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "U40")
-			(value "STUSB4500")
-			(footprint "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.8x2.8mm")
-			(datasheet "https://www.st.com/resource/en/datasheet/stusb4500.pdf")
-			(description "Stand-alone USB PD controller (with sink Auto-run mode), QFN-24")
-			(fields
-				(field
-					(name "MPN") "STUSB4500QTR")
-				(field
-					(name "Footprint") "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.8x2.8mm")
-				(field
-					(name "Datasheet") "https://www.st.com/resource/en/datasheet/stusb4500.pdf")
-				(field
-					(name "Description") "Stand-alone USB PD controller (with sink Auto-run mode), QFN-24")
-			)
-			(libsource
-				(lib "Interface_USB")
-				(part "STUSB4500QTR")
-				(description "Stand-alone USB PD controller (with sink Auto-run mode), QFN-24")
-			)
-			(property
-				(name "MPN")
-				(value "STUSB4500QTR")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "USB PD Type C Sink")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "QFN*4x4mm*P0.5mm*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "81fe5870-cc86-5fdd-bf2c-1481e1ecb20a")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "6")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "5")
-						)
-						(pin
-							(num "18")
-						)
-						(pin
-							(num "7")
-						)
-						(pin
-							(num "8")
-						)
-						(pin
-							(num "19")
-						)
-						(pin
-							(num "12")
-						)
-						(pin
-							(num "13")
-						)
-						(pin
-							(num "3")
-						)
-						(pin
-							(num "24")
-						)
-						(pin
-							(num "22")
-						)
-						(pin
-							(num "10")
-						)
-						(pin
-							(num "25")
-						)
-						(pin
-							(num "21")
-						)
-						(pin
-							(num "23")
-						)
-						(pin
-							(num "16")
-						)
-						(pin
-							(num "20")
-						)
-						(pin
-							(num "14")
-						)
-						(pin
-							(num "9")
-						)
-						(pin
-							(num "17")
-						)
-						(pin
-							(num "11")
-						)
-						(pin
-							(num "15")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "U41")
-			(value "BQ24610")
-			(footprint "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.5x2.5mm")
-			(datasheet "https://www.ti.com/lit/ds/symlink/bq24610.pdf")
-			(description "10A, 28V max voltage, Li-Ion Charger w/600kHz NMOS-NMOS Synchronous Buck Converter, VQFN-24")
-			(fields
-				(field
-					(name "MPN") "BQ24610RGER")
-				(field
-					(name "Footprint") "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.5x2.5mm")
-				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/bq24610.pdf")
-				(field
-					(name "Description") "10A, 28V max voltage, Li-Ion Charger w/600kHz NMOS-NMOS Synchronous Buck Converter, VQFN-24")
-			)
-			(libsource
-				(lib "Battery_Management")
-				(part "BQ24610")
-				(description "10A, 28V max voltage, Li-Ion Charger w/600kHz NMOS-NMOS Synchronous Buck Converter, VQFN-24")
-			)
-			(property
-				(name "MPN")
-				(value "BQ24610RGER")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "Li-ion buck")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "VQFN*1EP*4x4mm*P0.5mm*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "ccaf800d-a7d5-5b72-a89b-2deb7696ba00")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "3")
-						)
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "10")
-						)
-						(pin
-							(num "11")
-						)
-						(pin
-							(num "15")
-						)
-						(pin
-							(num "16")
-						)
-						(pin
-							(num "7")
-						)
-						(pin
-							(num "24")
-						)
-						(pin
-							(num "17")
-						)
-						(pin
-							(num "25")
-						)
-						(pin
-							(num "23")
-						)
-						(pin
-							(num "21")
-						)
-						(pin
-							(num "20")
-						)
-						(pin
-							(num "22")
-						)
-						(pin
-							(num "18")
-						)
-						(pin
-							(num "19")
-						)
-						(pin
-							(num "14")
-						)
-						(pin
-							(num "13")
-						)
-						(pin
-							(num "12")
-						)
-						(pin
-							(num "5")
-						)
-						(pin
-							(num "9")
-						)
-						(pin
-							(num "8")
-						)
-						(pin
-							(num "6")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "U42")
-			(value "BQ76920")
-			(footprint "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm")
-			(datasheet "http://www.ti.com/lit/ds/symlink/bq76920.pdf")
-			(description "Lithium battery monitor, 3-5 cells, integrated balancing, I2C interface, TSSOP-20")
-			(fields
-				(field
-					(name "MPN") "BQ76920PWR")
-				(field
-					(name "Footprint") "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm")
-				(field
-					(name "Datasheet") "http://www.ti.com/lit/ds/symlink/bq76920.pdf")
-				(field
-					(name "Description") "Lithium battery monitor, 3-5 cells, integrated balancing, I2C interface, TSSOP-20")
-			)
-			(libsource
-				(lib "Battery_Management")
-				(part "BQ76920PW")
-				(description "Lithium battery monitor, 3-5 cells, integrated balancing, I2C interface, TSSOP-20")
-			)
-			(property
-				(name "MPN")
-				(value "BQ76920PWR")
-			)
-			(property
-				(name "Sheetname")
-				(value "06  BATTERIE 3S - BMS - CHARGE USB-C")
-			)
-			(property
-				(name "Sheetfile")
-				(value "batterie.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "lithium battery balance charge afe")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "TSSOP*4.4x6.5mm*P0.65mm*")
-			)
-			(sheetpath
-				(names "/06  BATTERIE 3S - BMS - CHARGE USB-C/")
-				(tstamps "/39d705e9-fb6d-563a-981a-504db6d4949a/")
-			)
-			(tstamps "40a16edd-ca60-5697-868b-ba71ce6494f1")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "5")
-						)
-						(pin
-							(num "20")
-						)
-						(pin
-							(num "6")
-						)
-						(pin
-							(num "7")
-						)
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "11")
-						)
-						(pin
-							(num "9")
-						)
-						(pin
-							(num "3")
-						)
-						(pin
-							(num "8")
-						)
-						(pin
-							(num "10")
-						)
-						(pin
-							(num "12")
-						)
-						(pin
-							(num "13")
-						)
-						(pin
-							(num "14")
-						)
-						(pin
-							(num "15")
-						)
-						(pin
-							(num "16")
-						)
-						(pin
-							(num "17")
-						)
-						(pin
-							(num "18")
-						)
-						(pin
-							(num "19")
-						)
-					)
-				)
-			)
-		)
 	)
 	(groups)
 	(variants)
@@ -13638,277 +9858,6 @@
 					(num "6")
 					(name "V+")
 					(type "power_in")
-				)
-			)
-		)
-		(libpart
-			(lib "Battery_Management")
-			(part "BQ24610")
-			(description "10A, 28V max voltage, Li-Ion Charger w/600kHz NMOS-NMOS Synchronous Buck Converter, VQFN-24")
-			(docs "https://www.ti.com/lit/ds/symlink/bq24610.pdf")
-			(footprints
-				(fp "VQFN*1EP*4x4mm*P0.5mm*")
-			)
-			(fields
-				(field
-					(name "Reference") "U")
-				(field
-					(name "Value") "BQ24610")
-				(field
-					(name "Footprint") "Package_DFN_QFN:VQFN-24-1EP_4x4mm_P0.5mm_EP2.45x2.45mm")
-				(field
-					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/bq24610.pdf")
-				(field
-					(name "Description") "10A, 28V max voltage, Li-Ion Charger w/600kHz NMOS-NMOS Synchronous Buck Converter, VQFN-24")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "ACN")
-					(type "input")
-				)
-				(pin
-					(num "2")
-					(name "ACP")
-					(type "input")
-				)
-				(pin
-					(num "3")
-					(name "~{ACDRV}")
-					(type "output")
-				)
-				(pin
-					(num "4")
-					(name "CE")
-					(type "input")
-				)
-				(pin
-					(num "5")
-					(name "STAT1")
-					(type "open_collector")
-				)
-				(pin
-					(num "6")
-					(name "TS")
-					(type "input")
-				)
-				(pin
-					(num "7")
-					(name "TTC")
-					(type "input")
-				)
-				(pin
-					(num "8")
-					(name "~{PG}")
-					(type "open_collector")
-				)
-				(pin
-					(num "9")
-					(name "STAT2")
-					(type "open_collector")
-				)
-				(pin
-					(num "10")
-					(name "VREF")
-					(type "power_out")
-				)
-				(pin
-					(num "11")
-					(name "ISET1")
-					(type "input")
-				)
-				(pin
-					(num "12")
-					(name "VFB")
-					(type "output")
-				)
-				(pin
-					(num "13")
-					(name "SRN")
-					(type "input")
-				)
-				(pin
-					(num "14")
-					(name "SRP")
-					(type "input")
-				)
-				(pin
-					(num "15")
-					(name "ISET2")
-					(type "input")
-				)
-				(pin
-					(num "16")
-					(name "ACSET")
-					(type "input")
-				)
-				(pin
-					(num "17")
-					(name "GND")
-					(type "power_in")
-				)
-				(pin
-					(num "18")
-					(name "REGN")
-					(type "output")
-				)
-				(pin
-					(num "19")
-					(name "LODRV")
-					(type "output")
-				)
-				(pin
-					(num "20")
-					(name "PH")
-					(type "power_in")
-				)
-				(pin
-					(num "21")
-					(name "HIDRV")
-					(type "output")
-				)
-				(pin
-					(num "22")
-					(name "BTST")
-					(type "power_in")
-				)
-				(pin
-					(num "23")
-					(name "~{BATDRV}")
-					(type "output")
-				)
-				(pin
-					(num "24")
-					(name "VCC")
-					(type "power_in")
-				)
-				(pin
-					(num "25")
-					(name "GND")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "Battery_Management")
-			(part "BQ76920PW")
-			(description "Lithium battery monitor, 3-5 cells, integrated balancing, I2C interface, TSSOP-20")
-			(docs "http://www.ti.com/lit/ds/symlink/bq76920.pdf")
-			(footprints
-				(fp "TSSOP*4.4x6.5mm*P0.65mm*")
-			)
-			(fields
-				(field
-					(name "Reference") "U")
-				(field
-					(name "Value") "BQ76920PW")
-				(field
-					(name "Footprint") "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm")
-				(field
-					(name "Datasheet") "http://www.ti.com/lit/ds/symlink/bq76920.pdf")
-				(field
-					(name "Description") "Lithium battery monitor, 3-5 cells, integrated balancing, I2C interface, TSSOP-20")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "DSG")
-					(type "output")
-				)
-				(pin
-					(num "2")
-					(name "CHG")
-					(type "output")
-				)
-				(pin
-					(num "3")
-					(name "VSS")
-					(type "power_in")
-				)
-				(pin
-					(num "4")
-					(name "SDA")
-					(type "bidirectional")
-				)
-				(pin
-					(num "5")
-					(name "SCL")
-					(type "input")
-				)
-				(pin
-					(num "6")
-					(name "TS1")
-					(type "passive")
-				)
-				(pin
-					(num "7")
-					(name "CAP1")
-					(type "passive")
-				)
-				(pin
-					(num "8")
-					(name "REGOUT")
-					(type "power_out")
-				)
-				(pin
-					(num "9")
-					(name "REGSRC")
-					(type "power_in")
-				)
-				(pin
-					(num "10")
-					(name "BAT")
-					(type "input")
-				)
-				(pin
-					(num "11")
-					(name "NC")
-					(type "no_connect")
-				)
-				(pin
-					(num "12")
-					(name "VC5")
-					(type "input")
-				)
-				(pin
-					(num "13")
-					(name "VC4")
-					(type "input")
-				)
-				(pin
-					(num "14")
-					(name "VC3")
-					(type "input")
-				)
-				(pin
-					(num "15")
-					(name "VC2")
-					(type "input")
-				)
-				(pin
-					(num "16")
-					(name "VC1")
-					(type "input")
-				)
-				(pin
-					(num "17")
-					(name "VC0")
-					(type "input")
-				)
-				(pin
-					(num "18")
-					(name "SRP")
-					(type "input")
-				)
-				(pin
-					(num "19")
-					(name "SRN")
-					(type "input")
-				)
-				(pin
-					(num "20")
-					(name "ALERT")
-					(type "bidirectional")
 				)
 			)
 		)
@@ -14024,85 +9973,6 @@
 				(pin
 					(num "2")
 					(name "Ext")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "Connector")
-			(part "USB_C_Receptacle_PowerOnly_24P")
-			(description "USB Power-Only 24P Type-C Receptacle connector")
-			(docs "https://www.usb.org/sites/default/files/documents/usb_type-c.zip")
-			(footprints
-				(fp "USB*C*Receptacle*")
-			)
-			(fields
-				(field
-					(name "Reference") "J")
-				(field
-					(name "Value") "USB_C_Receptacle_PowerOnly_24P")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet") "https://www.usb.org/sites/default/files/documents/usb_type-c.zip")
-				(field
-					(name "Description") "USB Power-Only 24P Type-C Receptacle connector")
-			)
-			(pins
-				(pin
-					(num "A1")
-					(name "GND")
-					(type "passive")
-				)
-				(pin
-					(num "A4")
-					(name "VBUS")
-					(type "passive")
-				)
-				(pin
-					(num "A5")
-					(name "CC1")
-					(type "bidirectional")
-				)
-				(pin
-					(num "A9")
-					(name "VBUS")
-					(type "power_in")
-				)
-				(pin
-					(num "A12")
-					(name "GND")
-					(type "power_in")
-				)
-				(pin
-					(num "B1")
-					(name "GND")
-					(type "passive")
-				)
-				(pin
-					(num "B4")
-					(name "VBUS")
-					(type "passive")
-				)
-				(pin
-					(num "B5")
-					(name "CC2")
-					(type "bidirectional")
-				)
-				(pin
-					(num "B9")
-					(name "VBUS")
-					(type "passive")
-				)
-				(pin
-					(num "B12")
-					(name "GND")
-					(type "passive")
-				)
-				(pin
-					(num "SH")
-					(name "SHIELD")
 					(type "passive")
 				)
 			)
@@ -14433,44 +10303,6 @@
 		)
 		(libpart
 			(lib "Device")
-			(part "LED")
-			(description "Light emitting diode")
-			(footprints
-				(fp "LED*")
-				(fp "LED_SMD:*")
-				(fp "LED_THT:*")
-			)
-			(fields
-				(field
-					(name "Reference") "D")
-				(field
-					(name "Value") "LED")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Light emitting diode")
-				(field
-					(name "Sim.Pins") "1=K 2=A")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "K")
-					(type "passive")
-				)
-				(pin
-					(num "2")
-					(name "A")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "Device")
 			(part "LED_RGBA")
 			(description "RGB LED, red/green/blue/anode")
 			(footprints
@@ -14550,118 +10382,6 @@
 			)
 		)
 		(libpart
-			(lib "Device")
-			(part "R_Shunt")
-			(description "Shunt resistor with Kelvin connections")
-			(footprints
-				(fp "R_*Shunt*")
-			)
-			(fields
-				(field
-					(name "Reference") "R")
-				(field
-					(name "Value") "R_Shunt")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Shunt resistor with Kelvin connections")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "")
-					(type "passive")
-				)
-				(pin
-					(num "2")
-					(name "")
-					(type "passive")
-				)
-				(pin
-					(num "3")
-					(name "")
-					(type "passive")
-				)
-				(pin
-					(num "4")
-					(name "")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "Device")
-			(part "Thermistor_NTC")
-			(description "Temperature dependent resistor, negative temperature coefficient")
-			(footprints
-				(fp "R_*")
-				(fp "RV_*")
-			)
-			(fields
-				(field
-					(name "Reference") "TH")
-				(field
-					(name "Value") "Thermistor_NTC")
-				(field
-					(name "Footprint")
-				)
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Temperature dependent resistor, negative temperature coefficient")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "")
-					(type "passive")
-				)
-				(pin
-					(num "2")
-					(name "")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "Diode")
-			(part "SMAJ16A")
-			(description "400W unidirectional Transient Voltage Suppressor, 16.0Vr, SMA(DO-214AC)")
-			(docs "https://www.littelfuse.com/media?resourcetype=datasheets&itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&filename=smaj-datasheet")
-			(footprints
-				(fp "D*SMA*")
-			)
-			(fields
-				(field
-					(name "Reference") "D")
-				(field
-					(name "Value") "SMAJ16A")
-				(field
-					(name "Footprint") "Diode_SMD:D_SMA")
-				(field
-					(name "Datasheet") "https://www.littelfuse.com/media?resourcetype=datasheets&itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&filename=smaj-datasheet")
-				(field
-					(name "Description") "400W unidirectional Transient Voltage Suppressor, 16.0Vr, SMA(DO-214AC)")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "A1")
-					(type "passive")
-				)
-				(pin
-					(num "2")
-					(name "A2")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
 			(lib "Diode")
 			(part "SMAJ20A")
 			(description "400W unidirectional Transient Voltage Suppressor, 20.0Vr, SMA(DO-214AC)")
@@ -14680,6 +10400,39 @@
 					(name "Datasheet") "https://www.littelfuse.com/media?resourcetype=datasheets&itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&filename=smaj-datasheet")
 				(field
 					(name "Description") "400W unidirectional Transient Voltage Suppressor, 20.0Vr, SMA(DO-214AC)")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "A1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "A2")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "Diode")
+			(part "SMAJ26A")
+			(description "400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)")
+			(docs "https://www.littelfuse.com/media?resourcetype=datasheets&itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&filename=smaj-datasheet")
+			(footprints
+				(fp "D*SMA*")
+			)
+			(fields
+				(field
+					(name "Reference") "D")
+				(field
+					(name "Value") "SMAJ26A")
+				(field
+					(name "Footprint") "Diode_SMD:D_SMA")
+				(field
+					(name "Datasheet") "https://www.littelfuse.com/media?resourcetype=datasheets&itemid=75e32973-b177-4ee3-a0ff-cedaf1abdb93&filename=smaj-datasheet")
+				(field
+					(name "Description") "400W unidirectional Transient Voltage Suppressor, 26.0Vr, SMA(DO-214AC)")
 			)
 			(pins
 				(pin
@@ -14744,154 +10497,6 @@
 					(num "6")
 					(name "IN+")
 					(type "input")
-				)
-			)
-		)
-		(libpart
-			(lib "Interface_USB")
-			(part "STUSB4500QTR")
-			(description "Stand-alone USB PD controller (with sink Auto-run mode), QFN-24")
-			(docs "https://www.st.com/resource/en/datasheet/stusb4500.pdf")
-			(footprints
-				(fp "QFN*4x4mm*P0.5mm*")
-			)
-			(fields
-				(field
-					(name "Reference") "U")
-				(field
-					(name "Value") "STUSB4500QTR")
-				(field
-					(name "Footprint") "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm")
-				(field
-					(name "Datasheet") "https://www.st.com/resource/en/datasheet/stusb4500.pdf")
-				(field
-					(name "Description") "Stand-alone USB PD controller (with sink Auto-run mode), QFN-24")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "CC1DB")
-					(type "bidirectional")
-				)
-				(pin
-					(num "2")
-					(name "CC1")
-					(type "bidirectional")
-				)
-				(pin
-					(num "3")
-					(name "NC")
-					(type "no_connect")
-				)
-				(pin
-					(num "4")
-					(name "CC2")
-					(type "bidirectional")
-				)
-				(pin
-					(num "5")
-					(name "CC2DB")
-					(type "bidirectional")
-				)
-				(pin
-					(num "6")
-					(name "RESET")
-					(type "input")
-				)
-				(pin
-					(num "7")
-					(name "SCL")
-					(type "input")
-				)
-				(pin
-					(num "8")
-					(name "SDA")
-					(type "bidirectional")
-				)
-				(pin
-					(num "9")
-					(name "DISCH")
-					(type "bidirectional")
-				)
-				(pin
-					(num "10")
-					(name "GND")
-					(type "power_in")
-				)
-				(pin
-					(num "11")
-					(name "ATTACH")
-					(type "open_collector")
-				)
-				(pin
-					(num "12")
-					(name "ADDR0")
-					(type "input")
-				)
-				(pin
-					(num "13")
-					(name "ADDR1")
-					(type "input")
-				)
-				(pin
-					(num "14")
-					(name "POWER_OK3")
-					(type "open_collector")
-				)
-				(pin
-					(num "15")
-					(name "GPIO")
-					(type "open_collector")
-				)
-				(pin
-					(num "16")
-					(name "VBUS_EN_SNK")
-					(type "open_collector")
-				)
-				(pin
-					(num "17")
-					(name "A_B_SIDE")
-					(type "open_collector")
-				)
-				(pin
-					(num "18")
-					(name "VBUS_VS_DISCH")
-					(type "input")
-				)
-				(pin
-					(num "19")
-					(name "ALERT")
-					(type "open_collector")
-				)
-				(pin
-					(num "20")
-					(name "POWER_OK2")
-					(type "open_collector")
-				)
-				(pin
-					(num "21")
-					(name "VREG_1V2")
-					(type "power_out")
-				)
-				(pin
-					(num "22")
-					(name "VSYS")
-					(type "power_in")
-				)
-				(pin
-					(num "23")
-					(name "VREG_2V7")
-					(type "power_out")
-				)
-				(pin
-					(num "24")
-					(name "VDD")
-					(type "power_in")
-				)
-				(pin
-					(num "25")
-					(name "GND")
-					(type "passive")
 				)
 			)
 		)
@@ -15553,6 +11158,74 @@
 			)
 		)
 		(libpart
+			(lib "Regulator_Linear")
+			(part "TPS7A4101DGN")
+			(description "High voltage low-dropout linear regulator, 7V to 50 VIn, 1.175V to 48V output, 50mA, MSOP-8-EP")
+			(docs "https://www.ti.com/lit/ds/symlink/tps7a4101.pdf")
+			(footprints
+				(fp "Texas*DGN0008B*1EP*3x3mm*P0.65mm*")
+			)
+			(fields
+				(field
+					(name "Reference") "U")
+				(field
+					(name "Value") "TPS7A4101DGN")
+				(field
+					(name "Footprint") "Package_SO:Texas_DGN0008B_VSSOP-8-1EP_3x3mm_P0.65mm_EP2x3mm_Mask1.88x1.98mm_ThermalVias")
+				(field
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tps7a4101.pdf")
+				(field
+					(name "Description") "High voltage low-dropout linear regulator, 7V to 50 VIn, 1.175V to 48V output, 50mA, MSOP-8-EP")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "OUT")
+					(type "power_out")
+				)
+				(pin
+					(num "2")
+					(name "FB")
+					(type "input")
+				)
+				(pin
+					(num "3")
+					(name "NC")
+					(type "no_connect")
+				)
+				(pin
+					(num "4")
+					(name "GND")
+					(type "power_in")
+				)
+				(pin
+					(num "5")
+					(name "EN")
+					(type "input")
+				)
+				(pin
+					(num "6")
+					(name "NC")
+					(type "no_connect")
+				)
+				(pin
+					(num "7")
+					(name "NC")
+					(type "no_connect")
+				)
+				(pin
+					(num "8")
+					(name "IN")
+					(type "power_in")
+				)
+				(pin
+					(num "9")
+					(name "GND")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
 			(lib "Regulator_Switching")
 			(part "LMR51430")
 			(description "4.5-V to 36-V, 3-A synchronous buck converter with 40-µA IQ, SOT-23-6")
@@ -15602,54 +11275,6 @@
 					(num "6")
 					(name "CB")
 					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "Regulator_Switching")
-			(part "TPS61040DBV")
-			(description "Synchronous Boost Regulator, Adjustable Output up to 28V, 400 mA Switch Current Limit, SOT-23-5")
-			(docs "http://www.ti.com/lit/ds/symlink/tps61040.pdf")
-			(footprints
-				(fp "SOT?23*")
-			)
-			(fields
-				(field
-					(name "Reference") "U")
-				(field
-					(name "Value") "TPS61040DBV")
-				(field
-					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
-				(field
-					(name "Datasheet") "http://www.ti.com/lit/ds/symlink/tps61040.pdf")
-				(field
-					(name "Description") "Synchronous Boost Regulator, Adjustable Output up to 28V, 400 mA Switch Current Limit, SOT-23-5")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "SW")
-					(type "power_out")
-				)
-				(pin
-					(num "2")
-					(name "GND")
-					(type "power_in")
-				)
-				(pin
-					(num "3")
-					(name "FB")
-					(type "input")
-				)
-				(pin
-					(num "4")
-					(name "EN")
-					(type "input")
-				)
-				(pin
-					(num "5")
-					(name "VIN")
-					(type "power_in")
 				)
 			)
 		)
@@ -15745,44 +11370,6 @@
 		)
 		(libpart
 			(lib "Transistor_FET")
-			(part "BSS84")
-			(description "-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23")
-			(docs "http://assets.nexperia.com/documents/data-sheet/BSS84.pdf")
-			(footprints
-				(fp "SOT?23*")
-			)
-			(fields
-				(field
-					(name "Reference") "Q")
-				(field
-					(name "Value") "BSS84")
-				(field
-					(name "Footprint") "Package_TO_SOT_SMD:SOT-23")
-				(field
-					(name "Datasheet") "http://assets.nexperia.com/documents/data-sheet/BSS84.pdf")
-				(field
-					(name "Description") "-0.13A Id, -50V Vds, P-Channel MOSFET, SOT-23")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "G")
-					(type "input")
-				)
-				(pin
-					(num "2")
-					(name "S")
-					(type "passive")
-				)
-				(pin
-					(num "3")
-					(name "D")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "Transistor_FET")
 			(part "SUD50P06-15")
 			(description "-50A Id, -60V Vds, TrenchFET P-Channel Power MOSFET, 15mOhm Ron, 165nC Qg, -55 to 150 °C, TO-252-2")
 			(docs "https://www.vishay.com/docs/68940/sud50p06.pdf")
@@ -15826,10 +11413,6 @@
 			(uri "${KICAD10_SYMBOL_DIR}/Amplifier_Current.kicad_sym")
 		)
 		(library
-			(logical "Battery_Management")
-			(uri "${KICAD10_SYMBOL_DIR}/Battery_Management.kicad_sym")
-		)
-		(library
 			(logical "Connector")
 			(uri "${KICAD10_SYMBOL_DIR}/Connector.kicad_sym")
 		)
@@ -15848,10 +11431,6 @@
 		(library
 			(logical "Driver_FET")
 			(uri "${KICAD10_SYMBOL_DIR}/Driver_FET.kicad_sym")
-		)
-		(library
-			(logical "Interface_USB")
-			(uri "${KICAD10_SYMBOL_DIR}/Interface_USB.kicad_sym")
 		)
 		(library
 			(logical "MCU_ST_STM32U5")
@@ -15880,6 +11459,10 @@
 		(library
 			(logical "RF_Switch")
 			(uri "${KICAD10_SYMBOL_DIR}/RF_Switch.kicad_sym")
+		)
+		(library
+			(logical "Regulator_Linear")
+			(uri "${KICAD10_SYMBOL_DIR}/Regulator_Linear.kicad_sym")
 		)
 		(library
 			(logical "Regulator_Switching")
@@ -15945,11 +11528,6 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "C4")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
 				(ref "C84")
 				(pin "1")
 				(pintype "passive")
@@ -15971,30 +11549,6 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "D42")
-				(pin "2")
-				(pinfunction "A_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "D43")
-				(pin "2")
-				(pinfunction "A_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "D44")
-				(pin "2")
-				(pinfunction "A_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "D45")
-				(pin "2")
-				(pinfunction "A_2")
-				(pintype "passive")
-			)
-			(node
 				(ref "FB1")
 				(pin "1")
 				(pintype "passive")
@@ -16006,35 +11560,9 @@
 				(pintype "power_in")
 			)
 			(node
-				(ref "L1")
-				(pin "1")
-				(pinfunction "1_1")
-				(pintype "passive")
-			)
-			(node
 				(ref "L2")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R124")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R125")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R126")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R127")
-				(pin "2")
 				(pintype "passive")
 			)
 			(node
@@ -16080,18 +11608,6 @@
 				(ref "U10")
 				(pin "9")
 				(pinfunction "VDDA_9")
-				(pintype "power_in")
-			)
-			(node
-				(ref "U2")
-				(pin "4")
-				(pinfunction "EN_4")
-				(pintype "input")
-			)
-			(node
-				(ref "U2")
-				(pin "5")
-				(pinfunction "VIN_5")
 				(pintype "power_in")
 			)
 			(node
@@ -16229,15 +11745,15 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "D2")
-				(pin "2")
-				(pinfunction "A_2")
-				(pintype "passive")
-			)
-			(node
 				(ref "R1")
 				(pin "1")
 				(pintype "passive")
+			)
+			(node
+				(ref "U2")
+				(pin "1")
+				(pinfunction "OUT_1")
+				(pintype "power_out")
 			)
 			(node
 				(ref "U31")
@@ -16282,122 +11798,6 @@
 		)
 		(net
 			(code "5")
-			(name "BATT_N")
-			(class "Default")
-			(node
-				(ref "C113")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C116")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C117")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C118")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C119")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "J41")
-				(pin "1")
-				(pinfunction "Pin_1_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "J42")
-				(pin "1")
-				(pinfunction "Pin_1_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q43")
-				(pin "1")
-				(pinfunction "S_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q43")
-				(pin "2")
-				(pinfunction "S_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q43")
-				(pin "3")
-				(pinfunction "S_3")
-				(pintype "passive")
-			)
-			(node
-				(ref "RT41")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "17")
-				(pinfunction "VC0_17")
-				(pintype "input")
-			)
-			(node
-				(ref "U42")
-				(pin "3")
-				(pinfunction "VSS_3")
-				(pintype "power_in")
-			)
-		)
-		(net
-			(code "6")
-			(name "BMS_ALERT")
-			(class "Default")
-			(node
-				(ref "R123")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U10")
-				(pin "32")
-				(pinfunction "PA11_32")
-				(pintype "bidirectional")
-			)
-			(node
-				(ref "U42")
-				(pin "20")
-				(pinfunction "ALERT_20")
-				(pintype "bidirectional")
-			)
-		)
-		(net
-			(code "7")
-			(name "CHG_STAT")
-			(class "Default")
-			(node
-				(ref "U10")
-				(pin "33")
-				(pinfunction "PA12_33")
-				(pintype "bidirectional")
-			)
-			(node
-				(ref "U41")
-				(pin "8")
-				(pinfunction "~{PG}_8")
-				(pintype "open_collector")
-			)
-		)
-		(net
-			(code "8")
 			(name "EJECT_PWM")
 			(class "Default")
 			(node
@@ -16419,76 +11819,16 @@
 			)
 		)
 		(net
-			(code "9")
+			(code "6")
 			(name "GND")
 			(class "Default")
-			(node
-				(ref "C100")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C101")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C102")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C103")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C104")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C106")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C107")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C109")
-				(pin "2")
-				(pintype "passive")
-			)
 			(node
 				(ref "C11")
 				(pin "2")
 				(pintype "passive")
 			)
 			(node
-				(ref "C110")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C111")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C112")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
 				(ref "C12")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "C120")
 				(pin "2")
 				(pintype "passive")
 			)
@@ -16673,6 +12013,16 @@
 				(pintype "passive")
 			)
 			(node
+				(ref "C70")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C71")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
 				(ref "C80")
 				(pin "2")
 				(pintype "passive")
@@ -16773,39 +12123,21 @@
 				(pintype "input")
 			)
 			(node
+				(ref "J1")
+				(pin "1")
+				(pinfunction "Pin_1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "J2")
+				(pin "1")
+				(pinfunction "Pin_1_1")
+				(pintype "passive")
+			)
+			(node
 				(ref "J20")
 				(pin "2")
 				(pinfunction "Ext_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "J40")
-				(pin "A1")
-				(pinfunction "GND_A1")
-				(pintype "passive")
-			)
-			(node
-				(ref "J40")
-				(pin "A12")
-				(pinfunction "GND_A12")
-				(pintype "power_in")
-			)
-			(node
-				(ref "J40")
-				(pin "B1")
-				(pinfunction "GND_B1")
-				(pintype "passive")
-			)
-			(node
-				(ref "J40")
-				(pin "B12")
-				(pinfunction "GND_B12")
-				(pintype "passive")
-			)
-			(node
-				(ref "J40")
-				(pin "SH")
-				(pinfunction "SHIELD_SH")
 				(pintype "passive")
 			)
 			(node
@@ -16863,66 +12195,7 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "Q41")
-				(pin "1")
-				(pinfunction "S_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q41")
-				(pin "2")
-				(pinfunction "S_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q41")
-				(pin "3")
-				(pinfunction "S_3")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q44")
-				(pin "2")
-				(pinfunction "S_2")
-				(pintype "passive")
-			)
-			(node
 				(ref "R10")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R100")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R102")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R107")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R109")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R111")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R112")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R119")
 				(pin "2")
 				(pintype "passive")
 			)
@@ -17002,11 +12275,6 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "RT40")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
 				(ref "U1")
 				(pin "2")
 				(pinfunction "GND_2")
@@ -17044,9 +12312,15 @@
 			)
 			(node
 				(ref "U2")
-				(pin "2")
-				(pinfunction "GND_2")
+				(pin "4")
+				(pinfunction "GND_4")
 				(pintype "power_in")
+			)
+			(node
+				(ref "U2")
+				(pin "9")
+				(pinfunction "GND_9")
+				(pintype "passive")
 			)
 			(node
 				(ref "U20")
@@ -17199,48 +12473,6 @@
 				(pintype "power_in")
 			)
 			(node
-				(ref "U40")
-				(pin "10")
-				(pinfunction "GND_10")
-				(pintype "power_in")
-			)
-			(node
-				(ref "U40")
-				(pin "12")
-				(pinfunction "ADDR0_12")
-				(pintype "input")
-			)
-			(node
-				(ref "U40")
-				(pin "13")
-				(pinfunction "ADDR1_13")
-				(pintype "input")
-			)
-			(node
-				(ref "U40")
-				(pin "25")
-				(pinfunction "GND_25")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "17")
-				(pinfunction "GND_17")
-				(pintype "power_in")
-			)
-			(node
-				(ref "U41")
-				(pin "25")
-				(pinfunction "GND_25")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "4")
-				(pinfunction "CE_4")
-				(pintype "input")
-			)
-			(node
 				(ref "Y20")
 				(pin "1")
 				(pinfunction "GND_1")
@@ -17254,7 +12486,7 @@
 			)
 		)
 		(net
-			(code "10")
+			(code "7")
 			(name "HOLD_PWM")
 			(class "Default")
 			(node
@@ -17276,63 +12508,7 @@
 			)
 		)
 		(net
-			(code "11")
-			(name "I2C_SCL")
-			(class "Default")
-			(node
-				(ref "R126")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U10")
-				(pin "30")
-				(pinfunction "PA9_30")
-				(pintype "bidirectional")
-			)
-			(node
-				(ref "U40")
-				(pin "7")
-				(pinfunction "SCL_7")
-				(pintype "input")
-			)
-			(node
-				(ref "U42")
-				(pin "5")
-				(pinfunction "SCL_5")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "12")
-			(name "I2C_SDA")
-			(class "Default")
-			(node
-				(ref "R127")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U10")
-				(pin "31")
-				(pinfunction "PA10_31")
-				(pintype "bidirectional")
-			)
-			(node
-				(ref "U40")
-				(pin "8")
-				(pinfunction "SDA_8")
-				(pintype "bidirectional")
-			)
-			(node
-				(ref "U42")
-				(pin "4")
-				(pinfunction "SDA_4")
-				(pintype "bidirectional")
-			)
-		)
-		(net
-			(code "13")
+			(code "8")
 			(name "I_EJECT")
 			(class "Default")
 			(node
@@ -17353,7 +12529,7 @@
 			)
 		)
 		(net
-			(code "14")
+			(code "9")
 			(name "I_HOLD")
 			(class "Default")
 			(node
@@ -17374,7 +12550,7 @@
 			)
 		)
 		(net
-			(code "15")
+			(code "10")
 			(name "I_LED")
 			(class "Default")
 			(node
@@ -17395,7 +12571,7 @@
 			)
 		)
 		(net
-			(code "16")
+			(code "11")
 			(name "LED_PWM")
 			(class "Default")
 			(node
@@ -17417,7 +12593,7 @@
 			)
 		)
 		(net
-			(code "17")
+			(code "12")
 			(name "NRST")
 			(class "Default")
 			(node
@@ -17445,7 +12621,7 @@
 			)
 		)
 		(net
-			(code "18")
+			(code "13")
 			(name "Net-(C56-Pad2)")
 			(class "Default")
 			(node
@@ -17460,7 +12636,7 @@
 			)
 		)
 		(net
-			(code "19")
+			(code "14")
 			(name "Net-(C59-Pad1)")
 			(class "Default")
 			(node
@@ -17493,7 +12669,7 @@
 			)
 		)
 		(net
-			(code "20")
+			(code "15")
 			(name "Net-(C60-Pad2)")
 			(class "Default")
 			(node
@@ -17519,7 +12695,7 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "16")
 			(name "Net-(C62-Pad2)")
 			(class "Default")
 			(node
@@ -17535,12 +12711,17 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "17")
 			(name "Net-(C69-Pad2)")
 			(class "Default")
 			(node
 				(ref "C69")
 				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C70")
+				(pin "1")
 				(pintype "passive")
 			)
 			(node
@@ -17550,7 +12731,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "18")
 			(name "Net-(D1-A1)")
 			(class "Default")
 			(node
@@ -17606,30 +12787,7 @@
 			)
 		)
 		(net
-			(code "24")
-			(name "Net-(D2-K)")
-			(class "Default")
-			(node
-				(ref "D2")
-				(pin "1")
-				(pinfunction "K_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "L1")
-				(pin "2")
-				(pinfunction "2_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U2")
-				(pin "1")
-				(pinfunction "SW_1")
-				(pintype "power_out")
-			)
-		)
-		(net
-			(code "25")
+			(code "19")
 			(name "Net-(D10-BK)")
 			(class "Default")
 			(node
@@ -17645,7 +12803,7 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "20")
 			(name "Net-(D10-GK)")
 			(class "Default")
 			(node
@@ -17661,7 +12819,7 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "21")
 			(name "Net-(D10-RK)")
 			(class "Default")
 			(node
@@ -17677,7 +12835,7 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "22")
 			(name "Net-(D30-A)")
 			(class "Default")
 			(node
@@ -17700,7 +12858,7 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "23")
 			(name "Net-(D31-A)")
 			(class "Default")
 			(node
@@ -17723,7 +12881,7 @@
 			)
 		)
 		(net
-			(code "30")
+			(code "24")
 			(name "Net-(D32-A)")
 			(class "Default")
 			(node
@@ -17746,7 +12904,7 @@
 			)
 		)
 		(net
-			(code "31")
+			(code "25")
 			(name "Net-(D32-K)")
 			(class "Default")
 			(node
@@ -17763,7 +12921,7 @@
 			)
 		)
 		(net
-			(code "32")
+			(code "26")
 			(name "Net-(D33-A2)")
 			(class "Default")
 			(node
@@ -17808,7 +12966,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "27")
 			(name "Net-(D34-A)")
 			(class "Default")
 			(node
@@ -17831,7 +12989,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "28")
 			(name "Net-(D34-K)")
 			(class "Default")
 			(node
@@ -17848,71 +13006,55 @@
 			)
 		)
 		(net
-			(code "35")
-			(name "Net-(D42-K)")
+			(code "29")
+			(name "Net-(J1-Pin_2)")
 			(class "Default")
 			(node
-				(ref "D42")
+				(ref "F1")
 				(pin "1")
-				(pinfunction "K_1")
 				(pintype "passive")
 			)
 			(node
-				(ref "R120")
+				(ref "J1")
+				(pin "2")
+				(pinfunction "Pin_2_2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "30")
+			(name "Net-(J2-Pin_2)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "2")
+				(pinfunction "Pin_2_2")
+				(pintype "passive")
+			)
+			(node
+				(ref "R14")
+				(pin "2")
+				(pintype "passive")
+			)
+		)
+		(net
+			(code "31")
+			(name "Net-(J2-Pin_3)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "3")
+				(pinfunction "Pin_3_3")
+				(pintype "passive")
+			)
+			(node
+				(ref "R15")
 				(pin "1")
 				(pintype "passive")
 			)
 		)
 		(net
-			(code "36")
-			(name "Net-(D43-K)")
-			(class "Default")
-			(node
-				(ref "D43")
-				(pin "1")
-				(pinfunction "K_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R121")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "37")
-			(name "Net-(D44-K)")
-			(class "Default")
-			(node
-				(ref "D44")
-				(pin "1")
-				(pinfunction "K_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R122")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "38")
-			(name "Net-(D45-K)")
-			(class "Default")
-			(node
-				(ref "D45")
-				(pin "1")
-				(pinfunction "K_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R123")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "39")
+			(code "32")
 			(name "Net-(J6-Pin_2)")
 			(class "Default")
 			(node
@@ -17933,7 +13075,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "33")
 			(name "Net-(J6-Pin_3)")
 			(class "Default")
 			(node
@@ -17954,7 +13096,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "34")
 			(name "Net-(J7-SWCLK{slash}TCK)")
 			(class "Default")
 			(node
@@ -17971,7 +13113,7 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "35")
 			(name "Net-(J7-SWDIO{slash}TMS)")
 			(class "Default")
 			(node
@@ -17988,7 +13130,7 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "36")
 			(name "Net-(J7-SWO{slash}TDO)")
 			(class "Default")
 			(node
@@ -18005,9 +13147,14 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "37")
 			(name "Net-(J20-In)")
 			(class "Default")
+			(node
+				(ref "C71")
+				(pin "1")
+				(pintype "passive")
+			)
 			(node
 				(ref "J20")
 				(pin "1")
@@ -18021,73 +13168,7 @@
 			)
 		)
 		(net
-			(code "45")
-			(name "Net-(J40-CC1)")
-			(class "Default")
-			(node
-				(ref "J40")
-				(pin "A5")
-				(pinfunction "CC1_A5")
-				(pintype "bidirectional")
-			)
-			(node
-				(ref "U40")
-				(pin "2")
-				(pinfunction "CC1_2")
-				(pintype "bidirectional")
-			)
-		)
-		(net
-			(code "46")
-			(name "Net-(J40-CC2)")
-			(class "Default")
-			(node
-				(ref "J40")
-				(pin "B5")
-				(pinfunction "CC2_B5")
-				(pintype "bidirectional")
-			)
-			(node
-				(ref "U40")
-				(pin "4")
-				(pinfunction "CC2_4")
-				(pintype "bidirectional")
-			)
-		)
-		(net
-			(code "47")
-			(name "Net-(J41-Pin_2)")
-			(class "Default")
-			(node
-				(ref "J41")
-				(pin "2")
-				(pinfunction "Pin_2_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R114")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "48")
-			(name "Net-(J41-Pin_3)")
-			(class "Default")
-			(node
-				(ref "J41")
-				(pin "3")
-				(pinfunction "Pin_3_3")
-				(pintype "passive")
-			)
-			(node
-				(ref "R115")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "49")
+			(code "38")
 			(name "Net-(Q1-G)")
 			(class "Default")
 			(node
@@ -18104,7 +13185,7 @@
 			)
 		)
 		(net
-			(code "50")
+			(code "39")
 			(name "Net-(Q30-G)")
 			(class "Default")
 			(node
@@ -18125,7 +13206,7 @@
 			)
 		)
 		(net
-			(code "51")
+			(code "40")
 			(name "Net-(Q31-B)")
 			(class "Default")
 			(node
@@ -18146,7 +13227,7 @@
 			)
 		)
 		(net
-			(code "52")
+			(code "41")
 			(name "Net-(Q31-C)")
 			(class "Default")
 			(node
@@ -18162,7 +13243,7 @@
 			)
 		)
 		(net
-			(code "53")
+			(code "42")
 			(name "Net-(Q32-G)")
 			(class "Default")
 			(node
@@ -18188,7 +13269,7 @@
 			)
 		)
 		(net
-			(code "54")
+			(code "43")
 			(name "Net-(Q33-G)")
 			(class "Default")
 			(node
@@ -18214,7 +13295,7 @@
 			)
 		)
 		(net
-			(code "55")
+			(code "44")
 			(name "Net-(Q34-G)")
 			(class "Default")
 			(node
@@ -18240,7 +13321,7 @@
 			)
 		)
 		(net
-			(code "56")
+			(code "45")
 			(name "Net-(Q35-G)")
 			(class "Default")
 			(node
@@ -18266,277 +13347,7 @@
 			)
 		)
 		(net
-			(code "57")
-			(name "Net-(Q40-D)")
-			(class "Default")
-			(node
-				(ref "C100")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "C101")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "C104")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "C106")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "J40")
-				(pin "A4")
-				(pinfunction "VBUS_A4")
-				(pintype "passive")
-			)
-			(node
-				(ref "J40")
-				(pin "A9")
-				(pinfunction "VBUS_A9")
-				(pintype "power_in")
-			)
-			(node
-				(ref "J40")
-				(pin "B4")
-				(pinfunction "VBUS_B4")
-				(pintype "passive")
-			)
-			(node
-				(ref "J40")
-				(pin "B9")
-				(pinfunction "VBUS_B9")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q40")
-				(pin "5")
-				(pinfunction "D_5")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q44")
-				(pin "3")
-				(pinfunction "D_3")
-				(pintype "passive")
-			)
-			(node
-				(ref "R101")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R103")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R104")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U40")
-				(pin "22")
-				(pinfunction "VSYS_22")
-				(pintype "power_in")
-			)
-			(node
-				(ref "U40")
-				(pin "24")
-				(pinfunction "VDD_24")
-				(pintype "power_in")
-			)
-			(node
-				(ref "U41")
-				(pin "24")
-				(pinfunction "VCC_24")
-				(pintype "power_in")
-			)
-		)
-		(net
-			(code "58")
-			(name "Net-(Q40-G)")
-			(class "Default")
-			(node
-				(ref "Q40")
-				(pin "4")
-				(pinfunction "G_4")
-				(pintype "input")
-			)
-			(node
-				(ref "U41")
-				(pin "21")
-				(pinfunction "HIDRV_21")
-				(pintype "output")
-			)
-		)
-		(net
-			(code "59")
-			(name "Net-(Q41-D)")
-			(class "Default")
-			(node
-				(ref "C108")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "L40")
-				(pin "1")
-				(pinfunction "1_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q40")
-				(pin "1")
-				(pinfunction "S_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q40")
-				(pin "2")
-				(pinfunction "S_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q40")
-				(pin "3")
-				(pinfunction "S_3")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q41")
-				(pin "5")
-				(pinfunction "D_5")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "20")
-				(pinfunction "PH_20")
-				(pintype "power_in")
-			)
-		)
-		(net
-			(code "60")
-			(name "Net-(Q41-G)")
-			(class "Default")
-			(node
-				(ref "Q41")
-				(pin "4")
-				(pinfunction "G_4")
-				(pintype "input")
-			)
-			(node
-				(ref "U41")
-				(pin "19")
-				(pinfunction "LODRV_19")
-				(pintype "output")
-			)
-		)
-		(net
-			(code "61")
-			(name "Net-(Q42-D)")
-			(class "Default")
-			(node
-				(ref "Q42")
-				(pin "5")
-				(pinfunction "D_5")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q43")
-				(pin "5")
-				(pinfunction "D_5")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "62")
-			(name "Net-(Q42-G)")
-			(class "Default")
-			(node
-				(ref "Q42")
-				(pin "4")
-				(pinfunction "G_4")
-				(pintype "input")
-			)
-			(node
-				(ref "U42")
-				(pin "2")
-				(pinfunction "CHG_2")
-				(pintype "output")
-			)
-		)
-		(net
-			(code "63")
-			(name "Net-(Q42-S-Pad1)")
-			(class "Default")
-			(node
-				(ref "Q42")
-				(pin "1")
-				(pinfunction "S_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q42")
-				(pin "2")
-				(pinfunction "S_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "Q42")
-				(pin "3")
-				(pinfunction "S_3")
-				(pintype "passive")
-			)
-			(node
-				(ref "R119")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "64")
-			(name "Net-(Q43-G)")
-			(class "Default")
-			(node
-				(ref "Q43")
-				(pin "4")
-				(pinfunction "G_4")
-				(pintype "input")
-			)
-			(node
-				(ref "U42")
-				(pin "1")
-				(pinfunction "DSG_1")
-				(pintype "output")
-			)
-		)
-		(net
-			(code "65")
-			(name "Net-(Q44-G)")
-			(class "Default")
-			(node
-				(ref "Q44")
-				(pin "1")
-				(pinfunction "G_1")
-				(pintype "input")
-			)
-			(node
-				(ref "U40")
-				(pin "9")
-				(pinfunction "DISCH_9")
-				(pintype "bidirectional")
-			)
-		)
-		(net
-			(code "66")
+			(code "46")
 			(name "Net-(R36-Pad1)")
 			(class "Default")
 			(node
@@ -18551,7 +13362,7 @@
 			)
 		)
 		(net
-			(code "67")
+			(code "47")
 			(name "Net-(R37-Pad1)")
 			(class "Default")
 			(node
@@ -18566,7 +13377,7 @@
 			)
 		)
 		(net
-			(code "68")
+			(code "48")
 			(name "Net-(R41-Pad1)")
 			(class "Default")
 			(node
@@ -18581,7 +13392,7 @@
 			)
 		)
 		(net
-			(code "69")
+			(code "49")
 			(name "Net-(U1-VCAP)")
 			(class "Default")
 			(node
@@ -18597,7 +13408,7 @@
 			)
 		)
 		(net
-			(code "70")
+			(code "50")
 			(name "Net-(U2-FB)")
 			(class "Default")
 			(node
@@ -18617,13 +13428,13 @@
 			)
 			(node
 				(ref "U2")
-				(pin "3")
-				(pinfunction "FB_3")
+				(pin "2")
+				(pinfunction "FB_2")
 				(pintype "input")
 			)
 		)
 		(net
-			(code "71")
+			(code "51")
 			(name "Net-(U3-CB)")
 			(class "Default")
 			(node
@@ -18639,7 +13450,7 @@
 			)
 		)
 		(net
-			(code "72")
+			(code "52")
 			(name "Net-(U3-EN)")
 			(class "Default")
 			(node
@@ -18655,7 +13466,7 @@
 			)
 		)
 		(net
-			(code "73")
+			(code "53")
 			(name "Net-(U3-FB)")
 			(class "Default")
 			(node
@@ -18676,7 +13487,7 @@
 			)
 		)
 		(net
-			(code "74")
+			(code "54")
 			(name "Net-(U3-SW)")
 			(class "Default")
 			(node
@@ -18698,7 +13509,39 @@
 			)
 		)
 		(net
-			(code "75")
+			(code "55")
+			(name "Net-(U10-PA9)")
+			(class "Default")
+			(node
+				(ref "R14")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U10")
+				(pin "30")
+				(pinfunction "PA9_30")
+				(pintype "bidirectional")
+			)
+		)
+		(net
+			(code "56")
+			(name "Net-(U10-PA10)")
+			(class "Default")
+			(node
+				(ref "R15")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "U10")
+				(pin "31")
+				(pinfunction "PA10_31")
+				(pintype "bidirectional")
+			)
+		)
+		(net
+			(code "57")
 			(name "Net-(U10-PB6)")
 			(class "Default")
 			(node
@@ -18714,7 +13557,7 @@
 			)
 		)
 		(net
-			(code "76")
+			(code "58")
 			(name "Net-(U10-PB7)")
 			(class "Default")
 			(node
@@ -18730,7 +13573,7 @@
 			)
 		)
 		(net
-			(code "77")
+			(code "59")
 			(name "Net-(U10-PB8)")
 			(class "Default")
 			(node
@@ -18746,7 +13589,7 @@
 			)
 		)
 		(net
-			(code "78")
+			(code "60")
 			(name "Net-(U10-PC14)")
 			(class "Default")
 			(node
@@ -18768,7 +13611,7 @@
 			)
 		)
 		(net
-			(code "79")
+			(code "61")
 			(name "Net-(U10-PC15)")
 			(class "Default")
 			(node
@@ -18790,7 +13633,7 @@
 			)
 		)
 		(net
-			(code "80")
+			(code "62")
 			(name "Net-(U10-PH3)")
 			(class "Default")
 			(node
@@ -18806,7 +13649,7 @@
 			)
 		)
 		(net
-			(code "81")
+			(code "63")
 			(name "Net-(U10-VCAP)")
 			(class "Default")
 			(node
@@ -18822,7 +13665,7 @@
 			)
 		)
 		(net
-			(code "82")
+			(code "64")
 			(name "Net-(U20-DCC_SW)")
 			(class "Default")
 			(node
@@ -18839,7 +13682,7 @@
 			)
 		)
 		(net
-			(code "83")
+			(code "65")
 			(name "Net-(U20-DIO2)")
 			(class "Default")
 			(node
@@ -18855,7 +13698,7 @@
 			)
 		)
 		(net
-			(code "84")
+			(code "66")
 			(name "Net-(U20-DIO3)")
 			(class "Default")
 			(node
@@ -18871,7 +13714,7 @@
 			)
 		)
 		(net
-			(code "85")
+			(code "67")
 			(name "Net-(U20-RFI_N)")
 			(class "Default")
 			(node
@@ -18893,7 +13736,7 @@
 			)
 		)
 		(net
-			(code "86")
+			(code "68")
 			(name "Net-(U20-RFI_P)")
 			(class "Default")
 			(node
@@ -18915,7 +13758,7 @@
 			)
 		)
 		(net
-			(code "87")
+			(code "69")
 			(name "Net-(U20-RFO)")
 			(class "Default")
 			(node
@@ -18932,7 +13775,7 @@
 			)
 		)
 		(net
-			(code "88")
+			(code "70")
 			(name "Net-(U20-VREG)")
 			(class "Default")
 			(node
@@ -18954,7 +13797,7 @@
 			)
 		)
 		(net
-			(code "89")
+			(code "71")
 			(name "Net-(U20-VR_PA)")
 			(class "Default")
 			(node
@@ -18981,7 +13824,7 @@
 			)
 		)
 		(net
-			(code "90")
+			(code "72")
 			(name "Net-(U20-XTA)")
 			(class "Default")
 			(node
@@ -18997,7 +13840,7 @@
 			)
 		)
 		(net
-			(code "91")
+			(code "73")
 			(name "Net-(U21-J1)")
 			(class "Default")
 			(node
@@ -19013,7 +13856,7 @@
 			)
 		)
 		(net
-			(code "92")
+			(code "74")
 			(name "Net-(U21-J2)")
 			(class "Default")
 			(node
@@ -19035,7 +13878,7 @@
 			)
 		)
 		(net
-			(code "93")
+			(code "75")
 			(name "Net-(U21-J3)")
 			(class "Default")
 			(node
@@ -19056,7 +13899,7 @@
 			)
 		)
 		(net
-			(code "94")
+			(code "76")
 			(name "Net-(U21-V1)")
 			(class "Default")
 			(node
@@ -19077,7 +13920,7 @@
 			)
 		)
 		(net
-			(code "95")
+			(code "77")
 			(name "Net-(U21-V2)")
 			(class "Default")
 			(node
@@ -19098,7 +13941,7 @@
 			)
 		)
 		(net
-			(code "96")
+			(code "78")
 			(name "Net-(U30-+)")
 			(class "Default")
 			(node
@@ -19132,7 +13975,7 @@
 			)
 		)
 		(net
-			(code "97")
+			(code "79")
 			(name "Net-(U31-OUTH)")
 			(class "Default")
 			(node
@@ -19148,7 +13991,7 @@
 			)
 		)
 		(net
-			(code "98")
+			(code "80")
 			(name "Net-(U31-OUTL)")
 			(class "Default")
 			(node
@@ -19164,7 +14007,7 @@
 			)
 		)
 		(net
-			(code "99")
+			(code "81")
 			(name "Net-(U32-+)")
 			(class "Default")
 			(node
@@ -19198,7 +14041,7 @@
 			)
 		)
 		(net
-			(code "100")
+			(code "82")
 			(name "Net-(U33-OUTH)")
 			(class "Default")
 			(node
@@ -19214,7 +14057,7 @@
 			)
 		)
 		(net
-			(code "101")
+			(code "83")
 			(name "Net-(U33-OUTL)")
 			(class "Default")
 			(node
@@ -19230,7 +14073,7 @@
 			)
 		)
 		(net
-			(code "102")
+			(code "84")
 			(name "Net-(U34-OUTH)")
 			(class "Default")
 			(node
@@ -19246,7 +14089,7 @@
 			)
 		)
 		(net
-			(code "103")
+			(code "85")
 			(name "Net-(U34-OUTL)")
 			(class "Default")
 			(node
@@ -19262,7 +14105,7 @@
 			)
 		)
 		(net
-			(code "104")
+			(code "86")
 			(name "Net-(U35-OUTH)")
 			(class "Default")
 			(node
@@ -19278,7 +14121,7 @@
 			)
 		)
 		(net
-			(code "105")
+			(code "87")
 			(name "Net-(U35-OUTL)")
 			(class "Default")
 			(node
@@ -19294,7 +14137,7 @@
 			)
 		)
 		(net
-			(code "106")
+			(code "88")
 			(name "Net-(U36-+)")
 			(class "Default")
 			(node
@@ -19328,594 +14171,7 @@
 			)
 		)
 		(net
-			(code "107")
-			(name "Net-(U40-POWER_OK2)")
-			(class "Default")
-			(node
-				(ref "R122")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U40")
-				(pin "20")
-				(pinfunction "POWER_OK2_20")
-				(pintype "open_collector")
-			)
-		)
-		(net
-			(code "108")
-			(name "Net-(U40-RESET)")
-			(class "Default")
-			(node
-				(ref "R100")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U40")
-				(pin "6")
-				(pinfunction "RESET_6")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "109")
-			(name "Net-(U40-VBUS_VS_DISCH)")
-			(class "Default")
-			(node
-				(ref "R101")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R102")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U40")
-				(pin "18")
-				(pinfunction "VBUS_VS_DISCH_18")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "110")
-			(name "Net-(U40-VREG_1V2)")
-			(class "Default")
-			(node
-				(ref "C102")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U40")
-				(pin "21")
-				(pinfunction "VREG_1V2_21")
-				(pintype "power_out")
-			)
-		)
-		(net
-			(code "111")
-			(name "Net-(U40-VREG_2V7)")
-			(class "Default")
-			(node
-				(ref "C103")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U40")
-				(pin "23")
-				(pinfunction "VREG_2V7_23")
-				(pintype "power_out")
-			)
-		)
-		(net
-			(code "112")
-			(name "Net-(U41-ACN)")
-			(class "Default")
-			(node
-				(ref "C105")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R103")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "1")
-				(pinfunction "ACN_1")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "113")
-			(name "Net-(U41-ACP)")
-			(class "Default")
-			(node
-				(ref "C105")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R104")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "2")
-				(pinfunction "ACP_2")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "114")
-			(name "Net-(U41-ACSET)")
-			(class "Default")
-			(node
-				(ref "R110")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R111")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "16")
-				(pinfunction "ACSET_16")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "115")
-			(name "Net-(U41-BTST)")
-			(class "Default")
-			(node
-				(ref "C108")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "22")
-				(pinfunction "BTST_22")
-				(pintype "power_in")
-			)
-		)
-		(net
-			(code "116")
-			(name "Net-(U41-ISET1)")
-			(class "Default")
-			(node
-				(ref "R108")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R109")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "11")
-				(pinfunction "ISET1_11")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "117")
-			(name "Net-(U41-ISET2)")
-			(class "Default")
-			(node
-				(ref "R112")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "15")
-				(pinfunction "ISET2_15")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "118")
-			(name "Net-(U41-REGN)")
-			(class "Default")
-			(node
-				(ref "C107")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "18")
-				(pinfunction "REGN_18")
-				(pintype "output")
-			)
-		)
-		(net
-			(code "119")
-			(name "Net-(U41-SRP)")
-			(class "Default")
-			(node
-				(ref "L40")
-				(pin "2")
-				(pinfunction "2_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R105")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "14")
-				(pinfunction "SRP_14")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "120")
-			(name "Net-(U41-STAT1)")
-			(class "Default")
-			(node
-				(ref "R120")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R124")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "5")
-				(pinfunction "STAT1_5")
-				(pintype "open_collector")
-			)
-		)
-		(net
-			(code "121")
-			(name "Net-(U41-STAT2)")
-			(class "Default")
-			(node
-				(ref "R121")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R125")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "9")
-				(pinfunction "STAT2_9")
-				(pintype "open_collector")
-			)
-		)
-		(net
-			(code "122")
-			(name "Net-(U41-TS)")
-			(class "Default")
-			(node
-				(ref "R113")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "RT40")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "6")
-				(pinfunction "TS_6")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "123")
-			(name "Net-(U41-TTC)")
-			(class "Default")
-			(node
-				(ref "C111")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "7")
-				(pinfunction "TTC_7")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "124")
-			(name "Net-(U41-VFB)")
-			(class "Default")
-			(node
-				(ref "R106")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R107")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "12")
-				(pinfunction "VFB_12")
-				(pintype "output")
-			)
-		)
-		(net
-			(code "125")
-			(name "Net-(U41-VREF)")
-			(class "Default")
-			(node
-				(ref "C112")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R108")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R110")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R113")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "10")
-				(pinfunction "VREF_10")
-				(pintype "power_out")
-			)
-		)
-		(net
-			(code "126")
-			(name "Net-(U42-BAT)")
-			(class "Default")
-			(node
-				(ref "C116")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R117")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "10")
-				(pinfunction "BAT_10")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "127")
-			(name "Net-(U42-CAP1)")
-			(class "Default")
-			(node
-				(ref "C118")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "7")
-				(pinfunction "CAP1_7")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "128")
-			(name "Net-(U42-REGOUT)")
-			(class "Default")
-			(node
-				(ref "C119")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "8")
-				(pinfunction "REGOUT_8")
-				(pintype "power_out")
-			)
-		)
-		(net
-			(code "129")
-			(name "Net-(U42-REGSRC)")
-			(class "Default")
-			(node
-				(ref "C117")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R118")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "9")
-				(pinfunction "REGSRC_9")
-				(pintype "power_in")
-			)
-		)
-		(net
-			(code "130")
-			(name "Net-(U42-SRN)")
-			(class "Default")
-			(node
-				(ref "R119")
-				(pin "4")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "19")
-				(pinfunction "SRN_19")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "131")
-			(name "Net-(U42-SRP)")
-			(class "Default")
-			(node
-				(ref "R119")
-				(pin "3")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "18")
-				(pinfunction "SRP_18")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "132")
-			(name "Net-(U42-TS1)")
-			(class "Default")
-			(node
-				(ref "RT41")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "6")
-				(pinfunction "TS1_6")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "133")
-			(name "Net-(U42-VC1)")
-			(class "Default")
-			(node
-				(ref "C113")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "C114")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R114")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "16")
-				(pinfunction "VC1_16")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "134")
-			(name "Net-(U42-VC2)")
-			(class "Default")
-			(node
-				(ref "C114")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "C115")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R115")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "15")
-				(pinfunction "VC2_15")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "135")
-			(name "Net-(U42-VC3)")
-			(class "Default")
-			(node
-				(ref "C115")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R116")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R117")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R118")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U42")
-				(pin "12")
-				(pinfunction "VC5_12")
-				(pintype "input")
-			)
-			(node
-				(ref "U42")
-				(pin "13")
-				(pinfunction "VC4_13")
-				(pintype "input")
-			)
-			(node
-				(ref "U42")
-				(pin "14")
-				(pinfunction "VC3_14")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "136")
+			(code "89")
 			(name "Net-(Y20-OUT)")
 			(class "Default")
 			(node
@@ -19931,7 +14187,7 @@
 			)
 		)
 		(net
-			(code "137")
+			(code "90")
 			(name "Net-(Y20-VCC)")
 			(class "Default")
 			(node
@@ -19952,65 +14208,7 @@
 			)
 		)
 		(net
-			(code "138")
-			(name "PACK_P")
-			(class "Default")
-			(node
-				(ref "C109")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "C110")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "C120")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "F1")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "J41")
-				(pin "4")
-				(pinfunction "Pin_4_4")
-				(pintype "passive")
-			)
-			(node
-				(ref "J42")
-				(pin "2")
-				(pinfunction "Pin_2_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R105")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R106")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R116")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U41")
-				(pin "13")
-				(pinfunction "SRN_13")
-				(pintype "input")
-			)
-		)
-		(net
-			(code "139")
+			(code "91")
 			(name "RF_RXEN")
 			(class "Default")
 			(node
@@ -20026,7 +14224,7 @@
 			)
 		)
 		(net
-			(code "140")
+			(code "92")
 			(name "SIREN_EN")
 			(class "Default")
 			(node
@@ -20048,7 +14246,7 @@
 			)
 		)
 		(net
-			(code "141")
+			(code "93")
 			(name "SW_LOCK")
 			(class "Default")
 			(node
@@ -20069,7 +14267,7 @@
 			)
 		)
 		(net
-			(code "142")
+			(code "94")
 			(name "SW_PAYLOAD")
 			(class "Default")
 			(node
@@ -20090,7 +14288,7 @@
 			)
 		)
 		(net
-			(code "143")
+			(code "95")
 			(name "SX_BUSY")
 			(class "Default")
 			(node
@@ -20107,7 +14305,7 @@
 			)
 		)
 		(net
-			(code "144")
+			(code "96")
 			(name "SX_DIO1")
 			(class "Default")
 			(node
@@ -20124,7 +14322,7 @@
 			)
 		)
 		(net
-			(code "145")
+			(code "97")
 			(name "SX_MISO")
 			(class "Default")
 			(node
@@ -20141,7 +14339,7 @@
 			)
 		)
 		(net
-			(code "146")
+			(code "98")
 			(name "SX_MOSI")
 			(class "Default")
 			(node
@@ -20158,7 +14356,7 @@
 			)
 		)
 		(net
-			(code "147")
+			(code "99")
 			(name "SX_NSS")
 			(class "Default")
 			(node
@@ -20175,7 +14373,7 @@
 			)
 		)
 		(net
-			(code "148")
+			(code "100")
 			(name "SX_RESET")
 			(class "Default")
 			(node
@@ -20192,7 +14390,7 @@
 			)
 		)
 		(net
-			(code "149")
+			(code "101")
 			(name "SX_SCK")
 			(class "Default")
 			(node
@@ -20209,7 +14407,7 @@
 			)
 		)
 		(net
-			(code "150")
+			(code "102")
 			(name "VIN")
 			(class "Default")
 			(node
@@ -20224,6 +14422,11 @@
 			)
 			(node
 				(ref "C3")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C4")
 				(pin "1")
 				(pintype "passive")
 			)
@@ -20285,6 +14488,18 @@
 				(pintype "input")
 			)
 			(node
+				(ref "U2")
+				(pin "5")
+				(pinfunction "EN_5")
+				(pintype "input")
+			)
+			(node
+				(ref "U2")
+				(pin "8")
+				(pinfunction "IN_8")
+				(pintype "power_in")
+			)
+			(node
 				(ref "U3")
 				(pin "3")
 				(pinfunction "VIN_3")
@@ -20292,7 +14507,7 @@
 			)
 		)
 		(net
-			(code "151")
+			(code "103")
 			(name "VIN_SENSE")
 			(class "Default")
 			(node
@@ -20318,7 +14533,18 @@
 			)
 		)
 		(net
-			(code "152")
+			(code "104")
+			(name "unconnected-(J2-Pin_4-Pad4)")
+			(class "Default")
+			(node
+				(ref "J2")
+				(pin "4")
+				(pinfunction "Pin_4_4")
+				(pintype "passive+no_connect")
+			)
+		)
+		(net
+			(code "105")
 			(name "unconnected-(J7-KEY-Pad7)")
 			(class "Default")
 			(node
@@ -20329,7 +14555,7 @@
 			)
 		)
 		(net
-			(code "153")
+			(code "106")
 			(name "unconnected-(J7-NC{slash}TDI-Pad8)")
 			(class "Default")
 			(node
@@ -20340,7 +14566,40 @@
 			)
 		)
 		(net
-			(code "154")
+			(code "107")
+			(name "unconnected-(U2-NC-Pad3)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "3")
+				(pinfunction "NC_3")
+				(pintype "no_connect")
+			)
+		)
+		(net
+			(code "108")
+			(name "unconnected-(U2-NC-Pad6)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "6")
+				(pinfunction "NC_6")
+				(pintype "no_connect")
+			)
+		)
+		(net
+			(code "109")
+			(name "unconnected-(U2-NC-Pad7)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "7")
+				(pinfunction "NC_7")
+				(pintype "no_connect")
+			)
+		)
+		(net
+			(code "110")
 			(name "unconnected-(U4-CT-Pad4)")
 			(class "Default")
 			(node
@@ -20351,7 +14610,29 @@
 			)
 		)
 		(net
-			(code "155")
+			(code "111")
+			(name "unconnected-(U10-PA11-Pad32)")
+			(class "Default")
+			(node
+				(ref "U10")
+				(pin "32")
+				(pinfunction "PA11_32")
+				(pintype "bidirectional+no_connect")
+			)
+		)
+		(net
+			(code "112")
+			(name "unconnected-(U10-PA12-Pad33)")
+			(class "Default")
+			(node
+				(ref "U10")
+				(pin "33")
+				(pinfunction "PA12_33")
+				(pintype "bidirectional+no_connect")
+			)
+		)
+		(net
+			(code "113")
 			(name "unconnected-(U10-PB9-Pad46)")
 			(class "Default")
 			(node
@@ -20362,7 +14643,7 @@
 			)
 		)
 		(net
-			(code "156")
+			(code "114")
 			(name "unconnected-(U10-PB15-Pad28)")
 			(class "Default")
 			(node
@@ -20373,7 +14654,7 @@
 			)
 		)
 		(net
-			(code "157")
+			(code "115")
 			(name "unconnected-(U10-PC13-Pad2)")
 			(class "Default")
 			(node
@@ -20384,7 +14665,7 @@
 			)
 		)
 		(net
-			(code "158")
+			(code "116")
 			(name "unconnected-(U10-PH0-Pad5)")
 			(class "Default")
 			(node
@@ -20395,7 +14676,7 @@
 			)
 		)
 		(net
-			(code "159")
+			(code "117")
 			(name "unconnected-(U10-PH1-Pad6)")
 			(class "Default")
 			(node
@@ -20406,7 +14687,7 @@
 			)
 		)
 		(net
-			(code "160")
+			(code "118")
 			(name "unconnected-(U20-XTB-Pad4)")
 			(class "Default")
 			(node
@@ -20417,139 +14698,7 @@
 			)
 		)
 		(net
-			(code "161")
-			(name "unconnected-(U40-ALERT-Pad19)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "19")
-				(pinfunction "ALERT_19")
-				(pintype "open_collector+no_connect")
-			)
-		)
-		(net
-			(code "162")
-			(name "unconnected-(U40-ATTACH-Pad11)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "11")
-				(pinfunction "ATTACH_11")
-				(pintype "open_collector+no_connect")
-			)
-		)
-		(net
-			(code "163")
-			(name "unconnected-(U40-A_B_SIDE-Pad17)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "17")
-				(pinfunction "A_B_SIDE_17")
-				(pintype "open_collector+no_connect")
-			)
-		)
-		(net
-			(code "164")
-			(name "unconnected-(U40-CC1DB-Pad1)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "1")
-				(pinfunction "CC1DB_1")
-				(pintype "bidirectional+no_connect")
-			)
-		)
-		(net
-			(code "165")
-			(name "unconnected-(U40-CC2DB-Pad5)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "5")
-				(pinfunction "CC2DB_5")
-				(pintype "bidirectional+no_connect")
-			)
-		)
-		(net
-			(code "166")
-			(name "unconnected-(U40-GPIO-Pad15)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "15")
-				(pinfunction "GPIO_15")
-				(pintype "open_collector+no_connect")
-			)
-		)
-		(net
-			(code "167")
-			(name "unconnected-(U40-NC-Pad3)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "3")
-				(pinfunction "NC_3")
-				(pintype "no_connect")
-			)
-		)
-		(net
-			(code "168")
-			(name "unconnected-(U40-POWER_OK3-Pad14)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "14")
-				(pinfunction "POWER_OK3_14")
-				(pintype "open_collector+no_connect")
-			)
-		)
-		(net
-			(code "169")
-			(name "unconnected-(U40-VBUS_EN_SNK-Pad16)")
-			(class "Default")
-			(node
-				(ref "U40")
-				(pin "16")
-				(pinfunction "VBUS_EN_SNK_16")
-				(pintype "open_collector+no_connect")
-			)
-		)
-		(net
-			(code "170")
-			(name "unconnected-(U41-~{ACDRV}-Pad3)")
-			(class "Default")
-			(node
-				(ref "U41")
-				(pin "3")
-				(pinfunction "~{ACDRV}_3")
-				(pintype "output+no_connect")
-			)
-		)
-		(net
-			(code "171")
-			(name "unconnected-(U41-~{BATDRV}-Pad23)")
-			(class "Default")
-			(node
-				(ref "U41")
-				(pin "23")
-				(pinfunction "~{BATDRV}_23")
-				(pintype "output+no_connect")
-			)
-		)
-		(net
-			(code "172")
-			(name "unconnected-(U42-NC-Pad11)")
-			(class "Default")
-			(node
-				(ref "U42")
-				(pin "11")
-				(pinfunction "NC_11")
-				(pintype "no_connect")
-			)
-		)
-		(net
-			(code "173")
+			(code "119")
 			(name "unconnected-(Y20-NC-Pad2)")
 			(class "Default")
 			(node
@@ -20560,7 +14709,7 @@
 			)
 		)
 		(net
-			(code "174")
+			(code "120")
 			(name "unconnected-(Y20-NC-Pad5)")
 			(class "Default")
 			(node

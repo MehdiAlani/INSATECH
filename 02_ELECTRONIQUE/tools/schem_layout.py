@@ -17,9 +17,7 @@ import math
 
 G = 2.54
 POWER_NETS = {"GND": "power:GND", "VIN": "power:VCC", "+3V3": "power:+3V3",
-              "+3V3_RF": "power:VDD", "+12V_GD": "power:+12V",
-              "BATT_N": "power:GNDPWR", "PACK_P": "power:VBUS"}
-GROUND_NETS = {"GND", "BATT_N"}          # symbols that point DOWN
+              "+3V3_RF": "power:VDD", "+12V_GD": "power:+12V"}
 DIRS = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 BEND, CROSS, STEP = 3, 2, 1
 
@@ -203,7 +201,7 @@ def rotation_ok(pl):
         net = pl.p.pins.get(num)
         if net == "GND" and dy != 1:
             return False
-        if net in POWER_NETS and net not in GROUND_NETS and dy != -1:
+        if net in POWER_NETS and net != "GND" and dy != -1:
             return False
     return True
 

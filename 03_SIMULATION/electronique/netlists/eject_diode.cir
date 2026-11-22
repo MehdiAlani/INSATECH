@@ -1,11 +1,11 @@
-* Ejection solenoid 12 V / 4 ohm (36 W), stroke 10 mm, plunger+rod 30 g - BRC-M400 Rev D
+* Ejection solenoid 24 V / 16 ohm, stroke 10 mm, plunger+rod 30 g - BRC-M400 Rev C
 * coil flux linkage lam integrated on a 1 F node; I = lam / L(x); L(x) = 10 mH + Kl/(13 mm - x)
-Bemf 0 lam I = v(vact) - v(dn) - 4*v(ic)
+Bemf 0 lam I = v(vact) - v(dn) - 16*v(ic)
 Clam lam 0 1
-Bic ic 0 V = v(lam) / (0.0025 + 1.5e-4/(0.013 - v(x)))
+Bic ic 0 V = v(lam) / (0.010 + 6e-4/(0.013 - v(x)))
 Bcoil vact dn I = v(ic)
 * magnetic force F = 1/2 I^2 dL/dx ; spring 300 N/m + 1 N preload ; viscous 1.5 N.s/m ; end stops
-Bforce f 0 V = 0.5*v(ic)*v(ic)*1.5e-4/((0.013 - v(x))*(0.013 - v(x)))
+Bforce f 0 V = 0.5*v(ic)*v(ic)*6e-4/((0.013 - v(x))*(0.013 - v(x)))
 Bstop st 0 V = 2e5*max(v(x)-0.010, 0) + 2e5*min(v(x), 0) + 30*v(u)*(v(x) > 0.010 ? 1 : (v(x) < 0 ? 1 : 0))
 Bacc 0 u I = (v(f) - 300*v(x) - 1.0 - 1.5*v(u) - v(st)) / 0.03
 Cu u 0 1
@@ -13,12 +13,12 @@ Bpos 0 x I = v(u)
 Cx x 0 1
 * FIRE: full-on 60 ms pull-in pulse
 Vpwm pwm 0 PULSE(0 3.3 2m 5n 5n 60m 1)
-Vact vact 0 PWL(0 0 0.5m 12)
+Vact vact 0 PWL(0 0 0.5m 24)
 Cact vact 0 100u
 Dfw dn vact SS34
 M1 dn g src BSC028
 Rsh src 0 10m
-* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.96 V, elevateur TPS61040)
+* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.85 V)
 Vdd vdd 0 PWL(0 0 0.5m 11.85)
 Cdd vdd 0 1u
 Bin inl 0 V = v(pwm) > 1.8 ? 1 : 0

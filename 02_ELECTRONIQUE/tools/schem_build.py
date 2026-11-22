@@ -26,7 +26,7 @@ def layout_section(M, sh, global_nets):
             label_pins.add((cands[0][1], cands[0][2]))
 
     best = None
-    for margin in (1, 2, 3, 4, 5):
+    for margin in (1, 2, 3):
         placed = SL.place_sheet(_Sym, parts, label_pins, margin)
         paths, fails, _R = SL.route_sheet(placed, label_pins)
         if best is None or len(fails) < len(best[2]):
@@ -55,7 +55,7 @@ def emit_section(M, sh, ox, oy, counters, inst_path):
     offx, offy = ox - sh.cbox[0], oy - sh.cbox[1]
 
     def power_angle(net, dx, dy):
-        if net in SL.GROUND_NETS:
+        if net == "GND":
             return {(0, 1): 0, (0, -1): 180, (1, 0): 90, (-1, 0): 270}[(dx, dy)]
         return {(0, -1): 0, (0, 1): 180, (-1, 0): 90, (1, 0): 270}[(dx, dy)]
 

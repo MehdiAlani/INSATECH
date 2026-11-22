@@ -1,6 +1,6 @@
 * LMR51430 behavioural peak-current-mode buck - BRC-M400 Rev C logic rail
 * Datasheet values: fsw 500 kHz, Rds(on) HS 120 mOhm / LS 70 mOhm, Vref 0.600 V, tSS 4 ms
-Vin vin 0 12.6
+Vin vin 0 24
 Cin vin 0 10u
 Vclk clk 0 PULSE(0 1 0 2n 2n 40n 2u)
 Vramp ramp 0 PULSE(0 0.1 0 1.99u 2n 1n 2u)
