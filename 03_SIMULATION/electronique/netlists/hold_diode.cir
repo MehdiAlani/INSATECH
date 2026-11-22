@@ -1,13 +1,13 @@
-* Fail-safe holding electromagnet 24 V / 57 ohm (10 W), L = 150 mH - BRC-M400 Rev C
-Lh vact hl 150m
-Rh hl dn 57
+* Fail-safe holding electromagnet 12 V / 14.4 ohm (10 W), L = 37.9 mH - BRC-M400 Rev D
+Lh vact hl 37.9m
+Rh hl dn 14.4
 Vpwm pwm 0 PULSE(0 3.3 5m 5n 5n 300m 1)
-Vact vact 0 PWL(0 0 0.5m 24)
+Vact vact 0 PWL(0 0 0.5m 12)
 Cact vact 0 100u
 Dfw dn vact SS34
 M1 dn g src BSC028
 Rsh src 0 10m
-* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.85 V)
+* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.96 V, elevateur TPS61040)
 Vdd vdd 0 PWL(0 0 0.5m 11.85)
 Cdd vdd 0 1u
 Bin inl 0 V = v(pwm) > 1.8 ? 1 : 0

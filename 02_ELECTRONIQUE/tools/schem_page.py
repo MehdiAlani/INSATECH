@@ -32,6 +32,7 @@ STYLE = {
     "radio": ("03", "RADIO LoRa  ·  Semtech SX1262 · 868 MHz", (106, 27, 154), (246, 238, 250)),
     "loads": ("04", "ACTIONNEURS DE LARGAGE & SIGNALISATION", (183, 28, 28), (253, 239, 239)),
     "io": ("05", "CAPTEURS & FIXATION", (46, 125, 50), (238, 247, 239)),
+    "batterie": ("06", "BATTERIE 3S · BMS · CHARGE USB-C", (0, 105, 92), (235, 246, 244)),
 }
 
 PRETTY = (("->", "→"), ("<-", "←"), ("+/-", "±"), ("mOhm", "mΩ"), (" Ohm", " Ω"), ("uH", "µH"),
@@ -346,6 +347,7 @@ SUBTITLE = {
     "radio": "LoRa +22 dBm · TCXO 32 MHz · antenne SMA",
     "loads": "ARM + maintien + éjection + LED + sirène",
     "io": "verrou · présence · fixations M3",
+    "batterie": "3S 2200 mAh · BQ76920 · USB-C PD · LED d'état",
 }
 
 

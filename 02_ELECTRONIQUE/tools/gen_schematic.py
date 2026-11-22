@@ -85,7 +85,7 @@ def FLAG(ref, net):
 # ---------------------------------------------------------------------------
 # NETLIST — single source of truth. Net None = no-connect.
 # ---------------------------------------------------------------------------
-from netlist_revc import SHEETS, REVISION, ROOT_NOTES  # noqa: E402
+from netlist_revd import SHEETS, REVISION, ROOT_NOTES  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Library access + flattening of derived ("extends") symbols
@@ -584,7 +584,7 @@ def main():
                     where.setdefault(net, set()).add(name)
     global_nets = {k for k, v in where.items() if len(v) > 1}
     try:
-        from netlist_revc import GLOBAL_NETS
+        from netlist_revd import GLOBAL_NETS
         rogue = sorted(global_nets - GLOBAL_NETS)
         if rogue:
             raise SystemExit("Undeclared cross-sheet nets (name collision?): %s" % rogue)

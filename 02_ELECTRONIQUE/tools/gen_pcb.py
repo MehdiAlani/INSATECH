@@ -27,7 +27,8 @@ NETLIST = os.path.join(ROOT, "exports", "BRC-M400.net")
 PCB = os.path.join(ROOT, "BRC-M400", "BRC-M400.kicad_pcb")
 FPDIR = r"C:\Program Files\KiCad\10.0\share\kicad\footprints"
 
-W, H = 96.0, 66.0          # board size, mm
+W, H = 140.0, 66.0         # board size, mm (Rev D: +44 mm band on the left for the battery)
+WC = 96.0                  # Rev C width, used to keep the tuned placement coordinates
 OX, OY = 100.0, 100.0      # board origin on the KiCad canvas
 CLEAR = 0.45               # courtyard-to-courtyard spacing used by the packer
 HOLE_XY = [(3.6, 3.6), (W - 3.6, 3.6), (3.6, H - 3.6), (W - 3.6, H - 3.6)]
@@ -55,12 +56,12 @@ GROUPS = [
     # name, region, anchor ref, members (placement order = priority)
     ("pwr", "pwr", "Q1", ["U1", "C1", "C2", "D1", "F1", "R7", "R8", "C20"]),
     ("mcu", "mcu", "U10", ["C30", "C31", "C32", "C33", "C34", "C35", "C36", "C37", "R10", "X1", "C38", "C39",
-                           "R14", "R15", "D10", "R11", "R12", "R13",
+                           "D10", "R11", "R12", "R13",
                            "R60", "R61", "R62", "R63", "C90", "C91"]),
     ("radio", "radio", "U20", ["C50", "C51", "C52", "C53", "C54", "L20", "Y20", "FB20", "C55", "C56", "R20",
                                "C57", "C58", "R21", "C67", "R22", "C68", "FB1", "C16", "C17"]),
     ("buck3", "buck", "U3", ["C11", "C12", "C13", "R4", "R5", "R6", "C14", "C15", "U4", "C19"]),
-    ("ldo", "buck", "U2", ["C4", "C5", "C6", "C7", "R1", "R2"]),
+    ("boost12", "buck", "U2", ["L1", "D2", "C4", "C5", "C6", "C7", "R1", "R2"]),
     ("arm", "act", "Q30", ["R30", "R33", "Q31", "R34", "R35", "C80", "C81"]),
     ("hold", "act", "Q34", ["C87", "R46", "R47", "R48", "R49", "U30", "C88", "R36", "C82", "D32", "D33"]),
     ("eject", "act", "Q35", ["C89", "R51", "R52", "R53", "R54", "U36", "C92", "R37", "C93", "D34", "D35"]),
@@ -70,14 +71,14 @@ GROUPS = [
 
 FIXED = {
     # power input column: XT30 male, plug face 1 mm proud of the left edge
-    "J1": (12.1, 13.0, 90), "Q1": (17.5, 26.0, 0),
+    "Q1": (17.5, 26.0, 0),
     # bulk + converters (left, lower half)
     "C3": (13.0, 52.5, 0), "U3": (7.5, 34.0, 0), "L2": (15.5, 37.5, 0), "U2": (24.5, 40.0, 0),
     # MCU + signal connectors on the top edge
     "U10": (36.0, 15.5, 0), "J7": (27.5, 4.5, 90),
-    "J2": (44.0, 3.2, 180), "J6": (66.0, 3.2, 180),
+    "J6": (66.0, 3.2, 180),
     # radio, SMA on the right edge
-    "U20": (61.0, 15.0, 0), "U21": (82.0, 15.0, 0), "J20": (W - 3.2, 15.0, 0),
+    "U20": (61.0, 15.0, 0), "U21": (82.0, 15.0, 0), "J20": (WC - 3.2, 15.0, 0),
     # ARM switch between the two coil channels
     "Q30": (62.0, 33.5, 0), "U33": (71.0, 32.5, 0),
     # power channels: driver above MOSFET above XT30 (bottom edge), shunt beside the MOSFET
@@ -85,20 +86,47 @@ FIXED = {
     "U34": (52.5, 38.5, 0), "Q34": (53.0, 44.0, 0), "R50": (59.5, 44.0, 90), "J33": (56.0, 52.9, 180),
     "U35": (69.0, 38.5, 0), "Q35": (69.0, 44.0, 0), "R55": (75.5, 44.0, 90), "J34": (72.0, 52.9, 180),
     # siren: XT30 on the right edge
-    "Q33": (76.0, 35.0, 90), "J32": (W + 1.0 - 14.1, 33.0, 270),
+    "Q33": (76.0, 35.0, 90), "J32": (WC + 1.0 - 14.1, 33.0, 270),
 }
+
+XOFF = W - WC              # the Rev C layout slides right; the battery block takes the left band
+REGIONS = {k: (a + XOFF, b, c + XOFF, d) for k, (a, b, c, d) in REGIONS.items()}
+FIXED = {k: (x + XOFF, y, r) for k, (x, y, r) in FIXED.items()}
+
+REGIONS["batt"] = (0.5, 0.5, XOFF - 1.5, H - 0.5)
+GROUPS += [
+    ("pd", "batt", "U40", ["C102", "C103", "C104", "R100", "R101", "R102", "Q44", "C100", "C101"]),
+    ("chg", "batt", "U41", ["R103", "R104", "C105", "C106", "C107", "C108", "R105", "C109", "C110",
+                            "R106", "R107", "R108", "R109", "R110", "R111", "R112", "C111", "C112",
+                            "RT40", "R113"]),
+    ("bms", "batt", "U42", ["R114", "R115", "R116", "C113", "C114", "C115", "R117", "C116", "R118",
+                            "C117", "C118", "C119", "RT41", "C120", "R126", "R127"]),
+    ("stat", "batt", "D42", ["R120", "D43", "R121", "D44", "R122", "D45", "R123", "R124", "R125"]),
+]
+FIXED.update({
+    "J40": (3.4, 19.0, 90),          # USB-C, left edge, clear of the M3 hole
+    "Q40": (19.5, 8.5, 0), "Q41": (19.5, 15.5, 0),
+    "U41": (27.0, 11.0, 0),          # charger BQ24610
+    "L40": (28.0, 20.5, 0),
+    "U40": (14.0, 28.0, 0),          # USB-C PD sink
+    "U42": (13.0, 39.0, 0),          # BMS BQ76920
+    "Q43": (27.0, 36.0, 0), "Q42": (27.0, 43.0, 0), "R119": (36.0, 39.5, 90),
+    "J42": (14.0, 52.9, 180),        # pack XT30: body overhangs the edge, pads stay on board
+    "J41": (36.0, 56.0, 180),        # 3S balance connector
+    "D42": (40.0, 5.0, 0),
+})
 
 # RF chain laid out in signal order between SX1262 and the switch
 RF_TX_ROW = ["L22", "C59", "L21", "L23", "C60", "C61", "C62", "L24", "C63"]
 RF_RX_ROW = ["C64", "L25", "C66", "C65"]
-RF_ANT_ROW = ["C69", "C70", "R23", "C71"]
+RF_ANT_ROW = ["C69", "R23"]
 
 STD3D = "${KICAD10_3DMODEL_DIR}/"
 MODEL_OVERRIDE = {
     "U10": STD3D + "Package_DFN_QFN.3dshapes/QFN-48-1EP_7x7mm_P0.5mm_EP5.15x5.15mm.step",
     "Q30": STD3D + "Package_TO_SOT_SMD.3dshapes/TDSON-8-1.step",
     "Y20": STD3D + "Crystal.3dshapes/Crystal_SMD_2520-4Pin_2.5x2.0mm.step",
-    "J1": "${KIPRJMOD}/3d/XT30PW-M.wrl",
+    "J42": "${KIPRJMOD}/3d/XT30PW-M.wrl",
     "J31": "${KIPRJMOD}/3d/XT30PW-F.wrl",
     "J32": "${KIPRJMOD}/3d/XT30PW-F.wrl",
     "J33": "${KIPRJMOD}/3d/XT30PW-F.wrl",
@@ -394,7 +422,7 @@ def write_project_rules():
     # the wired schematic has no local labels, so KiCad auto-names local nets (Net-(U1-VCAP)):
     # add the KiCad name of every design net that one of the class patterns targets
     import fnmatch
-    from netlist_revc import SHEETS
+    from netlist_revd import SHEETS
     design = {}
     for _, _, _, parts in SHEETS:
         for p in parts:
@@ -579,23 +607,30 @@ def main():
         yv += 3.0
 
     # ---- silkscreen
-    add_text(board, "BRC-M400", 14.0, 4.2, 1.6, bold=True)
-    add_text(board, "Rev C  -  INSATECH", 15.5, 6.5, 0.9)
-    labels = [
-        ("E-PORT IN 24V", 6.8, 25.0, 0.85, 0),
-        ("SWD", 27.5, 8.7, 0.85, 0), ("DJI PSDK", 44.0, 6.9, 0.85, 0), ("SWITCH", 66.0, 6.9, 0.85, 0),
-        ("LoRa 868 MHz", 88.5, 21.8, 0.85, 0),
-        ("LED ARRAY", 37.5, 49.4, 0.85, 0), ("HOLD MAG", 53.5, 49.4, 0.85, 0),
-        ("EJECT SOL", 69.5, 49.4, 0.85, 0), ("SIREN", 88.5, 45.5, 0.85, 0),
+    add_text(board, "BRC-M400", XOFF + 14.0, 4.2, 1.6, bold=True)
+    add_text(board, "Rev D  -  INSATECH", XOFF + 15.5, 6.5, 0.9)
+    labels = [  # Rev C block (shifted right)
+        ("SWD", XOFF + 27.5, 8.7, 0.85, 0), ("SWITCH", XOFF + 66.0, 6.9, 0.85, 0),
+        ("LoRa 868 MHz", XOFF + 88.5, 21.8, 0.85, 0),
+        ("LED ARRAY 12V", XOFF + 37.5, 49.4, 0.85, 0), ("HOLD MAG 12V", XOFF + 53.5, 49.4, 0.85, 0),
+        ("EJECT SOL 12V", XOFF + 69.5, 49.4, 0.85, 0), ("SIREN 12V", XOFF + 88.5, 45.5, 0.85, 0),
+        # battery band (left)
+        ("USB-C  CHARGE", 9.5, 25.0, 0.85, 0),
+        ("3S LiPo 2200mAh", 7.5, 31.5, 0.85, 0),
+        ("BMS BQ76920", 7.5, 33.8, 0.75, 0),
+        ("PACK 3S", 7.5, 48.5, 0.85, 0), ("BALANCE", 30.5, 52.0, 0.85, 0),
+        ("CHG", 42.1, 5.3, 0.6, 0), ("FAULT", 42.1, 8.3, 0.6, 0),
+        ("USB-PD", 42.1, 11.3, 0.6, 0), ("BMS", 42.1, 14.3, 0.6, 0),
     ]
     for txt, x, y, sz, rot in labels:
         t = add_text(board, txt, x, y, sz)
         t.SetTextAngleDegrees(rot)
     # back side branding
     add_text(board, "INSATECH", W / 2, 9, 3.6, layer=pcbnew.B_SilkS, mirror=True, bold=True)
-    add_text(board, "BRC-M400  Rev C", W / 2, 15, 2.8, layer=pcbnew.B_SilkS, mirror=True, bold=True)
+    add_text(board, "BRC-M400  Rev D", W / 2, 15, 2.8, layer=pcbnew.B_SilkS, mirror=True, bold=True)
     add_text(board, "Buoy Release & Beacon Controller", W / 2, 21, 1.6, layer=pcbnew.B_SilkS, mirror=True)
-    add_text(board, "DJI Matrice 400  -  E-Port V2 / PSDK V3", W / 2, 25.5, 1.25, layer=pcbnew.B_SilkS, mirror=True)
+    add_text(board, "Module autonome  -  3S LiPo 2200 mAh  +  charge USB-C PD", W / 2, 25.5, 1.25,
+             layer=pcbnew.B_SilkS, mirror=True)
     add_text(board, "STM32U585  +  Semtech SX1262  LoRa 868 MHz", W / 2, 29.2, 1.25, layer=pcbnew.B_SilkS, mirror=True)
     add_text(board, "Fail-safe hold magnet  +  ejection solenoid  +  ARM/FIRE interlock", W / 2, 33, 1.15,
              layer=pcbnew.B_SilkS, mirror=True)

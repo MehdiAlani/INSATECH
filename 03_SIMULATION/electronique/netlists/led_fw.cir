@@ -1,19 +1,19 @@
 * LED array PWM power stage - BRC-M400
-Vvin vin 0 24
+Vvin vin 0 12
 Ltr vin vin2 20n
 Cloc vin2 0 22u
-* LED array: wiring 1 uH + 2 ohm ballast + 20 V string
+* LED array 12 V: wiring 1 uH + 0.8 ohm ballast + 9 V string (45 W -> 3.75 A)
 Lw vin2 la 1u
-Rled la lb 2
+Rled la lb 0.8
 Dled lb lc DLEDI
-Vled lc ledn 20
+Vled lc ledn 9
 .model DLEDI D(IS=1e-12 N=0.3)
 Dfw ledn vin2 SS54
 M1 ledn g src BSC028
 Rsh src 0 10m
 Vpwm pwm 0 PULSE(0 3.3 5u 5n 5n 25u 50u)
-* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.85 V)
-Vdd vdd 0 11.85
+* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.96 V, elevateur TPS61040)
+Vdd vdd 0 11.96
 Cdd vdd 0 1u
 Bin inl 0 V = v(pwm) > 1.8 ? 1 : 0
 Rdl inl ind 1k

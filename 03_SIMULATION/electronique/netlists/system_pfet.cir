@@ -1,6 +1,6 @@
 * BRC-M400 system power - averaged models
-* E-Port V2 VCC 24 V; input SHORTED to 0 V between 60 and 90 ms (fault test)
-Vsrc src 0 PWL(0 24 59.99m 24 60m 0 90m 0 90.01m 24 140m 24)
+* 3S pack 11.1 V; input INTERRUPTED between 60 and 90 ms (connector bounce / BMS trip)
+Vsrc src 0 PWL(0 11.1 59.99m 11.1 60m 0 90m 0 90.01m 11.1 140m 11.1)
 Rsrc src a1 0.03
 Lsrc a1 a2 0.5u
 Rcab a2 vf 0.04
@@ -23,7 +23,7 @@ Ildo vin 0 5m
 * --- actuators on V_ACT (= VIN through the ARM P-MOSFET): hold magnet 57 ohm, ejection solenoid 16 ohm
 Bhold vin 0 I = v(phold)*v(vin)/57
 Bej vin 0 I = v(pej)*v(vin)/16
-* --- LED array on VIN (24 V constant-voltage array: 20 V knee + 2 ohm), 1 kHz strobe
+* --- LED array on VIN (12 V array: 9 V knee + 0.8 ohm), 1 kHz strobe
 Bled vin 0 I = v(pled)*max(0, (v(vin)-20)/2)
 * --- siren on VIN (48 ohm)
 Bsir vin 0 I = v(psir)*v(vin)/48

@@ -1,7 +1,13 @@
 # Livrables — Équipe INSATECH
 
 **Projet BRC-M400 — Système de largage de bouée et balise de détresse**
-Tunisian AeroDay V14 · Challenge CAO · Porteur DJI Matrice 400 (E-Port V2) · Révision C
+Tunisian AeroDay V14 · Challenge CAO · Porteur DJI Matrice 400 · **Révision D**
+
+> **Rev D — module autonome.** Le système n'a plus aucune liaison électrique avec le drone :
+> il porte un **pack 3S LiPo 2200 mAh** avec BMS et **recharge USB-C Power Delivery**, et reçoit
+> ses ordres par LoRa. La balise reste donc alimentée **après le largage**, une fois le drone
+> reparti. La carte passe à **140 × 66 mm** et les entraxes de fixation ont changé — voir le
+> brief du pôle mécanique.
 
 ---
 
@@ -14,7 +20,7 @@ Tunisian AeroDay V14 · Challenge CAO · Porteur DJI Matrice 400 (E-Port V2) · 
 | 3 | **Simulations** — CFD et résistance mécanique | `05_SIMULATIONS/` | électronique **complète** · CFD/FEA **à déposer** |
 | 4 | **Note de synthèse** (1 à 2 pages) | `01_NOTE_DE_SYNTHESE.pdf` | **complète**, sauf valeurs mécaniques |
 
-**Présentation du pitch (5 min) :** `02_PRESENTATION/INSATECH_BRC-M400_presentation.pdf` — 10 diapositives.
+**Présentation du pitch (5 min) :** `02_PRESENTATION/` — **14 diapositives**, en `.pptx` (modifiable) et en `.pdf` (projection).
 
 ---
 
@@ -27,8 +33,15 @@ mécaniques à compléter par le pôle mécanique (aérodynamique, orientation d
 fonctionnels).
 
 ### `02_PRESENTATION/`
-Deck PDF 16:9 pour le pitch. **La diapositive 9 contient trois emplacements** à remplir avec les
-captures du carénage, de la CFD et de la FEA.
+Deck 16:9 en deux formats : `INSATECH_BRC-M400_presentation.pptx` (**modifiable** sous PowerPoint)
+et le `.pdf` correspondant (**à projeter** : aucun risque de police manquante ou de décalage).
+
+Déroulé : couverture · contexte · mission · architecture · **01 Le mécanisme** (sûreté, double
+barrière, séquence 24 ms) · **02 L'électronique** (rails, carte, simulations) · mécanique · bilan.
+
+> **La diapositive 13 contient trois emplacements** à remplir avec les captures du carénage, de la
+> CFD et de la FEA. Après les avoir insérées dans le `.pptx`, réexporter le `.pdf`
+> (*Fichier → Exporter → Créer PDF/XPS*).
 
 ### `03_ARCHIVE_3D/` — à compléter
 Assemblage SolidWorks complet avec son arborescence, **plus** l'export STEP. Voir les cotes
@@ -39,7 +52,7 @@ d'interface de la carte dans `05_SIMULATIONS/CFD_FEA/BRIEF_SIMULATIONS_ET_INTERF
 | Fichier | Contenu |
 |---|---|
 | `BRC-M400_KiCad/` | Projet **natif KiCad 10** : schéma hiérarchique (6 pages) + circuit imprimé routé |
-| `BRC-M400_schema.pdf` | Schéma électronique complet — page 1 vue d'ensemble, pages 2 à 6 par bloc |
+| `BRC-M400_schema.pdf` | Schéma électronique complet — page 1 vue d'ensemble, **pages 2 à 7** par bloc |
 | `BRC-M400_PCB.step` | **Modèle 3D de la carte routée** (38 Mo : pistes, plans et composants) |
 | `BRC-M400_PCB_simplifie.step` | Même carte **sans les pistes** (5 Mo) — **à utiliser pour l'assemblage CAO** |
 | `BRC-M400_BOM.csv` | Nomenclature |
@@ -47,22 +60,30 @@ d'interface de la carte dans `05_SIMULATIONS/CFD_FEA/BRIEF_SIMULATIONS_ET_INTERF
 | `fab/` | Gerbers et fichiers de perçage (preuve de fabricabilité) |
 | `rendus_3D/` | Rendus de la carte et images du schéma |
 
-**Caractéristiques :** 96,1 × 66,1 mm · 4 couches · 1,6 mm · ENIG · 163 composants ·
-1 414 pistes · 424 vias · ERC sans violation · netlist vérifiée (0 écart).
-**Réserve assumée :** 30 liaisons restent à router autour du microcontrôleur et de la radio.
+**Caractéristiques :** 140 × 66 mm · 4 couches · 1,6 mm · ENIG · **226 composants** ·
+151 réseaux · ERC **sans violation** · netlist vérifiée (**0 écart**).
+La bande de gauche regroupe toute l'énergie (USB-C, chargeur, BMS, pack), séparée de la logique
+et de la radio.
 
 ### `05_SIMULATIONS/`
 
-- `electronique/` — **complet** : rapport et 9 figures, 7 analyses ngspice (convertisseur 3,3 V,
-  intégrité d'alimentation et court-circuit E-Port, étage LED PWM, coupure inductive de la sirène,
-  solénoïde d'éjection, aimant de maintien, bilan de liaison LoRa).
+- `electronique/` — **complet**, **rejoué en Rev D** sur le pack 12 V : rapport et 9 figures,
+  7 analyses ngspice (convertisseur 3,3 V, intégrité d'alimentation et interruption du pack,
+  étage LED PWM, coupure inductive de la sirène, solénoïde d'éjection, aimant de maintien,
+  bilan de liaison LoRa).
 - `CFD_FEA/` — **à compléter**. Le fichier `BRIEF_SIMULATIONS_ET_INTERFACE.md` contient les cotes
   réelles de la carte, les cas de charge chiffrés, les réglages conseillés et la **checklist exacte
   des captures exigées** par le cahier des charges.
 
 ### `_outils/`
-Scripts de génération de la note de synthèse et de la présentation (python + PyMuPDF). À relancer
-après avoir ajouté les captures mécaniques.
+Scripts de génération (python 3 + `pymupdf`, `python-pptx`, `pillow`) :
+
+| Script | Produit |
+|---|---|
+| `gen_note_synthese.py` | la note de synthèse PDF (texte dans `content_note.py`) |
+| `gen_pptx.py` + `pptx_kit.py` | **la présentation `.pptx`** |
+| `gen_presentation.py` + `deck.py` | ancienne version PDF seule de la présentation (conservée) |
+| `art/` | rendus de la carte détourés sur fond transparent |
 
 ---
 
@@ -72,6 +93,6 @@ après avoir ajouté les captures mécaniques.
    `05_SIMULATIONS/CFD_FEA/`.
 2. **Compléter** les marqueurs orange de la note de synthèse, puis relancer
    `_outils/gen_note_synthese.py`.
-3. **Insérer** les trois captures mécaniques dans la diapositive 9, puis relancer
-   `_outils/gen_presentation.py`.
+3. **Insérer** les trois captures mécaniques dans la diapositive 13 du `.pptx`, puis réexporter
+   le `.pdf`.
 4. *(optionnel)* Terminer les 30 liaisons de routage restantes dans KiCad.

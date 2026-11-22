@@ -1,13 +1,13 @@
 * Siren power stage - inductive turn-off
-Vvin vin 0 24
+Vvin vin 0 12
 Cloc vin 0 22u
-Lsir vin sa 5m
-Rsir sa sirn 48
+Lsir vin sa 1.25m
+Rsir sa sirn 12
 
 M1 sirn g 0 BSC028
 Vpwm pwm 0 PULSE(0 3.3 50u 5n 5n 750u 2)
-* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.85 V)
-Vdd vdd 0 11.85
+* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.96 V, elevateur TPS61040)
+Vdd vdd 0 11.96
 Cdd vdd 0 1u
 Bin inl 0 V = v(pwm) > 1.8 ? 1 : 0
 Rdl inl ind 1k

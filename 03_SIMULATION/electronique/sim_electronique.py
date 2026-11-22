@@ -101,11 +101,11 @@ def load(name, n):
 
 
 # ===========================================================================
-# 1. Logic-rail buck: LMR51430, 24 V -> 3.315 V, peak-current-mode, 500 kHz
+# 1. Logic-rail buck: LMR51430, 12.6 V pack -> 3.315 V, peak-current-mode, 500 kHz
 # ===========================================================================
 BUCK = r"""* LMR51430 behavioural peak-current-mode buck - BRC-M400 Rev C logic rail
 * Datasheet values: fsw 500 kHz, Rds(on) HS 120 mOhm / LS 70 mOhm, Vref 0.600 V, tSS 4 ms
-Vin vin 0 24
+Vin vin 0 12.6
 Cin vin 0 10u
 Vclk clk 0 PULSE(0 1 0 2n 2n 40n 2u)
 Vramp ramp 0 PULSE(0 0.1 0 1.99u 2n 1n 2u)
@@ -156,7 +156,7 @@ BUCK_ZOOM = BUCK.replace(".options interp\n", "").replace(
 
 
 def sim_buck(ng):
-    print("\n[1] Buck 24 V -> 3.3 V (rail logique)")
+    print("\n[1] Buck 12,6 V (pack 3S) -> 3,3 V (rail logique)")
     ng.run("buck_3v3", BUCK.replace("{WR1}", wr("buck_full", ["v(vout)", "i(Vimeas)", "v(prof)", "i(Vin)"])))
     ng.run("buck_3v3_zoom", BUCK_ZOOM.replace("{WR2}", wr("buck_zoom", ["v(vout)", "i(Vimeas)", "v(lx)"])))
     t, (vo, il, ild, iin) = load("buck_full", 4)
@@ -212,8 +212,8 @@ def sim_buck(ng):
 # 2. System power integrity: E-Port V2 -> protection -> 2 bucks -> all loads
 # ===========================================================================
 SYSTEM = r"""* BRC-M400 system power - averaged models
-* E-Port V2 VCC 24 V; input SHORTED to 0 V between 60 and 90 ms (fault test)
-Vsrc src 0 PWL(0 24 59.99m 24 60m 0 90m 0 90.01m 24 140m 24)
+* 3S pack 11.1 V; input INTERRUPTED between 60 and 90 ms (connector bounce / BMS trip)
+Vsrc src 0 PWL(0 11.1 59.99m 11.1 60m 0 90m 0 90.01m 11.1 140m 11.1)
 Rsrc src a1 0.03
 Lsrc a1 a2 0.5u
 Rcab a2 vf 0.04
@@ -236,7 +236,7 @@ Ildo vin 0 5m
 * --- actuators on V_ACT (= VIN through the ARM P-MOSFET): hold magnet 57 ohm, ejection solenoid 16 ohm
 Bhold vin 0 I = v(phold)*v(vin)/57
 Bej vin 0 I = v(pej)*v(vin)/16
-* --- LED array on VIN (24 V constant-voltage array: 20 V knee + 2 ohm), 1 kHz strobe
+* --- LED array on VIN (12 V array: 9 V knee + 0.8 ohm), 1 kHz strobe
 Bled vin 0 I = v(pled)*max(0, (v(vin)-20)/2)
 * --- siren on VIN (48 ohm)
 Bsir vin 0 I = v(psir)*v(vin)/48
@@ -251,7 +251,7 @@ tran 5u 140m 0 2u
 
 
 def sim_system(ng):
-    print("\n[2] Integrite d'alimentation systeme + court-circuit E-Port")
+    print("\n[2] Integrite d'alimentation systeme + interruption du pack")
     res = {}
     for key, prot in (("ideal", "Dprot vf vin DIDEAL"), ("pfet", "Rprot vf vin 0.0115")):
         ng.run("system_" + key, SYSTEM.replace("{PROT}", prot).replace(
@@ -271,10 +271,10 @@ def sim_system(ng):
     collapse = tp[(tp > 60e-3) & (v3_p < 3.0)]
     t_coll = (collapse[0] - 60e-3) * 1e6 if len(collapse) else None
     ipk = (-isrc)[t > 5e-3].max()      # after start-up (bulk-cap charging excluded)
-    print("   pire cas simultane (aimant + solenoide + LED + sirene + TX) : VIN min %.2f V, courant E-Port max %.2f A" % (vin_min, ipk))
+    print("   pire cas simultane (aimant + solenoide + LED + sirene + TX) : VIN min %.2f V, courant pack max %.2f A" % (vin_min, ipk))
     print("   VIN reste > 3,7 V (UVLO) -> rails regules ; transitoire du convertisseur : voir simulation [1]")
-    print("   court-circuit E-Port 30 ms, diode ideale LM74700 : 3,3 V min %.3f V (VIN %.2f V)" % (v3_fault_min, vin_fault_min))
-    print("   meme defaut avec P-MOSFET passif                 : 3,3 V < 3,0 V en %s us" % ("%.0f" % t_coll if t_coll else "-"))
+    print("   interruption pack 30 ms, diode ideale LM74700 : 3,3 V min %.3f V (VIN %.2f V)" % (v3_fault_min, vin_fault_min))
+    print("   meme defaut sans diode ideale                         : 3,3 V < 3,0 V en %s us" % ("%.0f" % t_coll if t_coll else "-"))
 
     fig, axs = plt.subplots(3, 1, figsize=(10, 8.8), sharex=True, gridspec_kw={"height_ratios": [1, 1, 0.9]})
     axs[0].plot(tm, vin, color=S1, label="diode ideale LM74700 (choix retenu)")
@@ -302,7 +302,7 @@ def sim_system(ng):
 
 
 # ===========================================================================
-# 3. LED array PWM stage: UCC27511A + BSC028N06LS3, 24 V / 2 A, 20 kHz
+# 3. LED array PWM stage: UCC27511A + BSC028N06LS3, 12 V / 3.75 A, 20 kHz
 # ===========================================================================
 FET_MODEL = (".model BSC028 VDMOS(Rd=0.9m Rs=0.4m Rg=1.0 Vto=1.7 Kp=180 lambda=0.01 "
              "Cgs=4.2n Cgdmax=2n Cgdmin=40p A=0.3 Cjo=1.6n M=0.5 Vj=0.8 Is=2e-11 N=1.05 "
@@ -310,8 +310,8 @@ FET_MODEL = (".model BSC028 VDMOS(Rd=0.9m Rs=0.4m Rg=1.0 Vto=1.7 Kp=180 lambda=0
              ".model SS54 D(IS=5e-5 N=1.1 RS=0.02 CJO=400p BV=40)\n"
              ".model SS34 D(IS=3e-5 N=1.1 RS=0.04 CJO=250p BV=40)\n")
 
-DRIVER = r"""* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.85 V)
-Vdd vdd 0 11.85
+DRIVER = r"""* --- UCC27511A behavioural: 13 ns delay, OUTH 4 A source, OUTL 8 A sink, VDD = +12V_GD (11.96 V, elevateur TPS61040)
+Vdd vdd 0 11.96
 Cdd vdd 0 1u
 Bin inl 0 V = v(pwm) > 1.8 ? 1 : 0
 Rdl inl ind 1k
@@ -327,14 +327,14 @@ Rgpd g {SRC} 10k
 """
 
 LED = r"""* LED array PWM power stage - BRC-M400
-Vvin vin 0 24
+Vvin vin 0 12
 Ltr vin vin2 20n
 Cloc vin2 0 22u
-* LED array: wiring 1 uH + 2 ohm ballast + 20 V string
+* LED array 12 V: wiring 1 uH + 0.8 ohm ballast + 9 V string (45 W -> 3.75 A)
 Lw vin2 la 1u
-Rled la lb 2
+Rled la lb 0.8
 Dled lb lc DLEDI
-Vled lc ledn 20
+Vled lc ledn 9
 .model DLEDI D(IS=1e-12 N=0.3)
 {FW}
 M1 ledn g src BSC028
@@ -379,8 +379,8 @@ def sim_led(ng):
         ib = np.argmax(v >= b) if rising else np.argmax(v <= b)
         return (tt[ib] - tt[ia]) * 1e9
 
-    tf = edge(t, vds, 0.1 * 24, 0.9 * 24, 55e-6, 57e-6, False)     # Vds falls at turn-on
-    tr = edge(t, vds, 0.1 * 24, 0.9 * 24, 80e-6, 82e-6, True)      # Vds rises at turn-off
+    tf = edge(t, vds, 0.1 * 12, 0.9 * 12, 55e-6, 57e-6, False)     # Vds falls at turn-on
+    tr = edge(t, vds, 0.1 * 12, 0.9 * 12, 80e-6, 82e-6, True)      # Vds rises at turn-off
     vds_pk = vds[t > 50e-6].max()
     vds_pk_n = vds_n[tn > 50e-6].max()
     tj = 25 + p_avg * 50
@@ -394,7 +394,7 @@ def sim_led(ng):
     tu = t * 1e6
     axs[0].plot(tu, vgs, color=S1, label="Vgs")
     axs[0].set_ylabel("Vgs (V)")
-    axs[0].set_title("LED array 24 V / %.1f A, PWM 20 kHz 50 %% - pertes MOSFET %.0f mW, Tj estimee %.0f C"
+    axs[0].set_title("LED array 12 V / %.1f A, PWM 20 kHz 50 %% - pertes MOSFET %.0f mW, Tj estimee %.0f C"
                      % (i_on, p_avg * 1e3, tj))
     axs[1].plot(tn * 1e6, vds_n, color=S2, label="sans diode de roue libre")
     axs[1].plot(tu, vds, color=S1, label="avec SS54 (choix retenu)")
@@ -427,10 +427,10 @@ def sim_led(ng):
 # 4. Siren: inductive load turn-off, with / without flyback diode
 # ===========================================================================
 SIREN = r"""* Siren power stage - inductive turn-off
-Vvin vin 0 24
+Vvin vin 0 12
 Cloc vin 0 22u
-Lsir vin sa 5m
-Rsir sa sirn 48
+Lsir vin sa 1.25m
+Rsir sa sirn 12
 {FW}
 M1 sirn g 0 BSC028
 Vpwm pwm 0 PULSE(0 3.3 50u 5n 5n 750u 2)
@@ -475,24 +475,24 @@ def sim_siren(ng):
 # 5. Ejection solenoid - electromechanical model (coil + plunger + spring + end stops)
 # ===========================================================================
 # supplies ramp up in 0.5 ms (instant steps with uic create a fake turn-on spike)
-COIL_STAGE = r"""Vact vact 0 PWL(0 0 0.5m 24)
+COIL_STAGE = r"""Vact vact 0 PWL(0 0 0.5m 12)
 Cact vact 0 100u
 {CLAMP}
 M1 dn g src BSC028
 Rsh src 0 10m
-""" + DRIVER.replace("{SRC}", "src").replace("Vdd vdd 0 11.85", "Vdd vdd 0 PWL(0 0 0.5m 11.85)") + FET_MODEL + """.model TVS20 D(IS=1e-12 N=1.5 RS=0.3 BV=23 IBV=1m)
+""" + DRIVER.replace("{SRC}", "src").replace("Vdd vdd 0 11.96", "Vdd vdd 0 PWL(0 0 0.5m 11.85)") + FET_MODEL + """.model TVS20 D(IS=1e-12 N=1.5 RS=0.3 BV=23 IBV=1m)
 """
 
 CLAMPS = {"fast": "Dfw dn k SS34\nDtvs vact k TVS20", "diode": "Dfw dn vact SS34"}
 
-EJECT = r"""* Ejection solenoid 24 V / 16 ohm, stroke 10 mm, plunger+rod 30 g - BRC-M400 Rev C
+EJECT = r"""* Ejection solenoid 12 V / 4 ohm (36 W), stroke 10 mm, plunger+rod 30 g - BRC-M400 Rev D
 * coil flux linkage lam integrated on a 1 F node; I = lam / L(x); L(x) = 10 mH + Kl/(13 mm - x)
-Bemf 0 lam I = v(vact) - v(dn) - 16*v(ic)
+Bemf 0 lam I = v(vact) - v(dn) - 4*v(ic)
 Clam lam 0 1
-Bic ic 0 V = v(lam) / (0.010 + 6e-4/(0.013 - v(x)))
+Bic ic 0 V = v(lam) / (0.0025 + 1.5e-4/(0.013 - v(x)))
 Bcoil vact dn I = v(ic)
 * magnetic force F = 1/2 I^2 dL/dx ; spring 300 N/m + 1 N preload ; viscous 1.5 N.s/m ; end stops
-Bforce f 0 V = 0.5*v(ic)*v(ic)*6e-4/((0.013 - v(x))*(0.013 - v(x)))
+Bforce f 0 V = 0.5*v(ic)*v(ic)*1.5e-4/((0.013 - v(x))*(0.013 - v(x)))
 Bstop st 0 V = 2e5*max(v(x)-0.010, 0) + 2e5*min(v(x), 0) + 30*v(u)*(v(x) > 0.010 ? 1 : (v(x) < 0 ? 1 : 0))
 Bacc 0 u I = (v(f) - 300*v(x) - 1.0 - 1.5*v(u) - v(st)) / 0.03
 Cu u 0 1
@@ -547,7 +547,7 @@ def sim_eject(ng):
                     xy=(t_dip, ic[k0 + kmin]), xytext=(t_dip + 8, 0.55), color=INK2, fontsize=8.5,
                     arrowprops=dict(arrowstyle="-", color=MUTED))
     axs[0].set_ylabel("Courant bobine (A)")
-    axs[0].set_title("Solenoide d'ejection 24 V - courant, course du plongeur et tension de drain")
+    axs[0].set_title("Solenoide d'ejection 12 V - courant, course du plongeur et tension de drain")
     axs[0].legend(loc="upper right")
     axs[1].plot(tm, x * 1e3, color=S1, label="diode + TVS")
     axs[1].plot(td * 1e3, xd * 1e3, color=S2, label="diode seule")
@@ -567,9 +567,9 @@ def sim_eject(ng):
 # ===========================================================================
 # 6. Fail-safe holding electromagnet (permanent magnet, coil = release)
 # ===========================================================================
-HOLD = r"""* Fail-safe holding electromagnet 24 V / 57 ohm (10 W), L = 150 mH - BRC-M400 Rev C
-Lh vact hl 150m
-Rh hl dn 57
+HOLD = r"""* Fail-safe holding electromagnet 12 V / 14.4 ohm (10 W), L = 37.9 mH - BRC-M400 Rev D
+Lh vact hl 37.9m
+Rh hl dn 14.4
 Vpwm pwm 0 PULSE(0 3.3 5m 5n 5n 300m 1)
 """ + COIL_STAGE + r"""
 .options interp
@@ -590,7 +590,7 @@ def sim_hold(ng):
     t, (ih, vd) = out["fast"]
     td, (ihd, vdd_) = out["diode"]
     tm = t * 1e3
-    inom = 24 / 57
+    inom = 12 / 14.4
     irel = 0.7 * inom
     t_rel = tm[(ih >= irel) & (tm > 5)][0] - 5
     def off_time(tt, ii):
